@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import Header from "../common/Header";
+import Banner from "../components/Recruit/Banner";
 
 const RecruitPage = () => {
   return (
     <>
       <Header />
-      <Wrap>recruit page</Wrap>
+      <Banner />
     </>
   );
 };
-
-const Wrap = styled.div``;
 
 export default RecruitPage;
