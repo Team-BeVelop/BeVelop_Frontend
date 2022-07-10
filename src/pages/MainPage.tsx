@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Header from "../common/Header";
+import MainContainer from "../components/container/MainContainer";
 import Login from "../components/Login/Login";
 
 const Wrap = styled.div`
@@ -21,11 +22,12 @@ const MainPage = () => {
     }));
     return(
         <>
-            <Header/>
+            <Header bgStyle = ""/>
             {Modal ? <Wrap>
             <div className="bg"></div>
             <Login/>
             </Wrap> : ""}
+            <MainContainer/>
         </>
     )
 }

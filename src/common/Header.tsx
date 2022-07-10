@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Login from "../components/Login/Login";
 import { modal } from "../modules/modal";
 
 const HeaderWrap = styled.div`
@@ -21,7 +19,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 22px;
 font-feature-settings: 'tnum' on, 'lnum' on;
-
+    cursor: pointer;
 color: #000000;
 @media screen and (max-width:480px){
         padding-left: 20px;
@@ -95,12 +93,18 @@ color: #6B7684;
     }
 }
 `
-const ContentWrap = styled.div`
+
+const ContentWrap = styled.div<{bgStyle : any}>`
     width: 100%;
     height: 300px;
     padding: 82px 0px 0 200px;
-    background-image: url('/img/Rectangle 725.png');
+    
+    background-image: ${(props) => props.bgStyle == "border" ? "url('img/Rectangle_764.png')" : "url('img/Rectangle_725.png')"};
+    
+    border-radius: ${(props ) => props.bgStyle == "border" ? "0 0 150px" : "0"};
+    
     .title{
+        display: ${(props) => props.bgStyle == "border" ? "none" : "block"};
         font-family: 'Pretendard';
         font-style: normal;
         font-weight: 600;
@@ -110,6 +114,7 @@ const ContentWrap = styled.div`
 color: #000000;
     }
     p{
+        display: ${(props) => props.bgStyle == "border" ? "none" : "block"};
         font-family: 'Pretendard';
 font-style: normal;
 font-weight: 400;
@@ -124,7 +129,7 @@ color: #000000;
         margin-top: 18px;
     }
     @media screen and (max-width:480px){
-        background-image: url('/img/Rectangle 725 (1).png');
+        background-image: url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_724.png');
         background-size: contain;
         background-position: left;
         height: 206px;
@@ -142,7 +147,11 @@ color: #000000;
         }
     }
 `
-const Header = () => { 
+export type bgStyle ={
+    bgStyle : any
+}
+
+const Header :React.FC<bgStyle> = ({bgStyle}) => { 
     const dispatch = useDispatch();
     const OnclickPopUp = () => {
         dispatch(modal());
@@ -153,7 +162,7 @@ const Header = () => {
     return (
         <>
         <HeaderWrap>
-            <Logo>BeVelop</Logo>
+            <Logo><Link to = "/">BeVelop</Link></Logo>
             <Menus>
                 <li>홈</li>
                 <li>팀원구인</li>
@@ -164,11 +173,10 @@ const Header = () => {
                 <p onClick={OnclickPopUp}>로그인</p>
             </USER>
         </HeaderWrap>
-        <ContentWrap>
+        <ContentWrap bgStyle={bgStyle}>
         <h2 className="title">사이드 프로젝트에서 <br/>하나의 수입 수단까지</h2>
         <p>스토리 자세히 보기 {'>'}</p>
         </ContentWrap>
-        
         </>
     )
 }

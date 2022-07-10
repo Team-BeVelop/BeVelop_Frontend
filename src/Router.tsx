@@ -9,6 +9,7 @@ import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from "redux-thunk";
 import MainPage from './pages/MainPage';
+import UserPage from './pages/UserPage';
 
 
 
@@ -29,11 +30,12 @@ const persistor = persistStore(store);
 function Router() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
             <PersistGate persistor={persistor}>
                 <Routes>
                   <Route path="/" element={<MainPage/>} />
+                  <Route path= "/user" element = {<UserPage />} />
                 </Routes>
             </PersistGate>    
         </Provider>
