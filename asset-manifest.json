@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/BeVelop_Frontend/static/css/main.7a3ad983.css",
+    "main.js": "/BeVelop_Frontend/static/js/main.49b5ce0a.js",
+    "index.html": "/BeVelop_Frontend/index.html",
+    "main.7a3ad983.css.map": "/BeVelop_Frontend/static/css/main.7a3ad983.css.map",
+    "main.49b5ce0a.js.map": "/BeVelop_Frontend/static/js/main.49b5ce0a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a3ad983.css",
+    "static/js/main.49b5ce0a.js"
+  ]
+}
