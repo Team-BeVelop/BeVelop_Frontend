@@ -31,6 +31,11 @@ font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #fff;
     }
+    @media screen and (max-width:1200px){
+        p{
+            font-size: 20px;
+        }
+    }
     @media screen and (max-width:480px){
         display: none;
     }
@@ -52,6 +57,11 @@ text-align: center;
 font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #FFFFFF;
+@media screen and (max-width:1200px){
+        width: 120px;
+        font-size: 15px;
+    }
+
 `
 const ProjectType = styled.div`
     margin-top: 34px;
@@ -88,6 +98,8 @@ border-radius: 6px;
 display: flex;
 justify-content: space-around;
 margin-top: 20px;
+overflow: hidden;
+        flex-wrap: nowrap;
 @media screen and (max-width:480px){
         display: table;
         margin: 0 auto;
@@ -104,6 +116,12 @@ const Project = styled.div`
     p{
         text-align: center;
         line-height: 205px;
+    }
+    @media screen and (max-width:1200px){
+        width: 250px;
+        overflow: hidden;
+        flex-wrap: nowrap;
+        font-size: 15px;
     }
     @media screen and (max-width:480px){
         width: 100%;
