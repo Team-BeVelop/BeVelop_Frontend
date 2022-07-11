@@ -14,8 +14,12 @@ const HeaderWrap = styled.div`
 const NavWrap = styled.div`
     display: flex;
     width: 80%;
+    
     max-width: 1400px;
     margin: 0 auto;
+    @media screen and (max-width:480px){
+        display: block;
+    }
 `
 const Logo = styled.h1`
     line-height:70px;
@@ -27,9 +31,7 @@ font-size: 22px;
 font-feature-settings: 'tnum' on, 'lnum' on;
     cursor: pointer;
 color: #000000;
-@media screen and (max-width:480px){
-        padding-left: 20px;
-    }
+
 `
 const USER = styled.div`
     position: absolute;
@@ -57,7 +59,7 @@ color: #6B7684;
 `
 const Menus = styled.ul`
     display: flex;
-    line-height: 65px;
+    line-height: 70px;
     li:first-child{
         margin-left: 88px;
     }
@@ -68,11 +70,8 @@ const Menus = styled.ul`
 font-style: normal;
 font-weight: 500;
     font-size: 20px;
-
-
 text-align: center;
 font-feature-settings: 'tnum' on, 'lnum' on;
-
 color: #6B7684;
 :hover{
     color: #000;
@@ -80,10 +79,20 @@ color: #6B7684;
     border-bottom: 3px solid #000;
 }
     }
+    @media screen and (max-width:750px){
+        li:first-child{
+        margin-left: 30px;
+    }
+        li{
+            font-size: 15px;
+            padding: 0 12px;
+        margin: 0 8px;
+        }
+    }
     @media screen and (max-width:480px){
     justify-content: center;
     li:first-child{
-        margin-left: 6%;
+        margin-left: 2%;
     }
     li{
         font-family: 'Pretendard';
@@ -93,8 +102,7 @@ color: #6B7684;
 
         text-align: center;
         font-feature-settings: 'tnum' on, 'lnum' on;
-        padding: 0 8px;
-        margin: 0 12px;
+        
         
     }
 }
@@ -147,6 +155,7 @@ color: #000000;
         padding: 63px 0px 0 20px;
 
         .title{
+            padding: 0;
             font-family: 'Pretendard';
             font-style: normal;
             font-weight: 600;
