@@ -3,25 +3,13 @@ import styled from "styled-components";
 const Banner = () => {
   return (
     <>
-      <Wrap>
-        <Top>
-          <h2 className="title">{"프로젝트를 진행해\n커리어를 쌓아보세요!"}</h2>
-          <button className="button">
-            구인글 작성하기
-            <img className="icon" src="/img/icon_rightArrow.png" alt="" />
-          </button>
-        </Top>
-      </Wrap>
+      <Top>
+        <Title>{"프로젝트를 진행해\n커리어를 쌓아보세요!"}</Title>
+        <Button>구인글 작성하기</Button>
+      </Top>
     </>
   );
 };
-
-const Wrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 285px;
-`;
 
 const Top = styled.div`
   background-image: linear-gradient(
@@ -34,47 +22,68 @@ const Top = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 300px;
   width: 100%;
+  height: 300px;
   border-radius: 6px;
   margin: 31px 0 75px 0;
 
-  .title {
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 43px;
-
-    color: #fff;
-    text-align: center;
-    white-space: pre-line;
-    font-feature-settings: "tnum" on, "lnum" on;
-    padding-top: 77px;
+  @media screen and (max-width: 480px) {
+    margin: 0;
+    height: 143px;
+    border-radius: 0;
   }
+`;
 
-  .button {
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
+const Title = styled.h2`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+
+  color: #fff;
+  text-align: center;
+  white-space: pre-line;
+  font-feature-settings: "tnum" on, "lnum" on;
+  padding-top: 77px;
+
+  @media screen and (max-width: 480px) {
     font-size: 21px;
     line-height: 25px;
-
-    color: #fff;
-    background: #1f1f1f;
-    border-radius: 6px;
-    width: 217px;
-    height: 56px;
-    margin-top: 24px;
-    padding: 0px 24px;
+    padding-top: 47px;
   }
+`;
 
-  .icon {
-    position: relative;
-    left: 18px;
-    top: 5px;
-    width: 24px;
-    height: 24px;
+const Button = styled.button`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 25px;
+
+  color: #fff;
+  background: #1f1f1f;
+  border-radius: 6px;
+  width: 217px;
+  height: 56px;
+  margin-top: 24px;
+  padding: 0px 24px;
+  background-image: url("/img/icon_rightArrow.png");
+  background-position: right 24px center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+    line-height: 17px;
+
+    width: 160px;
+    height: 38px;
+    padding: 11px 24px;
+    background-position: right 18px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    transform: translate(100px, 0);
   }
 `;
 

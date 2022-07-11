@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Header from "../common/Header";
-import Banner from "../components/Recruit/Banner";
+import RecruitContainer from "../components/container/RecruitContainer";
 
 const RecruitPage = () => {
   return (
     <>
       <Header />
-      <Banner />
+      <RecruitContainer />
     </>
   );
 };
