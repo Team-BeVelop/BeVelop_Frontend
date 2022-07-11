@@ -11,9 +11,15 @@ const HeaderWrap = styled.div`
         display: block;
     }
 `
+const NavWrap = styled.div`
+    display: flex;
+    width: 80%;
+    max-width: 1400px;
+    margin: 0 auto;
+`
 const Logo = styled.h1`
     line-height:70px;
-    padding-left: 200px;
+    
     font-family: 'Pretendard';
 font-style: normal;
 font-weight: 500;
@@ -97,13 +103,16 @@ color: #6B7684;
 const ContentWrap = styled.div<{bgStyle : any}>`
     width: 100%;
     height: 300px;
-    padding: 82px 0px 0 200px;
     
     background-image: ${(props) => props.bgStyle == "border" ? "url('img/Rectangle_764.png')" : "url('img/Rectangle_725.png')"};
     
     border-radius: ${(props ) => props.bgStyle == "border" ? "0 0 150px" : "0"};
     
     .title{
+        padding: 80px 0 0 0;
+        width: 80%;
+        max-width: 1400px;
+        margin: 0 auto;
         display: ${(props) => props.bgStyle == "border" ? "none" : "block"};
         font-family: 'Pretendard';
         font-style: normal;
@@ -121,7 +130,9 @@ font-weight: 400;
 font-size: 16px;
 line-height: 19px;
 /* identical to box height */
-
+        width: 80%;
+        max-width: 1400px;
+        margin: 0 auto;
 font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #000000;
@@ -162,6 +173,7 @@ const Header :React.FC<bgStyle> = ({bgStyle}) => {
     return (
         <>
         <HeaderWrap>
+            <NavWrap>
             <Logo><Link to = "/">BeVelop</Link></Logo>
             <Menus>
                 <li>홈</li>
@@ -172,6 +184,7 @@ const Header :React.FC<bgStyle> = ({bgStyle}) => {
             <USER>
                 <p onClick={OnclickPopUp}>로그인</p>
             </USER>
+            </NavWrap>
         </HeaderWrap>
         <ContentWrap bgStyle={bgStyle}>
         <h2 className="title">사이드 프로젝트에서 <br/>하나의 수입 수단까지</h2>
