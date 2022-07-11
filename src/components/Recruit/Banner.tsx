@@ -11,7 +11,7 @@ const Banner = () => {
   );
 };
 
-const Top = styled.div`
+const Top = styled.article`
   background-image: linear-gradient(
       110.41deg,
       rgba(122, 93, 245, 0.8) -0.92%,
@@ -25,16 +25,16 @@ const Top = styled.div`
   width: 100%;
   height: 300px;
   border-radius: 6px;
-  margin: 31px 0 75px 0;
+  margin: 31px 0 70px 0;
 
   @media screen and (max-width: 480px) {
-    margin: 0;
+    margin: 0 0 60px 0;
     height: 143px;
     border-radius: 0;
   }
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 600;
@@ -83,7 +83,7 @@ const Button = styled.button`
     background-position: right 18px center;
     background-repeat: no-repeat;
     background-size: 18px;
-    transform: translate(100px, 0);
+    transform: translateX(60%);
   }
 `;
 
