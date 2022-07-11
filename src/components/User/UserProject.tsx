@@ -19,7 +19,7 @@ justify-content: space-around;
     
     border-radius: 6px;
     align-items: center;
-    background-image: url('/img/Rectangle 762.png');
+    background-image: url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle762.png');
     p{
         
         font-family: 'Pretendard';

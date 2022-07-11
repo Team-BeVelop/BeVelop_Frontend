@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Header from "../common/Header";
@@ -21,6 +22,11 @@ const UserPage = () => {
     }));
     return(
         <>
+        <Helmet>
+            <title>BeVelop || 유저</title>
+            <meta property="og:url" content="https://team-bevelop.github.io/BeVelop_Frontend/user"/>
+            <meta property="og:title" content="BeVelop"/>
+        </Helmet>
             <Header bgStyle = "border"/>
             <UserContainer/>
             {Modal ? <Wrap>

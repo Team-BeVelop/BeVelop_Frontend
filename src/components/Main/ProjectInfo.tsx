@@ -25,7 +25,7 @@ color: #000000;
     margin: 79px 0 25px 0;
 }
 &::before{
-    content: ${(props)=> props.props == 'HOT' ? "url('/img/image 1549.png')" : "url('/img/image 1219.png')"};
+    content: ${(props)=> props.props == 'HOT' ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/image1549.png')" : "url('https://team-bevelop.github.io/BeVelop_Frontend/img/image1219.png')"};
 }
 span{
     color:#FF0000;

@@ -16,7 +16,7 @@ const UserImg = styled.div<{bgImg : any}>`
     background: #F2F4F6;
     border: 3px solid #FFFFFF;
     border-radius: 50%;
-    background-image: ${(props) => props.bgImg == 'filed' ? "url('/img/Ellipse 5.png')" : ""};
+    background-image: ${(props) => props.bgImg == 'filed' ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Ellipse.png')" : ""};
     background-size: cover;
     margin-bottom: 20px;
 `
@@ -227,8 +227,8 @@ const User = () => {
             <Profile>
                 <p>프로필</p>
                 <Flex>
-                <Filter><p>직무</p><img src="/img/down.png"/></Filter>
-                <Filter><p>관심분야</p><img src="/img/down.png"/></Filter>
+                <Filter><p>직무</p><img src="https://team-bevelop.github.io/BeVelop_Frontend/img/down.png"/></Filter>
+                <Filter><p>관심분야</p><img src="https://team-bevelop.github.io/BeVelop_Frontend/img/down.png"/></Filter>
                 </Flex>
             </Profile>
             <Portfolio>

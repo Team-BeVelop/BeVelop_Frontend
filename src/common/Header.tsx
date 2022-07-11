@@ -113,7 +113,7 @@ const ContentWrap = styled.div<{bgStyle : any}>`
     width: 100%;
     height: 300px;
     
-    background-image: ${(props) => props.bgStyle == "border" ? "url('img/Rectangle_764.png')" : "url('img/Rectangle_725.png')"};
+    background-image: ${(props) => props.bgStyle == "border" ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_764.png')" : "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_725.png')"};
     
     border-radius: ${(props ) => props.bgStyle == "border" ? "0 0 150px" : "0"};
     

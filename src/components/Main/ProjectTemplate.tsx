@@ -23,7 +23,7 @@ const Flex = styled.div`
         margin-top: 16px;
             margin-right : 12px;
     height: 18px;
-    background-image: url('/img/Vector2.png');
+    background-image: url('https://team-bevelop.github.io/BeVelop_Frontend/img/Vector2.png');
     background-size: cover;
     background-repeat: no-repeat;
     }
@@ -32,7 +32,7 @@ const Flex = styled.div`
             height: 18px;
             margin-top: 16px;
             margin-right : 12px;
-            background-image: url('/img/Vector.png');
+            background-image: url('https://team-bevelop.github.io/BeVelop_Frontend/img/Vector.png');
             background-size: cover;
             background-repeat: no-repeat;
     }
