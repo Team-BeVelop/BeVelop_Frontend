@@ -9,16 +9,14 @@ const TitleWrap = styled.div`
     display: flex;
     justify-content: space-between;
 `
-const Title = styled.div`
+const Title = styled.div<{props : any}>`
     font-family: 'Pretendard';
 font-style: normal;
 font-weight: 600;
 font-size: 26px;
 line-height: 31px;
 /* identical to box height */
-
 font-feature-settings: 'tnum' on, 'lnum' on;
-
 color: #000000;
 &{
     margin:80px 0 25px 0;
@@ -27,10 +25,7 @@ color: #000000;
     margin: 79px 0 25px 0;
 }
 &::before{
-    content: url('img/image 1219.png');
-}
-&+&::before{
-    content: url('img/image 1549.png');
+    content: ${(props)=> props.props == 'HOT' ? "url('/img/image 1549.png')" : "url('/img/image 1219.png')"};
 }
 span{
     color:#FF0000;
@@ -51,7 +46,7 @@ color: #8B95A1;
 cursor: pointer;
 `
 
-const RecruitSection = styled.div`
+const RecruitSection = styled.section`
     display: flex;
     overflow: hidden;
     overflow-x: scroll;
@@ -59,7 +54,7 @@ const RecruitSection = styled.div`
         display : none
         };
 `
-const HotProjectSection = styled.div`
+const HotProjectSection = styled.section`
     display: flex;
     overflow: hidden;
     overflow-x: scroll; 
@@ -72,14 +67,18 @@ const dummy = Dummy;
 const Hot = HotDummy;
 
 const ProjectInfo  = () => {
+
+
     return(
         <>
+        <section>
         <TitleWrap>
-        <Title>모집중인 프로젝트</Title>
+        <Title props = "Re">모집중인 프로젝트</Title>
         <The>더보기</The>
         </TitleWrap>
         <RecruitSection>
             {dummy.map((index,i)=>(
+                (index.id <= 3 ?
                 <ProjectTemplate
                 key={i}
                 subjectbg={index.subject}
@@ -87,14 +86,19 @@ const ProjectInfo  = () => {
                 title={index.title}
                 hashtag = {index.hashtag}
                 />
+                : ""
+                )
             ))}
         </RecruitSection>
+        </section>
+        <section>
         <TitleWrap>
-        <Title><span>HOT</span>한 프로젝트</Title>
+        <Title props = "HOT"><span>HOT</span>한 프로젝트</Title>
         <The>더보기</The>
         </TitleWrap>
         <HotProjectSection>
             {Hot.map((index,i)=>(
+                (index.id <= 3 ?
                 <HotProjectTemplate
                 key={i}
                 title={index.title}
@@ -103,8 +107,10 @@ const ProjectInfo  = () => {
                 contents={index.contents}
                 hash={index.hashtag}
                 />
+                : "" )
             ))}
         </HotProjectSection>
+        </section>
         </>
     )
 }

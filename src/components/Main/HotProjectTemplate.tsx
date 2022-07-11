@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const HotWrap = styled.div`
-    width: 414px;
+    width: 33%;
     height: 373px;
     &{
         margin-right: 52px;

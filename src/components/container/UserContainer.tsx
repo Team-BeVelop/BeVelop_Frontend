@@ -3,7 +3,7 @@ import styled from "styled-components";
 import User from "../User/user";
 import UserProject from "../User/UserProject";
 
-const UserWrap = styled.div`
+const UserWrap = styled.main`
     display: flex;
     width: 80%;
     max-width: 1400px;

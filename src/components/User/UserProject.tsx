@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const UserProjectWrap = styled.div`
+const UserProjectWrap = styled.section`
     width: 70%;
     max-width: 1000px;
     margin-left: 30px;
@@ -10,7 +10,7 @@ const UserProjectWrap = styled.div`
         margin-left: 0px;
     }
 `
-const Banner = styled.div`
+const Banner = styled.section`
 display: flex;
 justify-content: space-around;
     margin-top: 108px;
@@ -89,7 +89,7 @@ cursor: pointer;
         margin: 0 auto;
     }
 `
-const ProjectBox = styled.div`
+const ProjectBox = styled.section`
 width: 100%;
 height: 464px;
     background: #FFFFFF;

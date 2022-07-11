@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const TemplateWrap = styled.div`
-    width: 300px;
+    width: 30%;
     height: 205px;
     background: #FFFFFF;
     border: 1px solid #EEEEEE;

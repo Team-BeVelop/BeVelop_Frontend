@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { modal } from "../modules/modal";
 
-const HeaderWrap = styled.div`
+const HeaderWrap = styled.header`
     display:flex;
     width:100%;
     @media screen and (max-width:480px){
         display: block;
     }
 `
-const NavWrap = styled.div`
+const NavWrap = styled.nav`
     display: flex;
     width: 80%;
     
@@ -60,6 +60,7 @@ color: #6B7684;
 const Menus = styled.ul`
     display: flex;
     line-height: 70px;
+    list-style: none;
     li:first-child{
         margin-left: 88px;
     }

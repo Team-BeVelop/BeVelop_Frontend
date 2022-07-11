@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
-const UserInfoWrap = styled.div`
+const UserInfoWrap = styled.aside`
     transform: translate(0px,-50px);
     @media screen and (max-width:480px){
         display: table;
