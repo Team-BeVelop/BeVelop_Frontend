@@ -18,7 +18,7 @@ const RecruitContainer = () => {
 };
 
 const Container = styled.main`
-  margin: 0 285px;
+  margin: 0 10%;
 
   @media screen and (max-width: 480px) {
     margin: 0;
