@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { modal } from "../modules/modal";
 
+
 const HeaderWrap = styled.header`
     display:flex;
     width:100%;
@@ -34,29 +35,28 @@ color: #000000;
 
 `
 const USER = styled.div`
-    position: absolute;
-    right: 30px;
-    padding-right: 30px;
-    line-height: 70px;
-    font-family: 'Pretendard';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
+  position: absolute;
+  right: 30px;
+  padding-right: 30px;
+  line-height: 70px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
 
-
-text-align: right;
-font-feature-settings: 'tnum' on, 'lnum' on;
-color: #6B7684;
-:hover{
+  text-align: right;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #6b7684;
+  :hover {
     color: #000;
     cursor: pointer;
-}
-@media screen and (max-width:480px){
+  }
+  @media screen and (max-width: 480px) {
     top: 0;
     padding-right: 0px;
     font-size: 16px;
-}
-`
+  }
+`;
 const Menus = styled.ul`
     display: flex;
     line-height: 70px;
@@ -203,5 +203,6 @@ const Header :React.FC<bgStyle> = ({bgStyle}) => {
         </>
     )
 }
+
 
 export default Header;
