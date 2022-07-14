@@ -1,17 +1,24 @@
 import styled from "styled-components";
 
-const ApplyTemplate = () => {
+export type Apply = {
+  tag: any;
+  title: any;
+  hashtag: any;
+  img: any;
+};
+
+const ApplyTemplate: React.FC<Apply> = ({ tag, title, hashtag, img }) => {
   return (
     <>
       <Container>
-        <img src="/img/Rectangle 730 (1).png" alt="" />
+        <img src={img} alt="" />
         <div className="info">
           <Tags>
             <div>사이드 프로젝트</div>
             <div>라이프스타일</div>
           </Tags>
-          <Title>사용자 개선 프로젝트 함께 하실 분 찾아요!</Title>
-          <Hash>#기획자 #UI디자이너</Hash>
+          <Title>{title}</Title>
+          <Hash>{hashtag}</Hash>
           <Button>지금 참여하기</Button>
         </div>
       </Container>

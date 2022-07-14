@@ -1,22 +1,29 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const SuggestTemplate = () => {
+export type Suggest = {
+  tag: any;
+  name: any;
+  hashtag: any;
+  img: any;
+};
+
+const SuggestTemplate: React.FC<Suggest> = ({ tag, name, hashtag, img }) => {
   const [checked, setChecked] = useState<Boolean>(false);
   return (
     <>
       <Container>
         <Flex>
           <Left>
-            <img className="profile" alt="" src="/img/Ellipse 5.png" />
+            <img className="profile" alt="" src={img} />
             <Info>
               <Tags>
                 <div className="text">Figma</div>
                 <div className="text">AdobeXD</div>
                 <div className="text">Zeplin</div>
               </Tags>
-              <h1 className="title">Hyedesigner</h1>
-              <h4 className="hash">#UXUI #UI디자이너 #패션브랜드디자인</h4>
+              <h1 className="name">{name}</h1>
+              <h4 className="hash">{hashtag}</h4>
             </Info>
           </Left>
           <Right>
@@ -95,7 +102,7 @@ const Info = styled.div`
     margin-left: 10px;
   }
 
-  .title {
+  .name {
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 500;

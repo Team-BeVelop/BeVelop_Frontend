@@ -1,18 +1,23 @@
 import styled from "styled-components";
 import SuggestFilter from "./SuggestFilter";
 import SuggestTemplate from "./SuggestTemplate";
+import Dummy from "../../Data/SuggestDummy";
 
 const SuggestSection = () => {
+  const dummy = Dummy;
   return (
     <>
       <SuggestFilter />
       <Wrap>
-        <SuggestTemplate />
-        <SuggestTemplate />
-        <SuggestTemplate />
-        <SuggestTemplate />
-        <SuggestTemplate />
-        <SuggestTemplate />
+        {dummy.map((item, index) => (
+          <SuggestTemplate
+            key={index}
+            tag={item.tag}
+            name={item.name}
+            hashtag={item.hashtag}
+            img={item.img}
+          />
+        ))}
       </Wrap>
     </>
   );

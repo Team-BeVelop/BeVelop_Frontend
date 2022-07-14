@@ -1,24 +1,23 @@
 import styled from "styled-components";
 import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
+import Dummy from "../../Data/ApplyDummy";
 
 const ApplySection = () => {
+  const dummy = Dummy;
   return (
     <>
       <ApplyFilter />
       <Wrap>
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
-        <ApplyTemplate />
+        {dummy.map((item, index) => (
+          <ApplyTemplate
+            key={index}
+            tag={item.tag}
+            title={item.title}
+            hashtag={item.hashtag}
+            img={item.img}
+          />
+        ))}
       </Wrap>
     </>
   );
