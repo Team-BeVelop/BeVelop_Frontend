@@ -1,10 +1,10 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Header from "../common/Header";
-import MainContainer from "../components/container/MainContainer";
+import UserContainer from "../components/container/UserContainer";
 import Login from "../components/Login/Login";
-import {Helmet} from "react-helmet";
 
 const Wrap = styled.div`
     .bg{
@@ -16,26 +16,25 @@ const Wrap = styled.div`
     }
 `
 
-const MainPage = () => {
-
+const UserPage = () => {
     const { Modal } = useSelector((state : any) => ({
         Modal: state.modal.Modal
     }));
     return(
         <>
         <Helmet>
-            <title>BeVelop || 메인</title>
-            <meta property="og:url" content="https://team-bevelop.github.io/BeVelop_Frontend/"/>
+            <title>BeVelop || 유저</title>
+            <meta property="og:url" content="https://team-bevelop.github.io/BeVelop_Frontend/user"/>
             <meta property="og:title" content="BeVelop"/>
         </Helmet>
-            <Header bgStyle = ""/>
+            <Header bgStyle = "border"/>
+            <UserContainer/>
             {Modal ? <Wrap>
             <div className="bg"></div>
             <Login/>
             </Wrap> : ""}
-            <MainContainer/>
         </>
     )
 }
 
-export default MainPage;
+export default UserPage;
