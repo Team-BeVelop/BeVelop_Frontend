@@ -18,9 +18,12 @@ const RecruitContainer = () => {
 };
 
 const Container = styled.main`
-  margin: 0 10%;
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
 
   @media screen and (max-width: 480px) {
+    width: 100%;
     margin: 0;
   }
 `;
