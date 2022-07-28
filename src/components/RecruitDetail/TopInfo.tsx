@@ -6,7 +6,7 @@ const TopInfo = () => {
       <Wrap>
         <TagWrap>
           <div className="tag">사이드 프로젝트</div>
-          <img alt="" src="/img/Vector2.png" />
+          <img className="scrap" alt="" src="/img/Vector2.png" />
         </TagWrap>
         <Title>사용자 개선 프로젝트 함께 하실 분 찾아요!</Title>
         <Bottom>
@@ -36,6 +36,15 @@ const TagWrap = styled.div`
     line-height: 19px;
     font-feature-settings: "tnum" on, "lnum" on;
     color: #ffffff;
+    @media screen and (max-width: 480px) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+  .scrap {
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
 `;
 
@@ -47,6 +56,11 @@ const Title = styled.h1`
   line-height: 31px;
   font-feature-settings: "tnum" on, "lnum" on;
   margin-top: 22px;
+  @media screen and (max-width: 480px) {
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 15px;
+  }
 `;
 
 const Bottom = styled.span`
@@ -59,6 +73,9 @@ const Bottom = styled.span`
   font-feature-settings: "tnum" on, "lnum" on;
   color: #6b7684;
   margin-top: 15px;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
   .date {
     margin-left: 19px;
   }

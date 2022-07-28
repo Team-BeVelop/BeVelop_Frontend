@@ -22,7 +22,7 @@ const BottomInfo = () => {
               <div className="subtitle">연관분야</div>
               <div className="desc">사이드 프로젝트</div>
             </div>
-            <div className="row">
+            <div className="row_contact">
               <div className="subtitle">연락방식</div>
               <div className="smallText">이메일</div>
               <div className="desc">eifklksh@naver.com</div>
@@ -37,7 +37,10 @@ const BottomInfo = () => {
         </BasicInfo>
         <DetailInfo>
           <div className="title">상세정보</div>
-          <textarea className="input" />
+          <textarea
+            className="input"
+            placeholder="진행일정과 진행방식 등의 내용을 적어주세요!"
+          />
         </DetailInfo>
       </Wrap>
     </>
@@ -51,6 +54,11 @@ const Introduce = styled.div`
   align-items: center;
   flex-direction: row;
   margin-bottom: 40px;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
   .title {
     font-family: "Pretendard";
     font-style: normal;
@@ -69,12 +77,18 @@ const Introduce = styled.div`
     line-height: 19px;
     font-feature-settings: "tnum" on, "lnum" on;
     color: #6b7684;
+    @media screen and (max-width: 480px) {
+      margin-top: 16px;
+    }
   }
 `;
 
 const BasicInfo = styled.div`
   display: flex;
   margin-bottom: 40px;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
   .title {
     font-family: "Pretendard";
     font-style: normal;
@@ -84,6 +98,9 @@ const BasicInfo = styled.div`
     font-feature-settings: "tnum" on, "lnum" on;
     color: #000000;
     margin-right: 32px;
+    @media screen and (max-width: 480px) {
+      margin-bottom: 16px;
+    }
   }
   .column {
     display: flex;
@@ -95,6 +112,17 @@ const BasicInfo = styled.div`
     margin-bottom: 16px;
     &:nth-child(4n) {
       margin-bottom: 0px;
+    }
+  }
+  .row_contact {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+    &:nth-child(4n) {
+      margin-bottom: 0px;
+    }
+    @media screen and (max-width: 480px) {
+      display: none;
     }
   }
   .subtitle {
@@ -135,6 +163,10 @@ const BasicInfo = styled.div`
 const DetailInfo = styled.div`
   display: flex;
   margin-bottom: 200px;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    margin-bottom: 0px;
+  }
   .title {
     font-family: "Pretendard";
     font-style: normal;
@@ -144,6 +176,9 @@ const DetailInfo = styled.div`
     font-feature-settings: "tnum" on, "lnum" on;
     color: #000000;
     margin-right: 32px;
+    @media screen and (max-width: 480px) {
+      margin-bottom: 16px;
+    }
   }
   .input {
     width: 90%;

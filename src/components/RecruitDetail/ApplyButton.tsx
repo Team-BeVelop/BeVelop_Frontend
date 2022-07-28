@@ -14,6 +14,11 @@ const Wrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  @media screen and (max-width: 480px) {
+    display: block;
+    width: auto;
+    margin: 0 20px;
+  }
 `;
 
 const Button = styled.button`
@@ -30,6 +35,11 @@ const Button = styled.button`
   padding: 15px 112px;
   margin-top: 60px;
   margin-bottom: 200px;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    margin-top: 34px;
+    margin-bottom: 116px;
+  }
 `;
 
 export default ApplyButton;

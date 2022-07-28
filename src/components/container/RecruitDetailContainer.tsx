@@ -27,6 +27,7 @@ const Container = styled.main`
   @media screen and (max-width: 480px) {
     width: 100%;
     margin: 0;
+    transform: translate(0px, 0px);
   }
 `;
 
@@ -35,11 +36,18 @@ const Wrap = styled.section`
   border-radius: 6px;
   border: 1px solid #eee;
   padding: 48px 45px;
+  @media screen and (max-width: 480px) {
+    padding: 29px 28px;
+    border: none;
+  }
 `;
 
 const Line = styled.div`
   border: 1px solid #e5e8eb;
   margin: 40px 0;
+  @media screen and (max-width: 480px) {
+    margin: 30px 0;
+  }
 `;
 
 export default RecruitDetailContainer;
