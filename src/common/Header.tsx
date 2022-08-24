@@ -108,7 +108,7 @@ const Menus = styled.ul`
 const ContentWrap = styled.div<{ bgStyle: any }>`
   width: 100%;
   height: 300px;
-  display: ${(props) => (props.bgStyle == "recruit" ? "none" : "block")};
+  display: ${(props) => (props.bgStyle == "none" ? "none" : "block")};
 
   background-image: ${(props) =>
     props.bgStyle == "border"

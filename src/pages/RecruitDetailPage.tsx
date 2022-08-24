@@ -14,7 +14,7 @@ const RecruitDetailPage = () => {
         />
         <meta property="og:title" content="BeVelop" />
       </Helmet>
-      <Header bgStyle="recruit" />
+      <Header bgStyle="" />
       <RecruitDetailContainer />
     </>
   );
