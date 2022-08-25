@@ -5,6 +5,10 @@ const PostSection = () => {
     <>
       <Wrap>
         <Top>글쓰기</Top>
+        <Content>
+          <Input placeholder="글 제목을 입력해주세요." />
+          <LongInput placeholder="프로젝트에 대해 소개해주세요. 진행 방식, 모집 인원, 모집 기간, 진행 기간 등을 작성하면 더 구체적인 정보 를 제공할 수 있어요." />
+        </Content>
       </Wrap>
     </>
   );
@@ -14,7 +18,7 @@ const Wrap = styled.section`
   width: 25%;
   border: 1px solid #e3e3e3;
   border-radius: 6px;
-  height: 500px;
+  height: 621px;
 `;
 
 const Top = styled.div`
@@ -32,6 +36,52 @@ const Top = styled.div`
   height: 35px;
   align-items: center;
   padding-left: 20px;
+`;
+
+const Content = styled.div`
+  padding: 28px 20px 28px 20px;
+  width: 100%;
+  height: 100%;
+`;
+
+const Input = styled.input`
+  background: #ffffff;
+  border: 1px solid #dadee2;
+  border-radius: 6px;
+  width: 100%;
+  padding: 16px 20px;
+
+  &::placeholder {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #6b7684;
+  }
+`;
+
+const LongInput = styled.textarea`
+  background: #ffffff;
+  border: 1px solid #dadee2;
+  border-radius: 6px;
+  width: 100%;
+  height: 82%;
+  max-width: 100%;
+  max-height: 82%;
+  margin-top: 12px;
+  padding: 20px;
+
+  &::placeholder {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #6b7684;
+  }
 `;
 
 export default PostSection;
