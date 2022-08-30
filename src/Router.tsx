@@ -12,7 +12,7 @@ import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage";
 import RecruitPage from "./pages/RecruitPage";
 import RecruitDetailPage from "./pages/RecruitDetailPage";
-import RecruitPsostPage from "./pages/RecruitPostPage";
+import RecruitPostPage from "./pages/RecruitPostPage";
 
 const store = createStore(
   rootReducer,
@@ -31,7 +31,7 @@ function Router() {
             <Route path="/user" element={<UserPage />} />
             <Route path="/recruit" element={<RecruitPage />} />
             <Route path="/recruit/:id" element={<RecruitDetailPage />} />
-            <Route path="/recruitPost" element={<RecruitPsostPage />} />
+            <Route path="/recruitPost" element={<RecruitPostPage />} />
           </Routes>
         </PersistGate>
       </Provider>
