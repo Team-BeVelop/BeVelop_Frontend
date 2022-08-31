@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const PostSection = () => {
+const WriteSection = () => {
   return (
     <>
       <Wrap>
@@ -84,4 +84,4 @@ const LongInput = styled.textarea`
   }
 `;
 
-export default PostSection;
+export default WriteSection;

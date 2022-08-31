@@ -190,8 +190,9 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
             <li>
               <Link to="/recruit">팀원구인</Link>
             </li>
-            <li>프로젝트</li>
-            <li>공모전</li>
+            <li>
+              <Link to="/post">포스트</Link>
+            </li>
           </Menus>
           <USER>
             <p onClick={OnclickPopUp}>로그인</p>

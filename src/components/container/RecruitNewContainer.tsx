@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import ButtonSection from "../RecruitNew/ButtonSection";
 import InfoSection from "../RecruitNew/InfoSection";
-import PostSection from "../RecruitNew/PostSection";
+import WriteSection from "../RecruitNew/WriteSection";
 
 const RecruitNewContainer = () => {
   return (
     <Container>
       <Wrap>
         <InfoSection />
-        <PostSection />
+        <WriteSection />
       </Wrap>
       <ButtonSection />
     </Container>
