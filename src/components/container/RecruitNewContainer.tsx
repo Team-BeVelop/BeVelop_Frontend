@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import ButtonSection from "../RecruitPost/ButtonSection";
-import InfoSection from "../RecruitPost/InfoSection";
-import PostSection from "../RecruitPost/PostSection";
+import ButtonSection from "../RecruitNew/ButtonSection";
+import InfoSection from "../RecruitNew/InfoSection";
+import PostSection from "../RecruitNew/PostSection";
 
-const RecruitPostContainer = () => {
+const RecruitNewContainer = () => {
   return (
     <Container>
       <Wrap>
@@ -26,4 +26,4 @@ const Wrap = styled.section`
   display: flex;
 `;
 
-export default RecruitPostContainer;
+export default RecruitNewContainer;

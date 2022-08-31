@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import Header from "../common/Header";
-import RecruitPostContainer from "../components/container/RecruitPostContainer";
+import RecruitNewContainer from "../components/container/RecruitNewContainer";
 
-const RecruitPsostPage = () => {
+const RecruitNewPage = () => {
   return (
     <>
       <Helmet>
@@ -15,9 +15,9 @@ const RecruitPsostPage = () => {
         <meta property="og:title" content="BeVelop" />
       </Helmet>
       <Header bgStyle="none" />
-      <RecruitPostContainer />
+      <RecruitNewContainer />
     </>
   );
 };
 
-export default RecruitPsostPage;
+export default RecruitNewPage;
