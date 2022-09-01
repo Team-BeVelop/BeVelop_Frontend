@@ -11,8 +11,6 @@ export type Post = {
 
 const PostTemplate: React.FC<Post> = ({ title, views, detail, tag, img }) => {
   const [checked, setChecked] = useState<Boolean>(false);
-  const limitDesc = (desc: string) =>
-    desc.length > 50 ? desc.substr(0, 50) + "..." : desc;
   return (
     <>
       <Container>

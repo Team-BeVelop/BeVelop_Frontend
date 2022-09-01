@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ButtonSection from "../RecruitNew/ButtonSection";
+import TwoButton from "../../common/TwoButton";
 import InfoSection from "../RecruitNew/InfoSection";
 import WriteSection from "../RecruitNew/WriteSection";
 
@@ -10,7 +10,12 @@ const RecruitNewContainer = () => {
         <InfoSection />
         <WriteSection />
       </Wrap>
-      <ButtonSection />
+      <TwoButton
+        left="취소"
+        leftClick={() => console.log("취소")}
+        right="글 등록"
+        rightClick={() => console.log("글 등록")}
+      />
     </Container>
   );
 };
@@ -24,6 +29,7 @@ const Container = styled.main`
 
 const Wrap = styled.section`
   display: flex;
+  margin-bottom: 40px;
 `;
 
 export default RecruitNewContainer;

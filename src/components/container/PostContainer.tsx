@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Banner from "../Post/Banner";
+import PostBanner from "../Post/PostBanner";
 import PostMenu from "../Post/PostMenu";
 import PostSection from "../Post/PostSection";
 
@@ -8,7 +8,7 @@ const PostContainer = () => {
   const [current, setCurrent] = useState(0);
   return (
     <Container>
-      <Banner />
+      <PostBanner />
       <PostMenu current={current} setCurrent={setCurrent} />
       <Line />
       <PostSection />

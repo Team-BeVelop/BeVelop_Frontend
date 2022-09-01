@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Banner = () => {
+const RecruitBanner = () => {
   return (
     <>
       <Top>
@@ -87,4 +87,4 @@ const Button = styled.button`
   }
 `;
 
-export default Banner;
+export default RecruitBanner;
