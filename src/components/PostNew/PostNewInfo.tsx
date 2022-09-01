@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import StyledCheckbox from "../../common/StyledCheckbox";
+import FieldData from "../../Data/FieldData";
 
 const PostNewInfo = () => {
   return (
@@ -12,15 +14,14 @@ const PostNewInfo = () => {
               <p>개발스택을 추가해보세요</p>
             </Filter>
           </Box>
-          <Box>
+          <Field>
             <Title>연관분야</Title>
             <div className="right">
-              <input type="checkbox" />
-              <p>ㄴㄴ</p>
-              <input type="checkbox" />
-              <p>ㄴㄴ</p>
+              {FieldData.map((v) => (
+                <StyledCheckbox key={v} text={v} />
+              ))}
             </div>
-          </Box>
+          </Field>
           <Box>
             <Title>개발기간</Title>
             <Filter>
@@ -80,8 +81,13 @@ const Box = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 50px;
+`;
+
+const Field = styled.div`
+  display: flex;
+  margin-bottom: 22px;
   .right {
-    display: flex;
+    display: block;
     align-items: center;
     margin-left: 30px;
   }
@@ -95,6 +101,7 @@ const Title = styled.div`
   line-height: 19px;
   font-feature-settings: "tnum" on, "lnum" on;
   color: #000000;
+  white-space: nowrap;
 `;
 
 const Filter = styled.div`
