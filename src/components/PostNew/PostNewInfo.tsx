@@ -1,13 +1,31 @@
+import { useState } from "react";
 import styled from "styled-components";
 import StyledCheckbox from "../../common/StyledCheckbox";
+import StyledDropDown from "../../common/StyledDropDown";
 import FieldData from "../../Data/FieldData";
 
+const PeriodData = ["1개월 이하", "1개월 - 3개월", "3개월 - 6개월", "1년 이상"];
+const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
+
 const PostNewInfo = () => {
+  const [period, setPeriod] = useState(PeriodData[0]);
+  const [division, setDivision] = useState(DivisionData[0]);
   return (
     <>
       <Wrap>
         <Top>기본정보</Top>
         <Content>
+          <Box>
+            <Title>모집구분</Title>
+            <DropDownWrap>
+              <StyledDropDown
+                label="구분"
+                data={DivisionData}
+                current={division}
+                setCurrent={setDivision}
+              />
+            </DropDownWrap>
+          </Box>
           <Box>
             <Title>개발스택</Title>
             <Filter>
@@ -24,9 +42,14 @@ const PostNewInfo = () => {
           </Field>
           <Box>
             <Title>개발기간</Title>
-            <Filter>
-              <p>1개월 이하</p>
-            </Filter>
+            <DropDownWrap>
+              <StyledDropDown
+                label="구분"
+                data={PeriodData}
+                current={period}
+                setCurrent={setPeriod}
+              />
+            </DropDownWrap>
           </Box>
           <Title>사이트 링크</Title>
           <SiteWrap>
@@ -44,7 +67,7 @@ const Wrap = styled.section`
   margin-right: 2%;
   border: 1px solid #e3e3e3;
   border-radius: 6px;
-  height: 492px;
+  height: 100%;
   @media screen and (max-width: 480px) {
     border: none;
     border-radius: 0;
@@ -148,6 +171,11 @@ const SiteWrap = styled.div`
       color: #6b7684;
     }
   }
+`;
+
+const DropDownWrap = styled.div`
+  margin-left: 30px;
+  width: 100%;
 `;
 
 export default PostNewInfo;
