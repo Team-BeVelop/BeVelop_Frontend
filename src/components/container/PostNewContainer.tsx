@@ -33,6 +33,8 @@ const Container = styled.main`
 
 const Wrap = styled.section`
   display: flex;
+  height: 590px;
+  overflow: hidden;
   margin-bottom: 40px;
   @media screen and (max-width: 480px) {
     flex-direction: column;

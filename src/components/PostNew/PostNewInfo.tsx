@@ -19,7 +19,7 @@ const PostNewInfo = () => {
             <Title>모집구분</Title>
             <DropDownWrap>
               <StyledDropDown
-                label="구분"
+                type="default"
                 data={DivisionData}
                 current={division}
                 setCurrent={setDivision}
@@ -44,7 +44,7 @@ const PostNewInfo = () => {
             <Title>개발기간</Title>
             <DropDownWrap>
               <StyledDropDown
-                label="구분"
+                type="default"
                 data={PeriodData}
                 current={period}
                 setCurrent={setPeriod}

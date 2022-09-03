@@ -1,14 +1,25 @@
+import { useState } from "react";
 import styled from "styled-components";
+import StyledDropDown from "../../common/StyledDropDown";
+import FieldData from "../../Data/FieldData";
 import Dummy from "../../Data/PostDummy";
 import PostTemplate from "./PostTemplate";
 
 const PostSection = () => {
   const dummy = Dummy;
+  const [division, setDivision] = useState(FieldData[0]);
   return (
     <>
-      <Select>
-        <option>구분</option>
-      </Select>
+      <DropDownWrap>
+        <StyledDropDown
+          type="mini"
+          width={150}
+          label="구분"
+          data={FieldData}
+          current={division}
+          setCurrent={setDivision}
+        />
+      </DropDownWrap>
       <Wrap>
         {dummy.map((item, index) => (
           <PostTemplate
@@ -33,31 +44,11 @@ const Wrap = styled.section`
   }
 `;
 
-const Select = styled.select`
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17px;
-
-  font-feature-settings: "tnum" on, "lnum" on;
+const DropDownWrap = styled.div`
   margin-top: 28px;
-  padding: 10px 40px 10px 12px;
-  padding-right: 40px;
-  border: none;
-  border-radius: 6px;
-  color: #404a5c;
-  background-color: #f2f4f6;
-  background-image: url("/img/icon_selectBlack.png");
-  background-repeat: no-repeat;
-  background-size: 20px;
-  background-position-x: 90%;
-  background-position-y: 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   @media screen and (max-width: 480px) {
-    margin: 18px 20px 0 20px;
+    margin-left: 20px;
+    margin-top: 18px;
   }
 `;
 
