@@ -28,9 +28,61 @@ const PostNewInfo = () => {
           </Box>
           <Box>
             <Title>개발스택</Title>
-            <Filter>
-              <p>개발스택을 추가해보세요</p>
-            </Filter>
+            <StackWrap>
+              <button>
+                <img src="/img/icon_plus.png" alt="" />
+              </button>
+              <div className="stackList">
+                <div className="stackItem">
+                  Figma
+                  <img
+                    src="/img/icon_close.png"
+                    alt=""
+                    className="closeButton"
+                  />
+                </div>
+                <div className="stackItem">
+                  Adobe XD
+                  <img
+                    src="/img/icon_close.png"
+                    alt=""
+                    className="closeButton"
+                  />
+                </div>
+                <div className="stackItem">
+                  Adobe XD
+                  <img
+                    src="/img/icon_close.png"
+                    alt=""
+                    className="closeButton"
+                  />
+                </div>
+                <div className="stackItem">
+                  Adobe XD
+                  <img
+                    src="/img/icon_close.png"
+                    alt=""
+                    className="closeButton"
+                  />
+                </div>
+                <div className="stackItem">
+                  Adobe XD
+                  <img
+                    src="/img/icon_close.png"
+                    alt=""
+                    className="closeButton"
+                  />
+                </div>
+                <div className="stackItem">
+                  Adobe XD
+                  <img
+                    src="/img/icon_close.png"
+                    alt=""
+                    className="closeButton"
+                  />
+                </div>
+              </div>
+            </StackWrap>
           </Box>
           <Field>
             <Title>연관분야</Title>
@@ -127,24 +179,66 @@ const Title = styled.div`
   white-space: nowrap;
 `;
 
-const Filter = styled.div`
+const StackWrap = styled.div`
   display: flex;
-  width: 436px;
+  width: 100%;
   height: 48px;
-  background: #ffffff;
-  border: 1px solid #dadee2;
-  border-radius: 6px;
   align-items: center;
-  text-align: left;
   margin-left: 30px;
-  p {
-    margin-left: 20px;
+  overflow: hidden;
+  button {
+    color: #505967;
+    background-color: #f2f4f6;
+    padding: 0 36px;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 6px;
+  }
+  img {
+    width: 18px;
+    height: 18px;
+  }
+  .stackList {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #f2f4f6;
+    border: 1px solid #dadee2;
+    border-radius: 6px;
+    padding: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .stackItem {
+    display: flex;
+    align-items: center;
+    font-family: "Pretendard";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
     font-feature-settings: "tnum" on, "lnum" on;
     color: #000000;
+    padding: 5px 12px;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .closeButton {
+    cursor: pointer;
+    margin-left: 14px;
   }
 `;
 
