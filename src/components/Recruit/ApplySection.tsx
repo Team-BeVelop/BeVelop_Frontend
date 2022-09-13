@@ -15,7 +15,7 @@ const ApplySection = () => {
             tag={item.tag}
             title={item.title}
             hashtag={item.hashtag}
-            img={item.img}
+            content={item.content}
           />
         ))}
       </Wrap>
