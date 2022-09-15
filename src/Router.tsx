@@ -11,10 +11,10 @@ import ReduxThunk from "redux-thunk";
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage";
 import RecruitPage from "./pages/RecruitPage";
-import RecruitDetailPage from "./pages/RecruitDetailPage";
 import RecruitNewPage from "./pages/RecruitNewPage";
 import PostPage from "./pages/PostPage";
 import PostNewPage from "./pages/PostNewPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
 
 const store = createStore(
   rootReducer,
@@ -32,8 +32,8 @@ function Router() {
             <Route path="/" element={<MainPage />} />
             <Route path="/user" element={<UserPage />} />
             <Route path="/recruit" element={<RecruitPage />} />
-            <Route path="/recruit/:id" element={<RecruitDetailPage />} />
             <Route path="/recruit/new" element={<RecruitNewPage />} />
+            <Route path="/project/:id" element={<ProjectDetailPage />} />
             <Route path="/post" element={<PostPage />} />
             <Route path="/post/new" element={<PostNewPage />} />
           </Routes>

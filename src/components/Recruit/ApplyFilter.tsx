@@ -14,9 +14,6 @@ const ApplyFilter = () => {
           <option value="none">관심분야</option>
         </Select>
       </FilterArea>
-      <SearchArea>
-        <Input placeholder="프로젝트를 검색해보세요!" />
-      </SearchArea>
     </Wrap>
   );
 };
@@ -57,34 +54,6 @@ const Select = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-`;
-
-const SearchArea = styled.div`
-  display: flex;
-  @media screen and (max-width: 480px) {
-    display: none;
-  }
-`;
-
-const Input = styled.input`
-  width: 280px;
-  background: #f2f4f6;
-  background-image: url("/img/icon_search.png");
-  background-repeat: no-repeat;
-  background-position: 5px center;
-  background-size: 18px;
-  padding-left: 40px;
-  border: 1px solid #e5e8eb;
-  border-radius: 6px;
-  &::placeholder {
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    font-feature-settings: "tnum" on, "lnum" on;
-    color: #6b7684;
-  }
 `;
 
 export default ApplyFilter;
