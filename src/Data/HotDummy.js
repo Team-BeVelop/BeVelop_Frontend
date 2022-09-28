@@ -4,7 +4,7 @@ const HotDummy = [
         title : '감정일기 플랫폼 ‘데일리’',
         hashtag : '#JAVA #Spring',
         contents : '이제는 정신 건강 관리에 대한 중요성이 높아지고 있습니다. 이에 맞춰 감정을 기록하고 관리하는 플랫폼을 만들게 되었습니다.',
-        tumb : 'img/Rectangle 74.png',
+        tumb : 'img/Rectangle 72.png',
         views : 133,
     },
     {

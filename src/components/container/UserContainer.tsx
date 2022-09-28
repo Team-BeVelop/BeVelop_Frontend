@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import User from "../User/user";
 import UserProject from "../User/UserProject";
+import User_first from "../User/user_first";
 
 const UserWrap = styled.main`
     display: flex;
@@ -14,10 +16,17 @@ const UserWrap = styled.main`
 `
 
 const UserContainer = () => {
+    const [fix , setFix] = useState<Boolean>(false);
+    const {Users} = useSelector((state : any)=>({
+        Users: state.user,
+    }));
+
     return(
         <UserWrap>
-        <User/>
-        <UserProject/>
+            {Users.data && !fix ? <><User nickName = {Users.data.nickName} link = {Users.data.link} portFolio = {Users.data.portFolio} Position = {Users.data.Position} Interest = {Users.data.Interest} index = {Users.data.Stack}/>
+        <UserProject/></> : <>
+                <User_first></User_first>
+        </>}
         </UserWrap>
     )
 }

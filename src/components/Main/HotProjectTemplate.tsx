@@ -2,22 +2,32 @@ import React from "react";
 import styled from "styled-components";
 
 const HotWrap = styled.div`
-    width: 33%;
-    height: 373px;
+    width: 30%;
+    height: auto;
     &{
         margin-right: 52px;
     }
     &:last-child{
         margin-right: 0px;
     }
+    @media screen and (max-width : 460px){
+        width: 100%;
+        &{
+        margin-right: 0px;
+    }
+}
 `
 const Tumbnail = styled.div`
     width: 100%;
-    height: 243px;
+    height: auto;
     margin-bottom: 20px;
+    img{
+        width: 100%;
+    }
 `
 const Title = styled.div`
-    display: inline;
+    display: inline-block;
+    width: 70%;
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 500;
@@ -28,9 +38,9 @@ const Title = styled.div`
     color: #000000;
 `
 const Views = styled.div`
-    position: relative;
-    left: 175px;
-    display: inline;
+    width: 30%;
+    text-align: right;
+    display: inline-block;
     font-family: 'Pretendard';
 font-style: normal;
 font-weight: 400;
@@ -42,14 +52,9 @@ font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #404A5C;
 
-
-/* Inside auto layout */
-
-flex: none;
-order: 0;
-flex-grow: 0;
 `
 const Content = styled.div`
+    width: 100%;
     margin-top: 14px;
     word-break: keep-all;
     font-family: 'Pretendard';
@@ -60,7 +65,13 @@ line-height: 19px;
 font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #6B7684;
-
+@media screen and (max-width : 460px){
+    width: 100%;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+}
 `
 const Hash = styled.div`
     margin-top: 24px;
@@ -70,10 +81,14 @@ font-weight: 400;
 font-size: 14px;
 line-height: 17px;
 /* identical to box height */
-
+margin-bottom: 34px;
 font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #8B95A1;
+@media screen and (max-width : 460px){
+    margin-top: 10px;
+    
+}
 `
 
 export type HotTemplate ={

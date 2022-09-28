@@ -3,16 +3,21 @@ import styled from "styled-components";
 
 const TemplateWrap = styled.div`
     width: 30%;
+    min-width: 205px;
     height: 205px;
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
     border-radius: 6px;
+    margin-bottom: 34px;
     &{
-        margin-right: 50px;
+        margin-right: 3%;
     }
     &:last-child{
         margin-right: 0px;
     }
+    @media screen and (max-width : 420px){
+        width: 100%;
+}
 `
 const Flex = styled.div`
     display: flex;
@@ -55,9 +60,12 @@ color: #FFFFFF;
     margin-top: 14px;
     background: ${(props)=>props.subjectbg =="스타트업" ? "#FF26A8" : "#7A5DF5"};
     border-radius: 4px;
+    @media screen and (max-width : 960px){
+    font-size: 12px;
+}
 `
 const Contents = styled.div`
-    
+    height:100px;
 `
 const Title = styled.div`
     margin:17px 43px 0px 17px;
@@ -69,6 +77,9 @@ line-height: 21px;
 font-feature-settings: 'tnum' on, 'lnum' on;
 word-break: keep-all;
 color: #000000;
+@media screen and (max-width : 960px){
+    font-size: 16px;
+}
 `
 const Hash = styled.div`
     font-family: 'Pretendard';
@@ -84,11 +95,15 @@ color: #8B95A1;
     span::before{
         content: '#';
     }
+    @media screen and (max-width : 960px){
+    font-size: 12px;
+}
 `
 const Button = styled.div`
-    width: 266px;
+    width: 90%;
 height: 38px;
-margin: 0 auto;
+margin: 0px auto;
+
 text-align: center;
 line-height: 38px;
 background: #F2F4F6;

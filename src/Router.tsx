@@ -22,7 +22,7 @@ const persistor = persistStore(store);
 
 function Router() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter >
         <Provider store={store}>
             <PersistGate persistor={persistor}>
                 <Routes>
