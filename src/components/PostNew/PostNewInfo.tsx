@@ -2,7 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import StyledCheckbox from "../../common/StyledCheckbox";
 import StyledDropDown from "../../common/StyledDropDown";
-import FieldData from "../../Data/FieldData";
+import { FieldData } from "../../Data/FieldData";
+import PostNewStackModal from "./PostNewStackModal";
 
 const PeriodData = ["1개월 이하", "1개월 - 3개월", "3개월 - 6개월", "1년 이상"];
 const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
@@ -110,6 +111,7 @@ const PostNewInfo = () => {
           </SiteWrap>
         </Content>
       </Wrap>
+      <PostNewStackModal />
     </>
   );
 };

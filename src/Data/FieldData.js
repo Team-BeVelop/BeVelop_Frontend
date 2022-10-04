@@ -1,4 +1,4 @@
-const FieldData = [
+export const FieldData = [
   "O2O",
   "공유서비스",
   "데이팅서비스",
@@ -13,4 +13,21 @@ const FieldData = [
   "모빌리티(교통)",
 ];
 
-export default FieldData;
+export const designFieldData = [
+  "Figma",
+  "Adobe XD",
+  "Photoshop",
+  "Rhino",
+  "Keyshot",
+];
+
+export const frontendFieldData = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Vue",
+  "Svelte",
+  "Nextjs",
+];
+
+export const backendFieldData = ["Sql", "MongoDB", "Nuxtjs", "Docker"];

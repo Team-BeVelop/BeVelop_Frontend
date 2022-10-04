@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import StyledDropDown from "../../common/StyledDropDown";
-import FieldData from "../../Data/FieldData";
+import { FieldData } from "../../Data/FieldData";
 import Dummy from "../../Data/PostDummy";
 import PostTemplate from "./PostTemplate";
 
