@@ -8,7 +8,19 @@ import PostNewStackModal from "./PostNewStackModal";
 const PeriodData = ["1개월 이하", "1개월 - 3개월", "3개월 - 6개월", "1년 이상"];
 const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
 
-const PostNewInfo = () => {
+export type PostNewInfoType = {
+  showModal: boolean;
+  setShowModal: (v: boolean) => void;
+  stack: any;
+  setStack: any;
+};
+
+const PostNewInfo: React.FC<PostNewInfoType> = ({
+  showModal,
+  setShowModal,
+  stack,
+  setStack,
+}) => {
   const [period, setPeriod] = useState(PeriodData[0]);
   const [division, setDivision] = useState(DivisionData[0]);
   return (
@@ -30,58 +42,20 @@ const PostNewInfo = () => {
           <Box>
             <Title>개발스택</Title>
             <StackWrap>
-              <button>
+              <button onClick={() => setShowModal(true)}>
                 <img src="/img/icon_plus.png" alt="" />
               </button>
               <div className="stackList">
-                <div className="stackItem">
-                  Figma
-                  <img
-                    src="/img/icon_close.png"
-                    alt=""
-                    className="closeButton"
-                  />
-                </div>
-                <div className="stackItem">
-                  Adobe XD
-                  <img
-                    src="/img/icon_close.png"
-                    alt=""
-                    className="closeButton"
-                  />
-                </div>
-                <div className="stackItem">
-                  Adobe XD
-                  <img
-                    src="/img/icon_close.png"
-                    alt=""
-                    className="closeButton"
-                  />
-                </div>
-                <div className="stackItem">
-                  Adobe XD
-                  <img
-                    src="/img/icon_close.png"
-                    alt=""
-                    className="closeButton"
-                  />
-                </div>
-                <div className="stackItem">
-                  Adobe XD
-                  <img
-                    src="/img/icon_close.png"
-                    alt=""
-                    className="closeButton"
-                  />
-                </div>
-                <div className="stackItem">
-                  Adobe XD
-                  <img
-                    src="/img/icon_close.png"
-                    alt=""
-                    className="closeButton"
-                  />
-                </div>
+                {stack.map((v: any) => (
+                  <div className="stackItem">
+                    {v}
+                    <img
+                      src="/img/icon_close.png"
+                      alt=""
+                      className="closeButton"
+                    />
+                  </div>
+                ))}
               </div>
             </StackWrap>
           </Box>
@@ -111,7 +85,9 @@ const PostNewInfo = () => {
           </SiteWrap>
         </Content>
       </Wrap>
-      <PostNewStackModal />
+      {showModal && (
+        <PostNewStackModal showModal={showModal} setShowModal={setShowModal} />
+      )}
     </>
   );
 };

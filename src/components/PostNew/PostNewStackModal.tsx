@@ -6,29 +6,46 @@ import {
   frontendFieldData,
 } from "../../Data/FieldData";
 
-const PostNewStackModal = () => {
+export type PostNewModalType = {
+  showModal: boolean;
+  setShowModal: (v: boolean) => void;
+};
+
+const PostNewStackModal: React.FC<PostNewModalType> = ({
+  showModal,
+  setShowModal,
+}) => {
+  const closeModal = () => setShowModal(false);
   return (
     <>
       <Wrap>
         <Box>
-          <div>디자인</div>
-          <div>
+          <div className="title">디자인</div>
+          <div className="checkBoxArea">
             {designFieldData.map((v) => (
-              <StyledCheckbox key={v} text={v} />
+              <StyledCheckbox key={v} text={v} mobwidth={"100%"} />
             ))}
           </div>
-          <div>프론트</div>
-          <div>
+          <div className="title">프론트</div>
+          <div className="checkBoxArea">
             {frontendFieldData.map((v) => (
-              <StyledCheckbox key={v} text={v} />
+              <StyledCheckbox key={v} text={v} mobwidth={"100%"} />
             ))}
           </div>
-          <div>백</div>
-          <div>
+          <div className="title">백</div>
+          <div className="checkBoxArea">
             {backendFieldData.map((v) => (
-              <StyledCheckbox key={v} text={v} />
+              <StyledCheckbox key={v} text={v} mobwidth={"100%"} />
             ))}
           </div>
+          <ButtonBox>
+            <button className="leftBtn" onClick={closeModal}>
+              취소
+            </button>
+            <button className="rightBtn" onClick={closeModal}>
+              선택 완료
+            </button>
+          </ButtonBox>
         </Box>
       </Wrap>
     </>
@@ -51,10 +68,66 @@ const Box = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  padding: 30px 30px;
+  padding: 30px;
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 6px;
+  overflow-y: scroll;
+  height: 484px;
+  .title {
+    margin-bottom: 20px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #404a5c;
+  }
+  .checkBoxArea {
+    margin-bottom: 14px;
+  }
+  @media screen and (max-width: 480px) {
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+  .leftBtn {
+    background: #f2f4f6;
+    border-radius: 6px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #505967;
+    width: 155px;
+    height: 48px;
+    margin-right: 10px;
+  }
+  .rightBtn {
+    background: #7a5df5;
+    border-radius: 6px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #ffffff;
+    width: 155px;
+    height: 48px;
+  }
 `;
 
 export default PostNewStackModal;

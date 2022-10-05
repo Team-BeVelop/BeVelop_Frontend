@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 export type Checkbox = {
   text: string;
+  mobwidth?: string;
 };
 
-const StyledCheckbox: React.FC<Checkbox> = ({ text }) => {
+export type WidthType = {
+  width?: string;
+};
+
+const StyledCheckbox: React.FC<Checkbox> = ({ text, mobwidth }) => {
   return (
-    <Container>
+    <Container width={mobwidth}>
       <Input type="checkbox" id={text} name={text} />
       <Label htmlFor={text}>
         <p>{text}</p>
@@ -15,11 +20,18 @@ const StyledCheckbox: React.FC<Checkbox> = ({ text }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<WidthType>`
   display: inline-block;
   margin-bottom: 28px;
   &:nth-child(1) {
     margin-bottom: 28px;
+    @media screen and (max-width: 480px) {
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    margin-bottom: 20px;
+    width: ${(props) => props.width || "auto"};
   }
 `;
 
@@ -80,31 +92,5 @@ const Input = styled.input`
     }
   }
 `;
-
-// const Input = styled.input`
-//   appearance: none;
-//   width: 1.4rem;
-//   height: 1.4rem;
-//   border: 1.4px solid #dadee2;
-//   border-radius: 0.35rem;
-//   &:checked {
-//     border-color: transparent;
-//     background-image: url("/img/icon_check.png");
-//     background-size: 60% 50%;
-//     background-position: 40% 40%;
-//     background-repeat: no-repeat;
-//     background-color: #7a5df5;
-//   }
-// `;
-
-// const Label = styled.label`
-//   display: flex;
-//   align-items: center;
-//   user-select: none;
-
-//   p {
-//     margin: 0 0.25rem;
-//   }
-// `;
 
 export default StyledCheckbox;

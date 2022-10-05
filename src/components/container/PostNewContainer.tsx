@@ -1,13 +1,22 @@
+import { useState } from "react";
 import styled from "styled-components";
 import TwoButton from "../../common/TwoButton";
 import PostNewInfo from "../PostNew/PostNewInfo";
 import PostNewWrite from "../PostNew/PostNewWrite";
 
 const PostNewContainer = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [stack, setStack] = useState([]);
+
   return (
     <Container>
       <Wrap>
-        <PostNewInfo />
+        <PostNewInfo
+          showModal={showModal}
+          setShowModal={setShowModal}
+          stack={stack}
+          setStack={setStack}
+        />
         <PostNewWrite />
       </Wrap>
       <TwoButton
