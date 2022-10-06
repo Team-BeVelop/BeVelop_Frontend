@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 const RecruitBanner = () => {
+  const goProjectNewPage = () => (window.location.href = "/project/new");
   const dispatch = useDispatch<any>();
   const token = useSelector((state: any) => state.auth.data.token.access_token);
 
@@ -14,7 +15,7 @@ const RecruitBanner = () => {
     <>
       <Top>
         <Title>{"프로젝트를 진행해\n커리어를 쌓아보세요!"}</Title>
-        <Button>구인글 작성하기</Button>
+        <Button onClick={goProjectNewPage}>구인글 작성하기</Button>
       </Top>
     </>
   );

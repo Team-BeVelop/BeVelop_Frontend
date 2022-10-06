@@ -11,7 +11,7 @@ import ReduxThunk from "redux-thunk";
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage";
 import RecruitPage from "./pages/RecruitPage";
-import RecruitNewPage from "./pages/RecruitNewPage";
+import ProjectNewPage from "./pages/ProjectNewPage";
 import PostPage from "./pages/PostPage";
 import PostNewPage from "./pages/PostNewPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
@@ -32,7 +32,7 @@ function Router() {
             <Route path="/" element={<MainPage />} />
             <Route path="/user" element={<UserPage />} />
             <Route path="/recruit" element={<RecruitPage />} />
-            <Route path="/recruit/new" element={<RecruitNewPage />} />
+            <Route path="/project/new" element={<ProjectNewPage />} />
             <Route path="/project/:id" element={<ProjectDetailPage />} />
             <Route path="/post" element={<PostPage />} />
             <Route path="/post/new" element={<PostNewPage />} />

@@ -1,37 +1,48 @@
+import { useState } from "react";
 import styled from "styled-components";
+import StyledCheckbox from "../../common/StyledCheckbox";
+import StyledDropDown from "../../common/StyledDropDown";
+import { FieldData, JobData } from "../../Data/FieldData";
+const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
 
-const InfoSection = () => {
+const ProjectNewInfo = () => {
+  const [division, setDivision] = useState(DivisionData[0]);
   return (
     <>
       <Wrap>
         <Top>기본정보</Top>
         <Content>
-          <Box>
+          <DivisionArea>
             <Title>모집구분</Title>
-            <Filter>
-              <p>사이드 프로젝트</p>
-            </Filter>
-          </Box>
-          <Box>
+            <div className="right">
+              <StyledDropDown
+                type="default"
+                data={DivisionData}
+                current={division}
+                setCurrent={setDivision}
+              />
+            </div>
+          </DivisionArea>
+          <Field>
             <Title>연관분야</Title>
             <div className="right">
-              <input type="checkbox" />
-              <p>ㄴㄴ</p>
-              <input type="checkbox" />
-              <p>ㄴㄴ</p>
+              {FieldData.map((v) => (
+                <StyledCheckbox key={v} text={v} />
+              ))}
             </div>
-          </Box>
-          <Box>
+          </Field>
+          <Field>
             <Title>모집직무</Title>
             <div className="right">
-              <input type="checkbox" />
-              <p>ㄴㄴ</p>
-              <input type="checkbox" />
-              <p>ㄴㄴ</p>
+              {JobData.map((v) => (
+                <StyledCheckbox key={v} text={v} />
+              ))}
             </div>
-          </Box>
+          </Field>
           <Contact>
-            <Title>연락방식</Title>
+            <Title>
+              연락방식<span>(필수)</span>
+            </Title>
             <p>제안자, 지원자 모두 수락할 시에만 연락처가 노출됩니다.</p>
             <div>
               <input placeholder="이메일 주소 입력" />
@@ -51,7 +62,13 @@ const Wrap = styled.section`
   margin-right: 2%;
   border: 1px solid #e3e3e3;
   border-radius: 6px;
-  height: 621px;
+  height: 100%;
+  @media screen and (max-width: 480px) {
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Top = styled.div`
@@ -69,19 +86,49 @@ const Top = styled.div`
   height: 35px;
   align-items: center;
   padding-left: 20px;
+  @media screen and (max-width: 480px) {
+    border-radius: 0;
+  }
 `;
 
 const Content = styled.div`
   padding: 28px;
 `;
 
-const Box = styled.div`
+const DivisionArea = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 50px;
   .right {
-    display: flex;
+    margin-left: 30px;
+    width: 100%;
+    @media screen and (max-width: 480px) {
+      margin-left: 0;
+      margin-top: 18px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    display: block;
+    margin-bottom: 34px;
+  }
+`;
+
+const Field = styled.div`
+  display: flex;
+  margin-bottom: 22px;
+  .right {
+    width: 100%;
+    display: block;
     align-items: center;
     margin-left: 30px;
+    @media screen and (max-width: 480px) {
+      margin-left: 0;
+      margin-top: 18px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    display: block;
+    margin-bottom: 6px;
   }
 `;
 
@@ -93,39 +140,23 @@ const Title = styled.div`
   line-height: 19px;
   font-feature-settings: "tnum" on, "lnum" on;
   color: #000000;
-`;
-
-const Filter = styled.div`
-  display: flex;
-  width: 400px;
-  height: 48px;
-  background: #ffffff;
-  border: 1px solid #dadee2;
-  border-radius: 6px;
-  align-items: center;
-  text-align: left;
-  margin-left: 30px;
-  p {
-    margin-left: 20px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    font-feature-settings: "tnum" on, "lnum" on;
-    color: #000000;
+  white-space: nowrap;
+  span {
+    color: #7a5df5;
   }
 `;
 
 const Contact = styled.div`
   width: 100%;
+  margin-bottom: 50px;
   input {
     width: 49%;
     margin-top: 18px;
-    margin-bottom: 50px;
     background: #ffffff;
     border: 1px solid #dadee2;
     border-radius: 6px;
-    padding: 16px 20px;
+    padding: 15px 20px;
+    height: 48px;
     &:nth-child(2n + 1) {
       margin-right: 2%;
     }
@@ -138,6 +169,9 @@ const Contact = styled.div`
       font-feature-settings: "tnum" on, "lnum" on;
       color: #6b7684;
     }
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
   }
   p {
     margin-top: 5px;
@@ -149,6 +183,9 @@ const Contact = styled.div`
     font-feature-settings: "tnum" on, "lnum" on;
     color: #8b95a1;
   }
+  @media screen and (max-width: 480px) {
+    margin-bottom: 34px;
+  }
 `;
 
 const LongInput = styled.input`
@@ -157,7 +194,8 @@ const LongInput = styled.input`
   border: 1px solid #dadee2;
   border-radius: 6px;
   width: 100%;
-  padding: 16px 20px;
+  padding: 15px 20px;
+  height: 48px;
 `;
 
-export default InfoSection;
+export default ProjectNewInfo;

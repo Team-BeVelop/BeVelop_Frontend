@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 const PostBanner = () => {
-  const gpPostNewPage = () => (window.location.href = "/post/new");
+  const goPostNewPage = () => (window.location.href = "/post/new");
   return (
     <>
       <Top>
         <Title>{"내가 만든 프로젝트를\n소개해보세요!"}</Title>
-        <Button onClick={gpPostNewPage}>구인글 작성하기</Button>
+        <Button onClick={goPostNewPage}>구인글 작성하기</Button>
       </Top>
     </>
   );

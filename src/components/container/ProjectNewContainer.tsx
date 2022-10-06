@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import TwoButton from "../../common/TwoButton";
-import InfoSection from "../RecruitNew/InfoSection";
-import WriteSection from "../RecruitNew/WriteSection";
+import ProjectNewInfo from "../ProjectNew/ProjectNewInfo";
+import ProjectNewWrite from "../ProjectNew/ProjectNewWrite";
 
-const RecruitNewContainer = () => {
+const ProjectNewContainer = () => {
   return (
     <Container>
       <Wrap>
-        <InfoSection />
-        <WriteSection />
+        <ProjectNewInfo />
+        <ProjectNewWrite />
       </Wrap>
       <TwoButton
         left="취소"
@@ -25,11 +25,22 @@ const Container = styled.main`
   max-width: 1400px;
   margin: 0 auto;
   margin-top: 46px;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 const Wrap = styled.section`
   display: flex;
+  height: 635px;
+  overflow: hidden;
   margin-bottom: 40px;
+  @media screen and (max-width: 480px) {
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 34px;
+  }
 `;
 
-export default RecruitNewContainer;
+export default ProjectNewContainer;

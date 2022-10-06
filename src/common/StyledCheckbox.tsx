@@ -36,6 +36,7 @@ const Container = styled.div<WidthType>`
 `;
 
 const Label = styled.label`
+  cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;
@@ -75,7 +76,7 @@ const Label = styled.label`
   p {
     margin-left: 0.45rem;
   }
-  margin-right: 26px;
+  margin-right: 20px;
 `;
 
 const Input = styled.input`

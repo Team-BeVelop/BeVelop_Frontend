@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const WriteSection = () => {
+const ProjectNewWrite = () => {
   return (
     <>
       <Wrap>
@@ -18,7 +18,13 @@ const Wrap = styled.section`
   width: 25%;
   border: 1px solid #e3e3e3;
   border-radius: 6px;
-  height: 621px;
+  height: 100%;
+  @media screen and (max-width: 480px) {
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Top = styled.div`
@@ -36,6 +42,9 @@ const Top = styled.div`
   height: 35px;
   align-items: center;
   padding-left: 20px;
+  @media screen and (max-width: 480px) {
+    border-radius: 0;
+  }
 `;
 
 const Content = styled.div`
@@ -67,11 +76,12 @@ const LongInput = styled.textarea`
   border: 1px solid #dadee2;
   border-radius: 6px;
   width: 100%;
-  height: 82%;
+  height: 83%;
   max-width: 100%;
-  max-height: 82%;
+  max-height: 83%;
   margin-top: 12px;
   padding: 20px;
+  resize: none;
 
   &::placeholder {
     font-family: "Pretendard";
@@ -82,6 +92,9 @@ const LongInput = styled.textarea`
     font-feature-settings: "tnum" on, "lnum" on;
     color: #6b7684;
   }
+  @media screen and (max-width: 480px) {
+    height: 170px;
+  }
 `;
 
-export default WriteSection;
+export default ProjectNewWrite;

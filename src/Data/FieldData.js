@@ -13,6 +13,14 @@ export const FieldData = [
   "모빌리티(교통)",
 ];
 
+export const JobData = [
+  "기획자",
+  "디자이너",
+  "프론트엔드 개발자",
+  "백엔드 개발자",
+  "모바일 개발자",
+];
+
 export const designFieldData = [
   "Figma",
   "Adobe XD",
