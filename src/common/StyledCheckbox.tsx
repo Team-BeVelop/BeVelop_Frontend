@@ -1,18 +1,39 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export type Checkbox = {
   text: string;
   mobwidth?: string;
+  list?: any;
+  setList?: any;
 };
 
 export type WidthType = {
   width?: string;
 };
 
-const StyledCheckbox: React.FC<Checkbox> = ({ text, mobwidth }) => {
+const StyledCheckbox: React.FC<Checkbox> = ({
+  text,
+  mobwidth,
+  list,
+  setList,
+}) => {
+  const checkedHandler = (checked: boolean, id: string) => {
+    if (checked) {
+      setList([...list, id]);
+    } else {
+      setList(list.filter((e: any) => e !== id));
+    }
+  };
+
   return (
     <Container width={mobwidth}>
-      <Input type="checkbox" id={text} name={text} />
+      <Input
+        type="checkbox"
+        id={text}
+        name={text}
+        onChange={(e) => checkedHandler(e.target.checked, e.target.id)}
+      />
       <Label htmlFor={text}>
         <p>{text}</p>
       </Label>

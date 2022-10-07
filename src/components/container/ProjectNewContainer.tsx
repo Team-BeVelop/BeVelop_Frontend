@@ -1,13 +1,26 @@
+import { useState } from "react";
 import styled from "styled-components";
 import TwoButton from "../../common/TwoButton";
+import { DivisionData } from "../../Data/FieldData";
 import ProjectNewInfo from "../ProjectNew/ProjectNewInfo";
 import ProjectNewWrite from "../ProjectNew/ProjectNewWrite";
 
 const ProjectNewContainer = () => {
+  const [division, setDivision] = useState(DivisionData[0]);
+  const [fields, setFields] = useState([]);
+  const [jobs, setJobs] = useState([]);
+
   return (
     <Container>
       <Wrap>
-        <ProjectNewInfo />
+        <ProjectNewInfo
+          division={division}
+          setDivision={setDivision}
+          fields={fields}
+          setFields={setFields}
+          jobs={jobs}
+          setJobs={setJobs}
+        />
         <ProjectNewWrite />
       </Wrap>
       <TwoButton

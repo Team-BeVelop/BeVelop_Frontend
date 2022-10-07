@@ -21,6 +21,8 @@ export const JobData = [
   "모바일 개발자",
 ];
 
+export const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
+
 export const designFieldData = [
   "Figma",
   "Adobe XD",

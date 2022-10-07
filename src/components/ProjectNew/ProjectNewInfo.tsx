@@ -1,12 +1,26 @@
-import { useState } from "react";
 import styled from "styled-components";
 import StyledCheckbox from "../../common/StyledCheckbox";
 import StyledDropDown from "../../common/StyledDropDown";
+import { DivisionData } from "../../Data/FieldData";
 import { FieldData, JobData } from "../../Data/FieldData";
-const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
 
-const ProjectNewInfo = () => {
-  const [division, setDivision] = useState(DivisionData[0]);
+export type ProjectInfoType = {
+  division: any;
+  setDivision: any;
+  fields: any;
+  setFields: any;
+  jobs: any;
+  setJobs: any;
+};
+
+const ProjectNewInfo: React.FC<ProjectInfoType> = ({
+  division,
+  setDivision,
+  fields,
+  setFields,
+  jobs,
+  setJobs,
+}) => {
   return (
     <>
       <Wrap>
@@ -27,7 +41,12 @@ const ProjectNewInfo = () => {
             <Title>연관분야</Title>
             <div className="right">
               {FieldData.map((v) => (
-                <StyledCheckbox key={v} text={v} />
+                <StyledCheckbox
+                  key={v}
+                  text={v}
+                  list={fields}
+                  setList={setFields}
+                />
               ))}
             </div>
           </Field>
@@ -35,7 +54,12 @@ const ProjectNewInfo = () => {
             <Title>모집직무</Title>
             <div className="right">
               {JobData.map((v) => (
-                <StyledCheckbox key={v} text={v} />
+                <StyledCheckbox
+                  key={v}
+                  text={v}
+                  list={jobs}
+                  setList={setJobs}
+                />
               ))}
             </div>
           </Field>
