@@ -54,6 +54,7 @@ const Title = styled.h1`
     font-size: 24px;
     line-height: 29px;
     margin-top: 15px;
+    margin-bottom: 34px;
   }
 `;
 

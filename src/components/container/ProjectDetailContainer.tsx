@@ -38,6 +38,7 @@ const Wrap = styled.section`
   @media screen and (max-width: 480px) {
     padding: 29px 28px;
     border: none;
+    margin-top: 0;
   }
 `;
 
