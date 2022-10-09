@@ -1,13 +1,15 @@
+import { useState } from "react";
 import styled from "styled-components";
 import PostDetailComment from "../PostDetail/PostDetailComment";
 import PostDetailContent from "../PostDetail/PostDetailContent";
 
 const PostDetailContainer = () => {
+  const [comment, setComment] = useState("");
   return (
     <>
       <Container>
         <PostDetailContent />
-        <PostDetailComment />
+        <PostDetailComment comment={comment} setComment={setComment} />
       </Container>
     </>
   );
