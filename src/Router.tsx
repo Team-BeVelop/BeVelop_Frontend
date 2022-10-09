@@ -15,6 +15,7 @@ import ProjectNewPage from "./pages/ProjectNewPage";
 import PostPage from "./pages/PostPage";
 import PostNewPage from "./pages/PostNewPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
+import PostDetailPage from "./pages/PostDetailPage";
 
 const store = createStore(
   rootReducer,
@@ -36,6 +37,7 @@ function Router() {
             <Route path="/project/:id" element={<ProjectDetailPage />} />
             <Route path="/post" element={<PostPage />} />
             <Route path="/post/new" element={<PostNewPage />} />
+            <Route path="/post/:id" element={<PostDetailPage />} />
           </Routes>
         </PersistGate>
       </Provider>
