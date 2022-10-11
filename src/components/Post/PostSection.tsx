@@ -1,13 +1,16 @@
-import { useState } from "react";
 import styled from "styled-components";
 import StyledDropDown from "../../common/StyledDropDown";
-import { FieldData } from "../../Data/FieldData";
 import Dummy from "../../Data/PostDummy";
 import PostTemplate from "./PostTemplate";
+import { FieldData } from "../../Data/FieldData";
 
-const PostSection = () => {
+export type PostSectionType = {
+  division: any;
+  setDivision: any;
+};
+
+const PostSection: React.FC<PostSectionType> = ({ division, setDivision }) => {
   const dummy = Dummy;
-  const [division, setDivision] = useState(FieldData[0]);
   return (
     <>
       <DropDownWrap>

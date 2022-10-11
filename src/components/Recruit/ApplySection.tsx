@@ -3,11 +3,34 @@ import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
 import Dummy from "../../Data/ApplyDummy";
 
-const ApplySection = () => {
+export type ApplySectionType = {
+  division: any;
+  setDivision: any;
+  job: any;
+  setJob: any;
+  interest: any;
+  setInterest: any;
+};
+
+const ApplySection: React.FC<ApplySectionType> = ({
+  division,
+  setDivision,
+  job,
+  setJob,
+  interest,
+  setInterest,
+}) => {
   const dummy = Dummy;
   return (
     <>
-      <ApplyFilter />
+      <ApplyFilter
+        division={division}
+        setDivision={setDivision}
+        job={job}
+        setJob={setJob}
+        interest={interest}
+        setInterest={setInterest}
+      />
       <Wrap>
         {dummy.map((item, index) => (
           <ApplyTemplate

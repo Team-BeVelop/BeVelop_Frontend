@@ -7,12 +7,27 @@ import SuggestSection from "../Recruit/SuggestSection";
 
 const RecruitContainer = () => {
   const [current, setCurrent] = useState(0);
+  const [division, setDivision] = useState("");
+  const [job, setJob] = useState("");
+  const [interest, setInterest] = useState("");
+
   return (
     <Container>
       <RecruitBanner />
       <RecruitMenu current={current} setCurrent={setCurrent} />
       <Line />
-      {current === 0 ? <SuggestSection /> : <ApplySection />}
+      {current === 0 ? (
+        <SuggestSection />
+      ) : (
+        <ApplySection
+          division={division}
+          setDivision={setDivision}
+          job={job}
+          setJob={setJob}
+          interest={interest}
+          setInterest={setInterest}
+        />
+      )}
     </Container>
   );
 };

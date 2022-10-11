@@ -6,12 +6,13 @@ import PostSection from "../Post/PostSection";
 
 const PostContainer = () => {
   const [current, setCurrent] = useState(0);
+  const [division, setDivision] = useState("");
   return (
     <Container>
       <PostBanner />
       <PostMenu current={current} setCurrent={setCurrent} />
       <Line />
-      <PostSection />
+      <PostSection division={division} setDivision={setDivision} />
     </Container>
   );
 };
