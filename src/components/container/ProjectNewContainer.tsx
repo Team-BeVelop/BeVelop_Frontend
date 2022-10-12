@@ -6,9 +6,28 @@ import ProjectNewInfo from "../ProjectNew/ProjectNewInfo";
 import ProjectNewWrite from "../ProjectNew/ProjectNewWrite";
 
 const ProjectNewContainer = () => {
-  const [division, setDivision] = useState(DivisionData[0]);
-  const [fields, setFields] = useState([]);
-  const [jobs, setJobs] = useState([]);
+  const [division, setDivision] = useState(DivisionData[0]); //모집구분
+  const [fields, setFields] = useState([]); //연관분야
+  const [jobs, setJobs] = useState([]); //모집직무
+  const [email, setEmail] = useState(""); //이메일
+  const [kakao, setKakao] = useState(""); //카카오톡 오픈채팅
+  const [introduce, setIntroduce] = useState(""); // 한줄소개
+  const [title, setTitle] = useState(""); //제목
+  const [desc, setDesc] = useState(""); //설명
+
+  // 글 등록
+  const onClickPostButton = () => {
+    console.log(division);
+    console.log(fields);
+    console.log(jobs);
+    console.log(email);
+    console.log(kakao);
+    console.log(introduce);
+    console.log(title);
+    console.log(desc);
+  };
+
+  const goRecruitPage = () => (window.location.href = "/recruit");
 
   return (
     <Container>
@@ -20,14 +39,25 @@ const ProjectNewContainer = () => {
           setFields={setFields}
           jobs={jobs}
           setJobs={setJobs}
+          email={email}
+          setEmail={setEmail}
+          kakao={kakao}
+          setKakao={setKakao}
+          introduce={introduce}
+          setIntroduce={setIntroduce}
         />
-        <ProjectNewWrite />
+        <ProjectNewWrite
+          title={title}
+          setTitle={setTitle}
+          desc={desc}
+          setDesc={setDesc}
+        />
       </Wrap>
       <TwoButton
         left="취소"
-        leftClick={() => console.log("취소")}
+        leftClick={goRecruitPage}
         right="글 등록"
-        rightClick={() => console.log("글 등록")}
+        rightClick={onClickPostButton}
       />
     </Container>
   );

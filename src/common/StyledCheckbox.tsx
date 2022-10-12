@@ -1,24 +1,7 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-export type Checkbox = {
-  text: string;
-  mobwidth?: string;
-  list?: any;
-  setList?: any;
-};
-
-export type WidthType = {
-  width?: string;
-};
-
-const StyledCheckbox: React.FC<Checkbox> = ({
-  text,
-  mobwidth,
-  list,
-  setList,
-}) => {
-  const checkedHandler = (checked: boolean, id: string) => {
+const StyledCheckbox = ({ object, mobwidth, list, setList }: any) => {
+  const checkedHandler = (checked: boolean, id: any) => {
     if (checked) {
       setList([...list, id]);
     } else {
@@ -30,18 +13,18 @@ const StyledCheckbox: React.FC<Checkbox> = ({
     <Container width={mobwidth}>
       <Input
         type="checkbox"
-        id={text}
-        name={text}
+        id={object.value}
+        name={object.name}
         onChange={(e) => checkedHandler(e.target.checked, e.target.id)}
       />
-      <Label htmlFor={text}>
-        <p>{text}</p>
+      <Label htmlFor={object.value}>
+        <p>{object.name}</p>
       </Label>
     </Container>
   );
 };
 
-const Container = styled.div<WidthType>`
+const Container = styled.div<{ width: any }>`
   display: inline-block;
   margin-bottom: 28px;
   &:nth-child(1) {

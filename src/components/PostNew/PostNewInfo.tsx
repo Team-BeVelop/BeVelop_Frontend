@@ -8,19 +8,7 @@ import PostNewStackModal from "./PostNewStackModal";
 const PeriodData = ["1개월 이하", "1개월 - 3개월", "3개월 - 6개월", "1년 이상"];
 const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
 
-export type PostNewInfoType = {
-  showModal: boolean;
-  setShowModal: (v: boolean) => void;
-  stack: any;
-  setStack: any;
-};
-
-const PostNewInfo: React.FC<PostNewInfoType> = ({
-  showModal,
-  setShowModal,
-  stack,
-  setStack,
-}) => {
+const PostNewInfo = ({ showModal, setShowModal, stack, setStack }: any) => {
   const [period, setPeriod] = useState(PeriodData[0]);
   const [division, setDivision] = useState(DivisionData[0]);
   return (
@@ -63,7 +51,7 @@ const PostNewInfo: React.FC<PostNewInfoType> = ({
             <Title>연관분야</Title>
             <div className="right">
               {FieldData.map((v) => (
-                <StyledCheckbox key={v} text={v} />
+                <StyledCheckbox key={v.value} object={v} />
               ))}
             </div>
           </Field>

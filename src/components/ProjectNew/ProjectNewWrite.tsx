@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
-const ProjectNewWrite = () => {
+const ProjectNewWrite = ({ title, setTitle, desc, setDesc }: any) => {
   return (
     <>
       <Wrap>
         <Top>글쓰기</Top>
         <Content>
-          <Input placeholder="글 제목을 입력해주세요." />
-          <LongInput placeholder="프로젝트에 대해 소개해주세요. 진행 방식, 모집 인원, 모집 기간, 진행 기간 등을 작성하면 더 구체적인 정보 를 제공할 수 있어요." />
+          <Input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="글 제목을 입력해주세요."
+          />
+          <LongInput
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+            placeholder="프로젝트에 대해 소개해주세요. 진행 방식, 모집 인원, 모집 기간, 진행 기간 등을 작성하면 더 구체적인 정보 를 제공할 수 있어요."
+          />
         </Content>
       </Wrap>
     </>

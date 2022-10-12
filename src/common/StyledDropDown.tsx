@@ -7,23 +7,14 @@ export type StyleType = {
   width?: number;
 };
 
-export type DropDownType = {
-  type: string;
-  width?: number;
-  label?: string;
-  data: any;
-  current: any;
-  setCurrent: any;
-};
-
-const StyledDropDown: React.FC<DropDownType> = ({
+const StyledDropDown = ({
   type,
   width,
   label,
   data,
   current,
   setCurrent,
-}) => {
+}: any) => {
   const [showOptions, setShowOptions] = useState(false);
   const handleSelect = (e: any) => setCurrent(e.target.getAttribute("value"));
 

@@ -4,23 +4,20 @@ import StyledDropDown from "../../common/StyledDropDown";
 import { DivisionData } from "../../Data/FieldData";
 import { FieldData, JobData } from "../../Data/FieldData";
 
-export type ProjectInfoType = {
-  division: any;
-  setDivision: any;
-  fields: any;
-  setFields: any;
-  jobs: any;
-  setJobs: any;
-};
-
-const ProjectNewInfo: React.FC<ProjectInfoType> = ({
+const ProjectNewInfo = ({
   division,
   setDivision,
   fields,
   setFields,
   jobs,
   setJobs,
-}) => {
+  email,
+  setEmail,
+  kakao,
+  setKakao,
+  introduce,
+  setIntroduce,
+}: any) => {
   return (
     <>
       <Wrap>
@@ -42,8 +39,8 @@ const ProjectNewInfo: React.FC<ProjectInfoType> = ({
             <div className="right">
               {FieldData.map((v) => (
                 <StyledCheckbox
-                  key={v}
-                  text={v}
+                  key={v.value}
+                  object={v}
                   list={fields}
                   setList={setFields}
                 />
@@ -55,8 +52,8 @@ const ProjectNewInfo: React.FC<ProjectInfoType> = ({
             <div className="right">
               {JobData.map((v) => (
                 <StyledCheckbox
-                  key={v}
-                  text={v}
+                  key={v.value}
+                  object={v}
                   list={jobs}
                   setList={setJobs}
                 />
@@ -69,12 +66,23 @@ const ProjectNewInfo: React.FC<ProjectInfoType> = ({
             </Title>
             <p>제안자, 지원자 모두 수락할 시에만 연락처가 노출됩니다.</p>
             <div>
-              <input placeholder="이메일 주소 입력" />
-              <input placeholder="카카오톡 오픈 채팅 주소" />
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="이메일 주소 입력"
+              />
+              <input
+                value={kakao}
+                onChange={(e) => setKakao(e.target.value)}
+                placeholder="카카오톡 오픈 채팅 주소"
+              />
             </div>
           </Contact>
           <Title>한줄소개</Title>
-          <LongInput />
+          <LongInput
+            value={introduce}
+            onChange={(e) => setIntroduce(e.target.value)}
+          />
         </Content>
       </Wrap>
     </>
