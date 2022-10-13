@@ -16,9 +16,13 @@ const StyledDropDown = ({
   setCurrent,
 }: any) => {
   const [showOptions, setShowOptions] = useState(false);
-  const handleSelect = (e: any) => setCurrent(e.target.getAttribute("value"));
+  const handleSelect = (e: any) => {
+    const { innerText } = e.target;
+    const value = e.target.getAttribute("value");
+    setCurrent({ value: value, name: innerText });
+  };
 
-  useEffect(() => label && setCurrent(label), []);
+  useEffect(() => label && setCurrent({ value: label, name: label }), []);
 
   return (
     <>
@@ -27,11 +31,16 @@ const StyledDropDown = ({
         width={width}
         onClick={() => setShowOptions((prev) => !prev)}
       >
-        <Label type={type}>{current}</Label>
+        <Label type={type}>{current.name}</Label>
         <List type={type} show={showOptions}>
-          {data.map((v: string) => (
-            <Item type={type} key={v} value={v} onClick={handleSelect}>
-              {v}
+          {data.map((v: any) => (
+            <Item
+              type={type}
+              key={v.value}
+              value={v.value}
+              onClick={handleSelect}
+            >
+              {v.name}
             </Item>
           ))}
         </List>

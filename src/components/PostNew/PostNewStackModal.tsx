@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import StyledCheckbox from "../../common/StyledCheckbox";
 import {
@@ -6,16 +7,9 @@ import {
   frontendFieldData,
 } from "../../Data/FieldData";
 
-export type PostNewModalType = {
-  showModal: boolean;
-  setShowModal: (v: boolean) => void;
-};
-
-const PostNewStackModal: React.FC<PostNewModalType> = ({
-  showModal,
-  setShowModal,
-}) => {
+const PostNewStackModal = ({ showModal, setShowModal }: any) => {
   const closeModal = () => setShowModal(false);
+  const [fields, setFields] = useState();
   return (
     <>
       <Wrap>
@@ -23,19 +17,37 @@ const PostNewStackModal: React.FC<PostNewModalType> = ({
           <div className="title">디자인</div>
           <div className="checkBoxArea">
             {designFieldData.map((v) => (
-              <StyledCheckbox key={v} text={v} mobwidth={"100%"} />
+              <StyledCheckbox
+                key={v.value}
+                object={v}
+                mobwidth={"100%"}
+                list={fields}
+                setList={setFields}
+              />
             ))}
           </div>
           <div className="title">프론트</div>
           <div className="checkBoxArea">
             {frontendFieldData.map((v) => (
-              <StyledCheckbox key={v} text={v} mobwidth={"100%"} />
+              <StyledCheckbox
+                key={v.value}
+                object={v}
+                mobwidth={"100%"}
+                list={fields}
+                setList={setFields}
+              />
             ))}
           </div>
           <div className="title">백</div>
           <div className="checkBoxArea">
             {backendFieldData.map((v) => (
-              <StyledCheckbox key={v} text={v} mobwidth={"100%"} />
+              <StyledCheckbox
+                key={v.value}
+                object={v}
+                mobwidth={"100%"}
+                list={fields}
+                setList={setFields}
+              />
             ))}
           </div>
           <ButtonBox>

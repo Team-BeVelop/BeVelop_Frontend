@@ -21,29 +21,41 @@ export const JobData = [
   { value: "mobile", name: "모바일 개발자" },
 ];
 
-export const DivisionData = ["사이드프로젝트", "스타트업", "공모전"];
-
-export const DivisionData1 = [
+export const DivisionData = [
   { value: "side_project", name: "사이드프로젝트" },
   { value: "start_up", name: "스타트업" },
   { value: "contest", name: "공모전" },
 ];
 
+export const PeriodData = [
+  { value: "0", name: "1개월 이하" },
+  { value: "1", name: "1개월 - 3개월" },
+  { value: "2", name: "3개월 - 6개월" },
+  { value: "3", name: "1년 이상" },
+];
+
 export const designFieldData = [
-  "Figma",
-  "Adobe XD",
-  "Photoshop",
-  "Rhino",
-  "Keyshot",
+  { value: "Figma", name: "Figma" },
+  { value: "Adobe XD", name: "Adobe XD" },
+  { value: "Photoshop", name: "Photoshop" },
+  { value: "Rhino", name: "Rhino" },
+  { value: "Keyshot", name: "Keyshot" },
 ];
 
 export const frontendFieldData = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Vue",
-  "Svelte",
-  "Nextjs",
+  { value: "JavaScript", name: "JavaScript" },
+  { value: "TypeScript", name: "TypeScript" },
+  { value: "React", name: "React" },
+  { value: "Vue", name: "Vue" },
+  { value: "Svelte", name: "Svelte" },
+  { value: "Nextjs", name: "FigNextjsma" },
 ];
 
-export const backendFieldData = ["Sql", "MongoDB", "Nuxtjs", "Docker"];
+export const backendFieldData = [
+  { value: "Django", name: "Django" },
+  { value: "Nodejs", name: "Nodejs" },
+  { value: "Spring", name: "Spring" },
+  { value: "Sql", name: "Sql" },
+  { value: "MongoDB", name: "MongoDB" },
+  { value: "Nuxtjs", name: "Nuxtjs" },
+];

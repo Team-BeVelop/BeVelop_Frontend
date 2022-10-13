@@ -26,7 +26,7 @@ const ApplyFilter: React.FC<ApplyFilterType> = ({
           <StyledDropDown
             type="mini"
             width={150}
-            label="직무"
+            label="구분"
             data={DivisionData}
             current={division}
             setCurrent={setDivision}
