@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { getProjectList } from "../../api/project";
 import PostBanner from "../Post/PostBanner";
 import PostMenu from "../Post/PostMenu";
 import PostSection from "../Post/PostSection";
@@ -7,6 +9,11 @@ import PostSection from "../Post/PostSection";
 const PostContainer = () => {
   const [current, setCurrent] = useState(0);
   const [division, setDivision] = useState("");
+  const dispatch = useDispatch<any>();
+  useEffect(() => {
+    dispatch(getProjectList());
+  }, []);
+
   return (
     <Container>
       <PostBanner />

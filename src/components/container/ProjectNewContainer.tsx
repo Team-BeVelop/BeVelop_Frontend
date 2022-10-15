@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import TwoButton from "../../common/TwoButton";
 import { DivisionData } from "../../Data/FieldData";
+import { addNewStudy } from "../../modules/study";
 import ProjectNewInfo from "../ProjectNew/ProjectNewInfo";
 import ProjectNewWrite from "../ProjectNew/ProjectNewWrite";
 
@@ -15,6 +18,9 @@ const ProjectNewContainer = () => {
   const [title, setTitle] = useState(""); //제목
   const [desc, setDesc] = useState(""); //설명
 
+  const dispatch = useDispatch<any>();
+  const token = useSelector((state: any) => state.auth.data.token.access_token);
+
   // 글 등록
   const onClickPostButton = () => {
     console.log(division);
@@ -25,6 +31,24 @@ const ProjectNewContainer = () => {
     console.log(introduce);
     console.log(title);
     console.log(desc);
+
+    dispatch(
+      addNewStudy(
+        token,
+        desc,
+        division.value,
+        email,
+        "2022-10-20",
+        "2022-10-20",
+        kakao,
+        10,
+        jobs,
+        fields,
+        introduce,
+        "2022-10-22",
+        title
+      )
+    );
   };
 
   const goRecruitPage = () => (window.location.href = "/recruit");

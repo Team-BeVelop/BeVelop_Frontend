@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { getStudyList } from "../../modules/study";
 import ApplySection from "../Recruit/ApplySection";
 import RecruitBanner from "../Recruit/RecruitBanner";
 import RecruitMenu from "../Recruit/RecruitMenu";
@@ -10,6 +12,11 @@ const RecruitContainer = () => {
   const [division, setDivision] = useState("");
   const [job, setJob] = useState("");
   const [interest, setInterest] = useState("");
+
+  const dispatch = useDispatch<any>();
+  useEffect(() => {
+    dispatch(getStudyList());
+  }, []);
 
   return (
     <Container>

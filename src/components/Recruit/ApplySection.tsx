@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
-import Dummy from "../../Data/ApplyDummy";
+import { useSelector } from "react-redux";
 
 export type ApplySectionType = {
   division: any;
@@ -20,7 +20,8 @@ const ApplySection: React.FC<ApplySectionType> = ({
   interest,
   setInterest,
 }) => {
-  const dummy = Dummy;
+  const studyList = useSelector((state: any) => state.study.data);
+
   return (
     <>
       <ApplyFilter
@@ -32,7 +33,7 @@ const ApplySection: React.FC<ApplySectionType> = ({
         setInterest={setInterest}
       />
       <Wrap>
-        {dummy.map((item, index) => (
+        {studyList.map((item: any, index: number) => (
           <ApplyTemplate
             key={index}
             tag={item.tag}
