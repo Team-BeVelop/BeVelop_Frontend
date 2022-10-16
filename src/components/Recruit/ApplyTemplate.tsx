@@ -1,27 +1,39 @@
 import styled from "styled-components";
 
-export type Apply = {
-  tag: any;
-  title: any;
-  hashtag: any;
-  content: any;
-};
-
-const ApplyTemplate: React.FC<Apply> = ({ tag, title, hashtag, content }) => {
+const ApplyTemplate = ({
+  id,
+  division,
+  field,
+  title,
+  hashtag,
+  shortTitle,
+}: any) => {
+  const goProjectDetailPage = (id: number) =>
+    (window.location.href = `/project/${id}`);
   return (
     <>
-      <Container>
+      <Container onClick={() => goProjectDetailPage(id)}>
         <div className="info">
           <Top>
             <div className="left">
-              <div>사이드 프로젝트</div>
-              <div>라이프스타일</div>
+              <div className="division">{division}</div>
+              {field.map((item: any, index: string) => (
+                <div className="field" key={index}>
+                  {item.fieldName}
+                </div>
+              ))}
             </div>
             <img className="heart" src="img/icon_heart_fill.png" alt="" />
           </Top>
           <Title>{title}</Title>
-          <Hash>{hashtag}</Hash>
-          <Content>{content}</Content>
+          <HashTags>
+            {hashtag.map((item: any, index: string) => (
+              <div className="item" key={index}>
+                #{item.jobName}
+              </div>
+            ))}
+          </HashTags>
+          <Content>{shortTitle}</Content>
         </div>
       </Container>
     </>
@@ -41,7 +53,6 @@ const Container = styled.div`
   &:nth-child(4n) {
     margin-right: 0px;
   }
-
   .info {
     padding: 18px 13px 13px 13px;
     @media screen and (max-width: 480px) {
@@ -49,7 +60,6 @@ const Container = styled.div`
       padding: 17px 17px 14px 17px;
     }
   }
-
   @media screen and (max-width: 480px) {
     display: flex;
     width: 100%;
@@ -64,18 +74,28 @@ const Top = styled.div`
   .left {
     display: flex;
     margin-top: 9px;
-    div {
-      font-family: "Pretendard";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 17px;
-      font-feature-settings: "tnum" on, "lnum" on;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    .division {
       color: #ffffff;
-      padding: 3px 8px;
       background: #7a5df5;
-      border-radius: 4px;
       margin-right: 10px;
+      border-radius: 4px;
+      padding: 3px 8px;
+      @media screen and (max-width: 480px) {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+    .field {
+      color: #ffffff;
+      background-color: #000000;
+      border-radius: 4px;
+      padding: 3px 8px;
       @media screen and (max-width: 480px) {
         font-size: 12px;
         line-height: 14px;
@@ -105,15 +125,19 @@ const Title = styled.h1`
   height: 1.2em;
 `;
 
-const Hash = styled.h4`
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #8b95a1;
+const HashTags = styled.h4`
+  display: flex;
   margin-top: 4px;
+  .item {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #8b95a1;
+    margin-right: 6px;
+  }
 `;
 
 const Content = styled.div`

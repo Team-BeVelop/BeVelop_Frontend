@@ -16,7 +16,7 @@ const RecruitContainer = () => {
   const dispatch = useDispatch<any>();
   useEffect(() => {
     dispatch(getStudyList());
-  }, []);
+  }, [current]);
 
   return (
     <Container>

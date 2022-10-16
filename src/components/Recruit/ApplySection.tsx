@@ -3,23 +3,14 @@ import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
 import { useSelector } from "react-redux";
 
-export type ApplySectionType = {
-  division: any;
-  setDivision: any;
-  job: any;
-  setJob: any;
-  interest: any;
-  setInterest: any;
-};
-
-const ApplySection: React.FC<ApplySectionType> = ({
+const ApplySection = ({
   division,
   setDivision,
   job,
   setJob,
   interest,
   setInterest,
-}) => {
+}: any) => {
   const studyList = useSelector((state: any) => state.study.data);
 
   return (
@@ -33,15 +24,18 @@ const ApplySection: React.FC<ApplySectionType> = ({
         setInterest={setInterest}
       />
       <Wrap>
-        {studyList.map((item: any, index: number) => (
-          <ApplyTemplate
-            key={index}
-            tag={item.tag}
-            title={item.title}
-            hashtag={item.hashtag}
-            content={item.content}
-          />
-        ))}
+        {studyList &&
+          studyList.map((item: any, index: number) => (
+            <ApplyTemplate
+              key={index}
+              id={item.id}
+              division={item.division}
+              field={item.relatedFields}
+              title={item.title}
+              hashtag={item.studyJobs}
+              shortTitle={item.shortTitle}
+            />
+          ))}
       </Wrap>
     </>
   );

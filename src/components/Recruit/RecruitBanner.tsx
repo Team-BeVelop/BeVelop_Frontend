@@ -1,15 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 const RecruitBanner = () => {
   const goProjectNewPage = () => (window.location.href = "/project/new");
-  const dispatch = useDispatch<any>();
-  const token = useSelector((state: any) => state.auth.data.token.access_token);
-
-  useEffect(() => {
-    console.log(token);
-  }, []);
 
   return (
     <>

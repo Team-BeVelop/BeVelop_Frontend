@@ -20,15 +20,16 @@ export const getStudyList = () => async (dispatch: any) => {
   }
 };
 
-export const getStudy = (token: string) => async (dispatch: any) => {
-  dispatch({ type: GET_STUDY_DETAIL });
-  try {
-    const getstudydetail = await authAPI.getStudyDetail(token);
-    dispatch({ type: GET_STUDY_DETAIL_SUCCESS, studyDetail: getstudydetail });
-  } catch (e) {
-    dispatch({ type: GET_STUDY_DETAIL_ERROR, error: e });
-  }
-};
+export const getStudy =
+  (token: string, id: string) => async (dispatch: any) => {
+    dispatch({ type: GET_STUDY_DETAIL });
+    try {
+      const getstudydetail = await authAPI.getStudyDetail(token, id);
+      dispatch({ type: GET_STUDY_DETAIL_SUCCESS, studyDetail: getstudydetail });
+    } catch (e) {
+      dispatch({ type: GET_STUDY_DETAIL_ERROR, error: e });
+    }
+  };
 
 export const addNewStudy =
   (

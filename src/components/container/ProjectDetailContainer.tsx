@@ -1,9 +1,21 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { getStudy } from "../../modules/study";
 import ProjectDetailBottom from "../ProjectDetail/ProjectDetailBottom";
 import ProjectDetailButton from "../ProjectDetail/ProjectDetailButton";
 import ProjectDetailTop from "../ProjectDetail/ProjectDetailTop";
 
 const ProjectDetailContainer = () => {
+  const id = window.location.href.split("/")[4];
+  const dispatch = useDispatch<any>();
+  const token = useSelector((state: any) => state.auth.data.token.access_token);
+  const studyDetail = useSelector((state: any) => state.study.data);
+
+  useEffect(() => {
+    dispatch(getStudy(token, id));
+  }, []);
+
   return (
     <>
       <Container>

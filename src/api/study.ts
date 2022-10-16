@@ -4,8 +4,8 @@ const BASE_URL = "http://52.78.142.128:8080";
 // 모든 스터디
 export const getStudyList = () => axios.get(`${BASE_URL}/studies`);
 
-export const getStudyDetail = (token: string) =>
-  axios.get(`${BASE_URL}/studies/1`, {
+export const getStudyDetail = (token: string, id: string) =>
+  axios.get(`${BASE_URL}/studies/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
