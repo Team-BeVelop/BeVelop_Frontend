@@ -15,14 +15,28 @@ const ProjectDetailContainer = () => {
   useEffect(() => {
     dispatch(getStudy(token, id));
   }, []);
-
+  console.log(studyDetail);
   return (
     <>
       <Container>
         <Wrap>
-          <ProjectDetailTop />
+          <ProjectDetailTop
+            division={studyDetail && studyDetail.division}
+            owner={studyDetail && studyDetail.owner.name}
+            title={studyDetail && studyDetail.title}
+          />
           <Line />
-          <ProjectDetailBottom />
+          <ProjectDetailBottom
+            shortTitle={studyDetail && studyDetail.shortTitle}
+            field={studyDetail && studyDetail.fieldList[0].fieldName}
+            startDate={studyDetail && studyDetail.startDate}
+            endDate={studyDetail && studyDetail.endDate}
+            jobList={studyDetail && studyDetail.jobList}
+            emailUrl={studyDetail && studyDetail.emailUrl}
+            kakaoUrl={studyDetail && studyDetail.kakaoUrl}
+            desc={studyDetail && studyDetail.description}
+            web={studyDetail && "https://m/naver.com"}
+          />
         </Wrap>
         <ProjectDetailButton />
       </Container>

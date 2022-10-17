@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-const ProjectDetailTop = () => {
+const ProjectDetailTop = ({ division, owner, title }: any) => {
   return (
     <>
       <Wrap>
         <TagWrap>
-          <div className="tag">사이드 프로젝트</div>
+          <div className="tag">{division}</div>
         </TagWrap>
-        <Title>사용자 개선 프로젝트 함께 하실 분 찾아요!</Title>
+        <Title>{title}</Title>
         <Bottom>
           <img src="/img/suggest1.png" alt="" />
-          <div>감성달빛</div>
+          <div>{owner}</div>
           <div className="date">마지막 접속 1시간 전</div>
         </Bottom>
       </Wrap>
@@ -70,9 +70,6 @@ const Bottom = styled.span`
   color: #6b7684;
   margin-top: 22px;
   margin-bottom: 34px;
-  @media screen and (max-width: 480px) {
-    display: none;
-  }
   img {
     width: 38px;
     height: 38px;

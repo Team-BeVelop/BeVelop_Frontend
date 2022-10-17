@@ -1,26 +1,33 @@
 import styled from "styled-components";
 
-const ProjectDetailBottom = () => {
+const ProjectDetailBottom = ({
+  shortTitle,
+  field,
+  startDate,
+  endDate,
+  jobList,
+  emailUrl,
+  kakaoUrl,
+  desc,
+  web,
+}: any) => {
   return (
     <>
       <Wrap>
         <Introduce>
           <Title>한줄소개</Title>
-          <Content>
-            현재 사이드 프로젝트 진행중에 있으며 초기 아이디어 구상은 끝낸
-            상태입니다. 많이 지원해주세요!!!
-          </Content>
+          <Content>{shortTitle}</Content>
         </Introduce>
         <BasicInfo>
           <Title>기본정보</Title>
           <Content>
             <div className="row">
               <div className="subtitle">연관분야</div>
-              <div className="desc">사이드 프로젝트</div>
+              <div className="desc">{field}</div>
             </div>
             <div className="row">
               <div className="subtitle">진행기간</div>
-              <div className="desc">7월 1일(금) ~ 9월 30일(금)</div>
+              <div className="desc">{startDate + " ~ " + endDate}</div>
             </div>
             <div className="row">
               <div className="subtitle">모집직무</div>
@@ -28,7 +35,7 @@ const ProjectDetailBottom = () => {
             </div>
             <div className="row">
               <div className="subtitle">웹사이트</div>
-              <div className="underline">https://m/naver.com</div>
+              <div className="underline">{web}</div>
             </div>
           </Content>
         </BasicInfo>
@@ -36,26 +43,14 @@ const ProjectDetailBottom = () => {
           <Title>연락방식</Title>
           <div className="right">
             <p>이메일</p>
-            <input className="margin" />
+            <input className="margin" value={emailUrl} />
             <p>오픈 카카오톡 링크</p>
-            <input />
+            <input value={kakaoUrl} />
           </div>
         </Contact>
         <DetailInfo>
           <Title>상세정보</Title>
-          <Content>
-            스트릿 패션을 올리고 판매할 수 있는 패션 스타트업 플랫폼입니다.
-            피그마 사용하시고 패션에 관심 많으신 UI디자이너를 구하고 있습니다.
-            함께 서비스를 이끌어 가고 싶습니다. 스트릿 패션을 올리고 판매할 수
-            있는 패션 스타트업 플랫폼입니다. 피그마 사용하시고 패션에 관심
-            많으신 UI디자이너를 구하고 있습니다. 함께 서비스를 이끌어 가고
-            싶습니다. 스트릿 패션을 올리고 판매할 수 있는 패션 스타트업
-            플랫폼입니다. 피그마 사용하시고 패션에 관심 많으신 UI디자이너를
-            구하고 있습니다. 함께 서비스를 이끌어 가고 싶습니다 함께 서비스를
-            이끌어 가고 싶습니다. 스트릿 패션을 올리고 판매할 수 있는 패션
-            스타트업 플랫폼입니다. 피그마 사용하시고 패션에 관심 많으신
-            UI디자이너를 구하고 있습니다. 함께 서비스를 이끌어 가고 싶습니다.
-          </Content>
+          <Content>{desc}</Content>
         </DetailInfo>
       </Wrap>
     </>
