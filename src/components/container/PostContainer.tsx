@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getProjectList } from "../../api/project";
+import { getProjectList } from "../../modules/project";
+
 import PostBanner from "../Post/PostBanner";
 import PostMenu from "../Post/PostMenu";
 import PostSection from "../Post/PostSection";

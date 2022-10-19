@@ -7,9 +7,21 @@ import {
   frontendFieldData,
 } from "../../Data/FieldData";
 
-const PostNewStackModal = ({ showModal, setShowModal }: any) => {
+const PostNewStackModal = ({
+  showModal,
+  setShowModal,
+  stack,
+  setStack,
+}: any) => {
+  // 창닫기
   const closeModal = () => setShowModal(false);
-  const [fields, setFields] = useState();
+  // 취소버튼
+  const resetStackList = () => {
+    setStack([]);
+    closeModal();
+  };
+  console.log(stack);
+
   return (
     <>
       <Wrap>
@@ -21,8 +33,8 @@ const PostNewStackModal = ({ showModal, setShowModal }: any) => {
                 key={v.value}
                 object={v}
                 mobwidth={"100%"}
-                list={fields}
-                setList={setFields}
+                list={stack}
+                setList={setStack}
               />
             ))}
           </div>
@@ -33,8 +45,8 @@ const PostNewStackModal = ({ showModal, setShowModal }: any) => {
                 key={v.value}
                 object={v}
                 mobwidth={"100%"}
-                list={fields}
-                setList={setFields}
+                list={stack}
+                setList={setStack}
               />
             ))}
           </div>
@@ -45,13 +57,13 @@ const PostNewStackModal = ({ showModal, setShowModal }: any) => {
                 key={v.value}
                 object={v}
                 mobwidth={"100%"}
-                list={fields}
-                setList={setFields}
+                list={stack}
+                setList={setStack}
               />
             ))}
           </div>
           <ButtonBox>
-            <button className="leftBtn" onClick={closeModal}>
+            <button className="leftBtn" onClick={resetStackList}>
               취소
             </button>
             <button className="rightBtn" onClick={closeModal}>

@@ -48,7 +48,7 @@ export const frontendFieldData = [
   { value: "React", name: "React" },
   { value: "Vue", name: "Vue" },
   { value: "Svelte", name: "Svelte" },
-  { value: "Nextjs", name: "FigNextjsma" },
+  { value: "Nextjs", name: "Nextjs" },
 ];
 
 export const backendFieldData = [

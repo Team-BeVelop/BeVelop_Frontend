@@ -1,12 +1,18 @@
 import { useState } from "react";
 import styled from "styled-components";
 import TwoButton from "../../common/TwoButton";
+import { DivisionData, PeriodData } from "../../Data/FieldData";
 import PostNewInfo from "../PostNew/PostNewInfo";
 import PostNewWrite from "../PostNew/PostNewWrite";
 
 const PostNewContainer = () => {
   const [showModal, setShowModal] = useState(false);
+  const [division, setDivision] = useState(DivisionData[0]); //모집구분
   const [stack, setStack] = useState([]);
+  const [fields, setFields] = useState([]); // 연관분야
+  const [period, setPeriod] = useState(PeriodData[0]); // 개발기간
+  const [github, setGithub] = useState("");
+  const [website, setWebsite] = useState("");
 
   return (
     <Container>
@@ -14,8 +20,18 @@ const PostNewContainer = () => {
         <PostNewInfo
           showModal={showModal}
           setShowModal={setShowModal}
+          division={division}
+          setDivision={setDivision}
           stack={stack}
           setStack={setStack}
+          fields={fields}
+          setFields={setFields}
+          period={period}
+          setPeriod={setPeriod}
+          github={github}
+          setGithub={setGithub}
+          website={website}
+          setWebsite={setWebsite}
         />
         <PostNewWrite />
       </Wrap>

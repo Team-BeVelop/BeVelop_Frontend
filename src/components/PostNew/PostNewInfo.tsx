@@ -1,13 +1,34 @@
-import { useState } from "react";
 import styled from "styled-components";
 import StyledCheckbox from "../../common/StyledCheckbox";
 import StyledDropDown from "../../common/StyledDropDown";
 import { DivisionData, FieldData, PeriodData } from "../../Data/FieldData";
 import PostNewStackModal from "./PostNewStackModal";
 
-const PostNewInfo = ({ showModal, setShowModal, stack, setStack }: any) => {
-  const [period, setPeriod] = useState(PeriodData[0]);
-  const [division, setDivision] = useState(DivisionData[0]);
+const PostNewInfo = ({
+  showModal,
+  setShowModal,
+  division,
+  setDivision,
+  stack,
+  setStack,
+  fields,
+  setFields,
+  period,
+  setPeriod,
+  github,
+  setGithub,
+  website,
+  setWebsite,
+}: any) => {
+  console.log(stack);
+  // 개발스택 + 버튼 눌렀을 때
+  const clickPlusButton = () => {
+    setStack([]);
+    setShowModal(true);
+  };
+  const clickXButton = (value: string) => {
+    setStack(stack.filter((item: string) => item !== value));
+  };
   return (
     <>
       <Wrap>
@@ -27,17 +48,18 @@ const PostNewInfo = ({ showModal, setShowModal, stack, setStack }: any) => {
           <Box>
             <Title>개발스택</Title>
             <StackWrap>
-              <button onClick={() => setShowModal(true)}>
+              <button onClick={clickPlusButton}>
                 <img src="/img/icon_plus.png" alt="" />
               </button>
               <div className="stackList">
                 {stack.map((v: any) => (
-                  <div className="stackItem">
+                  <div className="stackItem" key={v}>
                     {v}
                     <img
                       src="/img/icon_close.png"
                       alt=""
                       className="closeButton"
+                      onClick={() => clickXButton(v)}
                     />
                   </div>
                 ))}
@@ -48,7 +70,12 @@ const PostNewInfo = ({ showModal, setShowModal, stack, setStack }: any) => {
             <Title>연관분야</Title>
             <div className="right">
               {FieldData.map((v) => (
-                <StyledCheckbox key={v.value} object={v} />
+                <StyledCheckbox
+                  key={v.value}
+                  object={v}
+                  list={fields}
+                  setList={setFields}
+                />
               ))}
             </div>
           </Field>
@@ -65,13 +92,26 @@ const PostNewInfo = ({ showModal, setShowModal, stack, setStack }: any) => {
           </Box>
           <Title>사이트 링크</Title>
           <SiteWrap>
-            <input placeholder="github 링크를 입력해주세요." />
-            <input placeholder="website 링크를 입력해주세요." />
+            <input
+              placeholder="github 링크를 입력해주세요."
+              value={github}
+              onChange={(e) => setGithub(e.target.value)}
+            />
+            <input
+              placeholder="website 링크를 입력해주세요."
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
           </SiteWrap>
         </Content>
       </Wrap>
       {showModal && (
-        <PostNewStackModal showModal={showModal} setShowModal={setShowModal} />
+        <PostNewStackModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          stack={stack}
+          setStack={setStack}
+        />
       )}
     </>
   );
