@@ -10,6 +10,7 @@ type User = {
   pw: string;
 };
 const Wrap = styled.div`
+  z-index: 10;
   position: absolute;
   justify-content: center;
   align-items: center;
