@@ -38,14 +38,14 @@ const ProjectNewContainer = () => {
         desc,
         division.value,
         email,
-        "2022-10-20",
-        "2022-10-20",
+        "2023-01-28",
+        "2022-12-30",
         kakao,
         10,
         jobs,
         fields,
         introduce,
-        "2022-10-22",
+        "2022-12-28",
         title
       )
     );
