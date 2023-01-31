@@ -1,253 +1,9 @@
-import React, { useCallback, useState } from "react";
-import styled from "styled-components";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import React, { useCallback, useMemo, useState } from "react";
+import * as u from "./style/UserInfoInput";
 import { useDispatch } from "react-redux";
 import { UserInfo } from "../../modules/user";
-
-const UserInfoWrap = styled.aside`
-    display: table;
-    margin: 0 auto;
-    transform: translate(0px, -80px);
-`;
-const UserImg = styled.div<{ bgImg: any }>`
-    width: 116px;
-    height: 116px;
-    background: #f2f4f6;
-    border: 3px solid #ffffff;
-    border-radius: 50%;
-    background-image: ${props =>
-        props.bgImg == "filed"
-            ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Ellipse.png')"
-            : ""};
-    background-size: cover;
-    margin-bottom: 20px;
-`;
-const Plus = styled(IoIosAddCircleOutline)`
-    font-size: 30px;
-    border-radius: 50%;
-    color: #fff;
-    background-color: #000;
-`;
-const NickName = styled.div`
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 26px;
-    /* identical to box height */
-
-    font-feature-settings: "tnum" on, "lnum" on;
-
-    color: #000000;
-    p {
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        /* identical to box height */
-
-        font-feature-settings: "tnum" on, "lnum" on;
-
-        color: #000000;
-        margin-bottom: 18px;
-    }
-    input {
-        width: 436px;
-        height: 48px;
-        background: #ffffff;
-        border: 1px solid #dadee2;
-        border-radius: 6px;
-    }
-    input:focus {
-        border: 1px solid #7a5df5;
-    }
-`;
-const Button = styled.div`
-    margin-top: 20px;
-    width: 436px;
-    height: 48px;
-
-    background: #7a5df5;
-    border-radius: 6px;
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 48px;
-    /* identical to box height */
-    text-align: center;
-    font-feature-settings: "tnum" on, "lnum" on;
-
-    color: #ffffff;
-`;
-const Profile = styled.div`
-    margin: 34px 0 18px 0;
-    p {
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        /* identical to box height */
-
-        font-feature-settings: "tnum" on, "lnum" on;
-
-        color: #000000;
-    }
-`;
-const Flex = styled.div`
-    display: flex;
-    justify-content: space-between;
-    ul.none {
-        display: none;
-    }
-    ul {
-        li {
-            width: 212px;
-            height: 48px;
-            font-family: "Pretendard";
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 48px;
-            /* identical to box height */
-            text-align: center;
-            font-feature-settings: "tnum" on, "lnum" on;
-            color: #8b95a1;
-            border: 1px solid #f2f4f6;
-        }
-    }
-`;
-const Filter = styled.div`
-    display: flex;
-    justify-content: space-around;
-    width: 212px;
-    height: 48px;
-    background: #ffffff;
-    border: 1px solid #f2f4f6;
-    border-radius: 6px;
-    align-items: center;
-    text-align: center;
-    margin-top: 19px;
-    p {
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        /* identical to box height */
-
-        text-align: center;
-        font-feature-settings: "tnum" on, "lnum" on;
-
-        color: #8b95a1;
-    }
-`;
-const Portfolio = styled.div`
-    margin: 34px 0 18px 0;
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    /* identical to box height */
-
-    font-feature-settings: "tnum" on, "lnum" on;
-
-    color: #000000;
-`;
-const Skill = styled.div`
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    /* identical to box height */
-
-    font-feature-settings: "tnum" on, "lnum" on;
-
-    color: #000000;
-`;
-const Box = styled.input`
-    display: block;
-    width: 436px;
-    height: 48px;
-    background: #ffffff;
-    border: 1px solid #f2f4f6;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    margin-top: 18px;
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 48px;
-    padding-left: 20px;
-    /* identical to box height */
-
-    font-feature-settings: "tnum" on, "lnum" on;
-
-    color: #8b95a1;
-    :focus {
-        border: 1px solid #7a5df5;
-    }
-`;
-const SkillBoxWrap = styled.div`
-    margin-top: 22px;
-    width: 436px;
-    display: inline-block;
-`;
-const SkillBox = styled.div`
-    width: 72px;
-    height: 37px;
-    background: #f2f4f6;
-    border-radius: 6px;
-`;
-
-const SkillList = styled.div`
-    width: 350px;
-    height: 37px;
-    border: 1px dotted #ccc;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-around;
-    p {
-        display: inline-block;
-        color: #000;
-        padding: 0 10px;
-        line-height: 37px;
-        border: 1px solid #000;
-        border-radius: 10px;
-    }
-`;
-
-const Contact = styled.div`
-    margin-top: 34px;
-    p {
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        /* identical to box height */
-
-        font-feature-settings: "tnum" on, "lnum" on;
-
-        color: #000000;
-    }
-    p:nth-child(2) {
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        /* identical to box height */
-
-        font-feature-settings: "tnum" on, "lnum" on;
-
-        color: #8b95a1;
-    }
-`;
+import SelectBox from "../../common/SelectBox";
+import { ENROLLMENT_SLEEPTIME, SKILL } from "../../Data/Filter";
 
 type User = {
     nickName: string;
@@ -258,9 +14,7 @@ type User = {
 };
 
 const User_first = () => {
-    const [fill, setFill] = useState<Boolean>(false);
-    const [open, setOpen] = useState<Boolean>(false);
-    const [open2, setOpen2] = useState<Boolean>(false);
+    const [fill, setFill] = useState<boolean>(false);
     const [Position, setPosition] = useState<string>("직무");
     const [Interest, setInterest] = useState<string>("관심분야");
     const [Stack, setStack] = useState<any>([]);
@@ -271,26 +25,13 @@ const User_first = () => {
         kakao: "",
         email: ""
     });
-
+    const [checked, setChecked] = useState<boolean[]>([]);
+    useMemo(() => {
+        setChecked(SKILL.map(() => false));
+    }, []);
     const handleFormInput = (e: any) => {
         setFormInput({ ...formInput, [e.target.name]: e.target.value });
     };
-
-    const onSelectItem = useCallback((e: any) => {
-        setPosition(e.target.innerHTML);
-        setOpen(false);
-    }, []);
-
-    const onSelectItem2 = useCallback((e: any) => {
-        setInterest(e.target.innerHTML);
-        setOpen2(false);
-    }, []);
-
-    const onSelectStack = useCallback((e: any) => {
-        const stack = window.prompt("스택작성");
-        Stack.push(stack);
-        console.log(Stack);
-    }, []);
 
     const dispatch = useDispatch<any>();
 
@@ -310,11 +51,11 @@ const User_first = () => {
     };
 
     return (
-        <UserInfoWrap>
-            <UserImg bgImg={fill ? "filed" : ""}>
-                <Plus onClick={() => setFill(true)} />
-            </UserImg>
-            <NickName>
+        <u.UserInfoWrap>
+            <u.UserImg bgImg={fill ? "filed" : ""}>
+                <u.Plus onClick={() => setFill(true)} />
+            </u.UserImg>
+            <u.NickName>
                 <p>닉네임</p>
                 <input
                     type={"text"}
@@ -322,88 +63,84 @@ const User_first = () => {
                     onChange={handleFormInput}
                     name="nickName"
                 />
-            </NickName>
-
-            <Profile>
+            </u.NickName>
+            <u.Intro>
+                <p>한줄 소개</p>
+                <textarea></textarea>
+            </u.Intro>
+            <u.Profile>
                 <p>프로필</p>
-                <Flex>
-                    <Filter onClick={() => setOpen(!open)}>
+                {/* <u.Flex>
+                    <u.Filter onClick={() => setOpen(!open)}>
                         <p>{Position}</p>
                         <img src="https://team-bevelop.github.io/BeVelop_Frontend/img/down.png" />
-                    </Filter>
+                    </u.Filter>
 
-                    <Filter onClick={() => setOpen2(!open2)}>
+                    <u.Filter onClick={() => setOpen2(!open2)}>
                         <p>{Interest}</p>
                         <img src="https://team-bevelop.github.io/BeVelop_Frontend/img/down.png" />
-                    </Filter>
-                </Flex>
-                <Flex>
-                    <ul className={open ? "" : "none"}>
-                        <li onClick={onSelectItem}>FE 개발자</li>
-                        <li onClick={onSelectItem}>BE 개발자</li>
-                        <li onClick={onSelectItem}>서버 개발자</li>
-                        <li onClick={onSelectItem}>AOS 개발자</li>
-                    </ul>
-                </Flex>
-                <Flex>
-                    <ul className={open2 ? "" : "none"}>
-                        <li onClick={onSelectItem2}>관심분야1</li>
-                        <li onClick={onSelectItem2}>관심분야2</li>
-                        <li onClick={onSelectItem2}>관심분야3</li>
-                        <li onClick={onSelectItem2}>관심분야4</li>
-                    </ul>
-                </Flex>
-            </Profile>
-            <Portfolio>
+                    </u.Filter>
+                </u.Flex> */}
+                <u.FilterArea>
+                    <SelectBox placeholder="직무" data={ENROLLMENT_SLEEPTIME} />
+                    <SelectBox
+                        placeholder="관심분야"
+                        data={ENROLLMENT_SLEEPTIME}
+                    />
+                </u.FilterArea>
+            </u.Profile>
+            <u.Portfolio>
                 <p>포트폴리오</p>
-                <Box
+                <u.Box
                     type={"text"}
                     placeholder="포트폴리오 첨부(PDF 권장)"
                     value={formInput.portFolio}
                     onChange={handleFormInput}
                     name="portFolio"
-                ></Box>
-                <Box
+                ></u.Box>
+                <u.Box
                     type={"text"}
                     placeholder="링크/URL"
                     value={formInput.link}
                     onChange={handleFormInput}
                     name="link"
-                ></Box>
-            </Portfolio>
-            <Skill>
+                ></u.Box>
+            </u.Portfolio>
+            <u.Skill>
                 <p>기술스택</p>
-                <SkillBoxWrap>
-                    <Flex>
-                        <SkillBox onClick={onSelectStack}></SkillBox>
-                        <SkillList>
-                            {Stack.map((index: any) => (
-                                <p>{index}</p>
-                            ))}
-                        </SkillList>
-                    </Flex>
-                </SkillBoxWrap>
-            </Skill>
-            <Contact>
+                <u.SkillBoxWrap>
+                    <u.SkillPlus></u.SkillPlus>
+                    <u.SkillBox>
+                        {SKILL.map((item, index) => {
+                            return (
+                                <u.SkillList bgColor={item.color}>
+                                    {item.name}
+                                </u.SkillList>
+                            );
+                        })}
+                    </u.SkillBox>
+                </u.SkillBoxWrap>
+            </u.Skill>
+            {/* <u.Contact>
                 <p>연락방식</p>
                 <p>제안자, 지원자 모두 수락할 시에만 연락처가 노출됩니다.</p>
-                <Box
+                <u.Box
                     type={"text"}
                     placeholder="이메일"
                     value={formInput.email}
                     onChange={handleFormInput}
                     name="email"
-                ></Box>
-                <Box
+                ></u.Box>
+                <u.Box
                     type={"text"}
                     placeholder="오픈카카오톡링크"
                     value={formInput.kakao}
                     onChange={handleFormInput}
                     name="kakao"
-                ></Box>
-            </Contact>
-            <Button onClick={Complete}>입력완료</Button>
-        </UserInfoWrap>
+                ></u.Box>
+            </u.Contact> */}
+            <u.Button onClick={Complete}>입력완료</u.Button>
+        </u.UserInfoWrap>
     );
 };
 

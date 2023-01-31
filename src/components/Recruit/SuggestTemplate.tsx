@@ -9,7 +9,7 @@ export type Suggest = {
 };
 
 const SuggestTemplate: React.FC<Suggest> = ({ tag, name, hashtag, img }) => {
-    const [checked, setChecked] = useState<Boolean>(false);
+    const [checked, setChecked] = useState<boolean>(false);
     return (
         <>
             <Container>

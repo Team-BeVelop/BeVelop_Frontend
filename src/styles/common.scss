@@ -1,6 +1,7 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 * {
     box-sizing: border-box;
+    font-size: 10px;
 }
 
 html {
@@ -10,10 +11,12 @@ html {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
         Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
         "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 10px;
 }
 
 body {
     background-color: #fff;
+    font-size: 10px;
 }
 
 a {
