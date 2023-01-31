@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export type CurrentMenuType = {
     current: number;
-    setCurrent: any;
+    setCurrent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const RecruitMenu: React.FC<CurrentMenuType> = ({ current, setCurrent }) => {

@@ -218,7 +218,7 @@ const User = ({
     Interest,
     index
 }: any) => {
-    const [fill, setFill] = useState<Boolean>(false);
+    const [fill, setFill] = useState<boolean>(false);
 
     const { Users } = useSelector((state: any) => ({
         Users: state.user

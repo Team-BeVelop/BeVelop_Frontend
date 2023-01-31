@@ -121,7 +121,7 @@ const ProjectTemplate: React.FC<Template> = ({
     hashtag,
     subjectbg
 }) => {
-    const [checked, setChecked] = useState<Boolean>(false);
+    const [checked, setChecked] = useState<boolean>(false);
 
     return (
         <>
