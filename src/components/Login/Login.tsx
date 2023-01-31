@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { auth, SignUp } from "../../modules/auth";
+import { Auth, SignUp } from "../../modules/auth";
 import { IoIosClose } from "react-icons/io";
 import { modal } from "../../modules/modal";
 import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../../useRedux/rootReducer";
 
 type User = {
     id: string;
@@ -173,7 +173,7 @@ const Button = styled.div`
 `;
 
 const Login = () => {
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
     const [signUp, setSignUp] = useState<any>(false);
     const [formInput, setFormInput] = useState<User>({
         id: "",
@@ -184,8 +184,8 @@ const Login = () => {
         pw: "",
         nickName: ""
     });
-    const { Users } = useSelector((state: any) => ({
-        Users: state.auth
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice
     }));
     const handleFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormInput({ ...formInput, [e.target.name]: e.target.value });
@@ -195,14 +195,19 @@ const Login = () => {
     };
     const isActive = !(formInput.id.length > 4 && formInput.pw.length > 4);
     const signInBtn = () => {
-        dispatch(auth(formInput.id, formInput.pw));
-        if (Users.action.type === "AUTH_ERROR")
-            alert("로그인에 실패하였습니다");
+        dispatch(Auth({ email: formInput.id, password: formInput.pw }));
+        if (Users.action === "AUTH_ERROR") alert("로그인에 실패하였습니다");
         OnclickPopUp();
     };
 
     const signUpBtn = () => {
-        dispatch(SignUp(signUpInput.id, signUpInput.pw, signUpInput.nickName));
+        dispatch(
+            SignUp({
+                email: signUpInput.id,
+                password: signUpInput.pw,
+                name: signUpInput.nickName
+            })
+        );
     };
 
     const OnclickPopUp = () => {
