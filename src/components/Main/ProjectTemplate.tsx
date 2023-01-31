@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 const TemplateWrap = styled.div`
@@ -118,6 +118,7 @@ export type Template ={
 const ProjectTemplate : React.FC<Template> = ({subject,title,hashtag,subjectbg}) => {
     const [checked, setChecked] = useState<Boolean>(false);
 
+    
 
 
     return(

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Dummy from "../../Data/Dummy";
 import HotDummy from "../../Data/HotDummy";
@@ -49,6 +49,7 @@ cursor: pointer;
 const RecruitSection = styled.section`
     display: flex;
     flex-wrap: wrap;
+    overflow: scroll;
     &::-webkit-scrollbar {
         display : none
         };
