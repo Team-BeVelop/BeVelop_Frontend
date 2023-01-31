@@ -9,53 +9,46 @@ const SIGNUP = "SIGNUP";
 const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 const SIGNUP_ERROR = "SIGNUP_ERROR";
 
+export const auth =
+    (email: string, password: string) => async (dispatch: any) => {
+        dispatch({ type: AUTH });
+        try {
+            const login = await authAPI.Login(email, password);
+            dispatch({ type: AUTH_SUCCESS, login: login });
+        } catch (e) {
+            dispatch({ type: AUTH_ERROR, error: e });
+        }
+    };
+export const SignUp =
+    (email: string, passowrd: string, name: string) =>
+    async (dispatch: any) => {
+        dispatch({ type: SIGNUP });
+        try {
+            const signup = await authAPI.SignUp(email, passowrd, name);
+            dispatch({ type: SIGNUP_SUCCESS, signup: signup });
+        } catch (e) {
+            dispatch({ type: SIGNUP_ERROR, error: e });
+        }
+    };
 
-export const auth = (email : string,password : string) =>
-async(dispatch :any) =>{
-    dispatch({type: AUTH});
-    try {
-        const login = await authAPI.Login(email, password);
-        dispatch({type: AUTH_SUCCESS,
-        login: login,
-        });
-    }catch (e){
-        dispatch({type: AUTH_ERROR, error: e});
-    }
-}
-export const SignUp = (email : string, passowrd : string, name : string) =>
-async(dispatch : any) =>{
-    dispatch({type:SIGNUP});
-    try{
-        const signup = await authAPI.SignUp(email,passowrd,name);
-        dispatch({type : SIGNUP_SUCCESS,
-        signup : signup,
-        })
-    }catch(e){
-        dispatch({type:SIGNUP_ERROR, error : e});
-    }
-}
-
-export const LogOut =
-() =>
-  async (dispatch: any) => {
+export const LogOut = () => async (dispatch: any) => {
     dispatch({ type: LOGOUT }); // 요청이 시작됨
     try {
-      dispatch({
-        type: LOGOUT_SUCCESS,
-        
-      }); // 성공
+        dispatch({
+            type: LOGOUT_SUCCESS
+        }); // 성공
     } catch (e) {
-      dispatch({ type: LOGOUT_ERROR, error: e }); // 실패
+        dispatch({ type: LOGOUT_ERROR, error: e }); // 실패
     }
-  };
+};
 
 const initialState = {
     isLoading: null,
     data: null,
-    error: null,
+    error: null
 };
-export default function auths(state = initialState, action : any) {
-    switch (action.type){
+export default function auths(state = initialState, action: any) {
+    switch (action.type) {
         case AUTH:
             return {
                 ...state,
@@ -70,21 +63,21 @@ export default function auths(state = initialState, action : any) {
 
                 isLoading: false,
                 data: action.login.data,
-                action : action,
-                error: null,
+                action: action,
+                error: null
             };
         case AUTH_ERROR:
-            return{
+            return {
                 ...state,
 
-            isLoading: false,
-            data: null,
-            action : action,
-            error: action.error,
+                isLoading: false,
+                data: null,
+                action: action,
+                error: action.error
             };
 
         case SIGNUP:
-            return{
+            return {
                 ...state,
 
                 isLoading: true,
@@ -92,44 +85,42 @@ export default function auths(state = initialState, action : any) {
                 error: null
             };
         case SIGNUP_SUCCESS:
-            return{
+            return {
                 ...state,
 
                 isLoading: false,
-                data : action.signup.data.msg,
-                error: null,
+                data: action.signup.data.msg,
+                error: null
             };
-            case SIGNUP_ERROR:
-                return{
-                    ...state,
+        case SIGNUP_ERROR:
+            return {
+                ...state,
                 isLoading: false,
-                data: null,
-                };
-
+                data: null
+            };
 
         case LOGOUT:
-            return{
+            return {
                 ...state,
-                
+
                 isLoading: true,
                 data: null,
                 error: null
-            }
-            case LOGOUT_SUCCESS:
-                return {
-                    ...state,
-                    isLoading: false,
-                    data : null,
-                    error: null,
-                };
-            case LOGOUT_ERROR:
-                return{
-                    ...state,
+            };
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
                 isLoading: false,
                 data: null,
-                };
-            default:
-                return state;
+                error: null
+            };
+        case LOGOUT_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                data: null
+            };
+        default:
+            return state;
     }
 }
-;

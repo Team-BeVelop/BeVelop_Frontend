@@ -1,22 +1,14 @@
 export const slides = [
     {
-        
-        image: 'ImageOne',
-        
+        image: "ImageOne"
     },
     {
-        
-        image: 'ImageTwo',
-        
+        image: "ImageTwo"
     },
     {
-        
-        image: 'ImageThree',
-        
+        image: "ImageThree"
     },
     {
-        
-        image: 'ImageFour',
-        
-    },
-]
+        image: "ImageFour"
+    }
+];
