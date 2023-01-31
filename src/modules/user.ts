@@ -1,28 +1,47 @@
-
 const USER = "USER"; //로그인 요청
 const USER_SUCCESS = "USER_SUCCESS";
 const USER_ERROR = "USER_ERROR";
 
-export const UserInfo = (nickName:string,portFolio :string, link : string,email : string, kakao : string,Position : string, Interest : string, Stack : string) =>
-async(dispatch :any) =>{
-    dispatch({type: USER});
-    try {
-        dispatch({type: USER_SUCCESS,
-        userinfo : {nickName : nickName, portFolio : portFolio, link : link, email : email, kakao : kakao, Position : Position, Interest : Interest, Stack : Stack},
-        });
-    }catch (e){
-        dispatch({type: USER_ERROR, error: e});
-    }
-}
+export const UserInfo =
+    (
+        nickName: string,
+        portFolio: string,
+        link: string,
+        email: string,
+        kakao: string,
+        Position: string,
+        Interest: string,
+        Stack: string
+    ) =>
+    async (dispatch: any) => {
+        dispatch({ type: USER });
+        try {
+            dispatch({
+                type: USER_SUCCESS,
+                userinfo: {
+                    nickName: nickName,
+                    portFolio: portFolio,
+                    link: link,
+                    email: email,
+                    kakao: kakao,
+                    Position: Position,
+                    Interest: Interest,
+                    Stack: Stack
+                }
+            });
+        } catch (e) {
+            dispatch({ type: USER_ERROR, error: e });
+        }
+    };
 
 const initialState = {
     isLoading: null,
     data: null,
-    error: null,
+    error: null
 };
 
-export default function users(state = initialState, action : any) {
-    switch (action.type){
+export default function users(state = initialState, action: any) {
+    switch (action.type) {
         case USER:
             return {
                 ...state,
@@ -37,21 +56,20 @@ export default function users(state = initialState, action : any) {
 
                 isLoading: false,
                 data: action.userinfo,
-                action : action,
-                error: null,
+                action: action,
+                error: null
             };
         case USER_ERROR:
-            return{
+            return {
                 ...state,
 
-            isLoading: false,
-            data: null,
-            action : action,
-            error: action.error,
+                isLoading: false,
+                data: null,
+                action: action,
+                error: action.error
             };
 
-            default:
-                return state;
+        default:
+            return state;
     }
 }
-;
