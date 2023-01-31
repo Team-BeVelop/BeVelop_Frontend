@@ -5,6 +5,9 @@ const AUTH_ERROR = "AUTH_ERROR";
 const LOGOUT = "LOGOUT";
 const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 const LOGOUT_ERROR = "LOGOUT_ERROR";
+const SIGNUP = "SIGNUP";
+const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+const SIGNUP_ERROR = "SIGNUP_ERROR";
 
 
 export const auth = (email : string,password : string) =>
@@ -17,6 +20,18 @@ async(dispatch :any) =>{
         });
     }catch (e){
         dispatch({type: AUTH_ERROR, error: e});
+    }
+}
+export const SignUp = (email : string, passowrd : string, name : string) =>
+async(dispatch : any) =>{
+    dispatch({type:SIGNUP});
+    try{
+        const signup = await authAPI.SignUp(email,passowrd,name);
+        dispatch({type : SIGNUP_SUCCESS,
+        signup : signup,
+        })
+    }catch(e){
+        dispatch({type:SIGNUP_ERROR, error : e});
     }
 }
 
@@ -67,6 +82,30 @@ export default function auths(state = initialState, action : any) {
             action : action,
             error: action.error,
             };
+
+        case SIGNUP:
+            return{
+                ...state,
+
+                isLoading: true,
+                data: null,
+                error: null
+            };
+        case SIGNUP_SUCCESS:
+            return{
+                ...state,
+
+                isLoading: false,
+                data : action.signup.data.msg,
+                error: null,
+            };
+            case SIGNUP_ERROR:
+                return{
+                    ...state,
+                isLoading: false,
+                data: null,
+                };
+
 
         case LOGOUT:
             return{

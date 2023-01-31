@@ -5,7 +5,7 @@ import RecruitContainer from "../components/container/RecruitContainer";
 const RecruitPage = () => {
   return (
     <>
-      <Header />
+      <Header bgStyle = ""/>
       <RecruitContainer />
     </>
   );

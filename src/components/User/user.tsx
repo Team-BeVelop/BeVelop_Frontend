@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 
+const Theme = {
+    Figma : '#1D1D1D',
+    피그마 : '#1D1D1D',
+    AdobeXD : '#450135',
+    XD : '#450135',
+    Zeplin : '#F69833',
+    제플린 : '#F69833',
+    재플린 : '#F69833',
+    Photoshop : '#005294',
+    포토샵 : '#005294',
+}
 const UserInfoWrap = styled.aside`
     transform: translate(0px,-50px);
     @media screen and (max-width:480px){
         display: table;
         margin: 0 auto;
-        
     }
 `
 const UserImg = styled.div<{bgImg : any}>`
@@ -187,23 +198,36 @@ margin-top: 22px;
     display: flex;
     justify-content: space-around;
 `
-const SkillBox = styled.div`
+const SkillBox = styled.div<{bg : string}>`
 
+    
     width: 30%;
 height: 37px;
-background: #F2F4F6;
+
+background: #450135;
 border-radius: 6px;
+p{
+    color: #fff;
+    line-height: 37px;
+    text-align: center;
+}
 `
 
-const User = () => {
+const User = ({nickName, portFolio, link,Position,Interest,index} : any) => {
     const [fill, setFill] = useState<Boolean>(false);
+    
+
+    const {Users} = useSelector((state : any)=>({
+        Users: state.user,
+    }));
+
     return(
         <UserInfoWrap>
             <UserImg bgImg = {fill ? "filed" : ""}>
                 <Plus onClick={()=>setFill(true)} />
             </UserImg>
             <NickName>
-                어휴하기싫어
+                {nickName}
             </NickName>
             <StatusBox>
                     <li>
@@ -223,31 +247,28 @@ const User = () => {
                         <p>공모전</p>
                     </li>
             </StatusBox>
-            <Button>프로필 수정하기</Button>
+            <Button >프로필 수정하기</Button>
             <Profile>
                 <p>프로필</p>
                 <Flex>
-                <Filter><p>직무</p><img src="https://team-bevelop.github.io/BeVelop_Frontend/img/down.png"/></Filter>
-                <Filter><p>관심분야</p><img src="https://team-bevelop.github.io/BeVelop_Frontend/img/down.png"/></Filter>
+                <Filter><p>{Position}</p></Filter>
+                <Filter><p>{Interest}</p></Filter>
                 </Flex>
             </Profile>
             <Portfolio>
                 <p>포트폴리오</p>
-                <Box>포트폴리오 첨부(PDF 권장)</Box>
-                <Box>링크/URL</Box>
+                <Box>{portFolio}</Box>
+                <Box>{link}</Box>
             </Portfolio>
             <Skill>
             <p>기술스택</p>
             <SkillBoxWrap>
-                <SkillBox>
-
+                {Users.data.Stack.map((index : any)=>
+                    <SkillBox bg={index}>
+                        <p>{index}</p>
                 </SkillBox>
-                <SkillBox>
-
-                </SkillBox>
-                <SkillBox>
-
-                </SkillBox>
+                )}
+                
             </SkillBoxWrap>
             </Skill>
         </UserInfoWrap>

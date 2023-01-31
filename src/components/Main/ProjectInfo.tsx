@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Dummy from "../../Data/Dummy";
 import HotDummy from "../../Data/HotDummy";
@@ -48,16 +48,20 @@ cursor: pointer;
 
 const RecruitSection = styled.section`
     display: flex;
-    overflow: hidden;
-    overflow-x: scroll;
+    flex-wrap: wrap;
+    overflow: scroll;
     &::-webkit-scrollbar {
         display : none
         };
+        @media screen and (max-width : 420px){
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+}
 `
 const HotProjectSection = styled.section`
     display: flex;
-    overflow: hidden;
-    overflow-x: scroll; 
+    flex-wrap: wrap;
     &::-webkit-scrollbar {
         display : none
         };
@@ -78,7 +82,7 @@ const ProjectInfo  = () => {
         </TitleWrap>
         <RecruitSection>
             {dummy.map((index,i)=>(
-                (index.id <= 3 ?
+                (index.id <= 8 ?
                 <ProjectTemplate
                 key={i}
                 subjectbg={index.subject}
@@ -98,7 +102,7 @@ const ProjectInfo  = () => {
         </TitleWrap>
         <HotProjectSection>
             {Hot.map((index,i)=>(
-                (index.id <= 3 ?
+                (index.id <= 2 ?
                 <HotProjectTemplate
                 key={i}
                 title={index.title}

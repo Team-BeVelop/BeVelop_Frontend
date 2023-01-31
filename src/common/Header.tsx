@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { slides } from '../Data/Slides';
 import { modal } from "../modules/modal";
 
 
@@ -108,17 +110,24 @@ color: #6B7684;
     }
 }
 `
-
-const ContentWrap = styled.div<{bgStyle : any}>`
+const SlideWrap = styled.div`
+    display: flex;
+    overflow: hidden;
     width: 100%;
-    height: 300px;
     
-    background-image: ${(props) => props.bgStyle == "border" ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_764.png')" : "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_725.png')"};
+`
+
+const ContentWrap = styled.div<{bgStyle : any,bgUrl : any}>`
+    width: 100%;
+    padding: 40px 0 40px 0;
     
+    background-image: ${(props) => props.bgStyle == "border" || props.bgUrl == 1 ? "url('img/Rectangle1.png')" : props.bgUrl == 0 ? "url('img/Rectangle0.png')" : "url('img/Rectangle2.png')"};
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: ${(props ) => props.bgStyle == "border" ? "0 0 150px" : "0"};
     
     .title{
-        padding: 80px 0 0 0;
+        
         width: 80%;
         max-width: 1400px;
         margin: 0 auto;
@@ -150,10 +159,8 @@ color: #000000;
     }
     @media screen and (max-width:480px){
         background-image: url('https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_724.png');
-        background-size: contain;
+        background-size: cover;
         background-position: left;
-        height: 206px;
-        padding: 63px 0px 0 20px;
 
         .title{
             padding: 0;
@@ -173,12 +180,33 @@ export type bgStyle ={
 }
 
 const Header :React.FC<bgStyle> = ({bgStyle}) => { 
+    const [isLogin, setIsLogin] = useState<boolean>(false);
+    const [Slide, setSlide] = useState<number>(0);
+    const length = 3;
+    const timeout = useRef<any>(null);
+    const {Users} = useSelector((state : any)=>({
+        Users : state.auth,
+    }));
+
     const dispatch = useDispatch();
     const OnclickPopUp = () => {
         dispatch(modal());
       };
     
+      useEffect(()=> {
+        const nextSlide = () => {
+            setSlide((Slide : number) => (Slide === length -1 ? 0 : Slide +1))
+        }
+        return function() {
+            if(timeout.current){
+                clearTimeout(timeout.current);
+            }
+        }
+    },[Slide,length])
 
+    useEffect(()=>{
+        if(Users.data !== null)setIsLogin(true)
+    },[])
 
     return (
         <>
@@ -188,18 +216,22 @@ const Header :React.FC<bgStyle> = ({bgStyle}) => {
             <Menus>
                 <li>홈</li>
                 <li>팀원구인</li>
-                <li>프로젝트</li>
-                <li>공모전</li>
+                <li>포스트</li>
             </Menus>
-            <USER>
+            {isLogin ? <USER>
                 <p onClick={OnclickPopUp}>로그인</p>
-            </USER>
+            </USER> : <USER>
+                <p onClick={OnclickPopUp}>내 정보</p>
+            </USER>}
+            
             </NavWrap>
         </HeaderWrap>
-        <ContentWrap bgStyle={bgStyle}>
+        <SlideWrap>
+        <ContentWrap bgUrl = {Slide} bgStyle={bgStyle}>
         <h2 className="title">사이드 프로젝트에서 <br/>하나의 수입 수단까지</h2>
         <p>스토리 자세히 보기 {'>'}</p>
         </ContentWrap>
+        </SlideWrap>
         </>
     )
 }
