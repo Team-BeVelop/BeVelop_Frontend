@@ -1,6 +1,8 @@
-const MODAL = "rootReducer/MODAL";
+const MODAL = "MODAL";
 
-export const modal = () => ({ type: MODAL });
+export const modal = () => ({
+    type: MODAL
+});
 const initialState = {
     Modal: false
 };
@@ -8,7 +10,10 @@ const initialState = {
 export default function actions(state = initialState, action: any) {
     switch (action.type) {
         case MODAL:
-            return { ...state, Modal: !state.Modal };
+            return {
+                ...state,
+                Modal: action.Modal
+            };
         default:
             return state;
     }

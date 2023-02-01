@@ -197,7 +197,6 @@ const Login = () => {
     const signInBtn = () => {
         dispatch(Auth({ email: formInput.id, password: formInput.pw }));
         if (Users.action === "AUTH_ERROR") alert("로그인에 실패하였습니다");
-        OnclickPopUp();
     };
 
     const signUpBtn = () => {
@@ -210,14 +209,10 @@ const Login = () => {
         );
     };
 
-    const OnclickPopUp = () => {
-        dispatch(modal());
-    };
-
     return (
         <Wrap>
             <LoginBox>
-                <Button onClick={OnclickPopUp}>
+                <Button>
                     <IoIosClose />
                 </Button>
                 <h1 className="logo">BeVelop</h1>

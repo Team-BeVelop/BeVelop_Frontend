@@ -18,7 +18,7 @@ const Wrap = styled.div`
 
 const UserPage = () => {
     const { Modal } = useSelector((state: any) => ({
-        Modal: state.modal.Modal
+        Modal: state.modal
     }));
     return (
         <>

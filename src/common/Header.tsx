@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { slides } from "../Data/Slides";
 import { modal } from "../modules/modal";
+import { RootState, useAppDispatch } from "../useRedux/rootReducer";
 
 const HeaderWrap = styled.header`
     display: flex;
     width: 100%;
+    height: 6.6rem;
     @media screen and (max-width: 480px) {
         display: block;
     }
@@ -183,11 +185,11 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
     const [Slide, setSlide] = useState<number>(0);
     const length = 3;
     const timeout = useRef<any>(null);
-    const { Users } = useSelector((state: any) => ({
-        Users: state.auth
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice
     }));
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const OnclickPopUp = () => {
         dispatch(modal());
     };
