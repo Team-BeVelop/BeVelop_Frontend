@@ -5,6 +5,7 @@ import Header from "../common/Header";
 import MainContainer from "../components/container/MainContainer";
 import Login from "../components/Login/Login";
 import { Helmet } from "react-helmet";
+import { RootState } from "../useRedux/rootReducer";
 
 const Wrap = styled.div`
     .bg {
@@ -18,7 +19,7 @@ const Wrap = styled.div`
 
 const MainPage = () => {
     const { Modal } = useSelector((state: any) => ({
-        Modal: state.modal.Modal
+        Modal: state.modal
     }));
     return (
         <>
@@ -31,14 +32,14 @@ const MainPage = () => {
                 <meta property="og:title" content="BeVelop" />
             </Helmet>
             <Header bgStyle="" />
-            {Modal ? (
+            {/* {Modal.Modal ? (
                 <Wrap>
                     <div className="bg"></div>
                     <Login />
                 </Wrap>
             ) : (
                 ""
-            )}
+            )} */}
             <MainContainer />
         </>
     );
