@@ -191,7 +191,7 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
 
     const dispatch = useAppDispatch();
     const OnclickPopUp = () => {
-        dispatch(modal());
+        dispatch(modal({ Modal: true }));
     };
 
     useEffect(() => {

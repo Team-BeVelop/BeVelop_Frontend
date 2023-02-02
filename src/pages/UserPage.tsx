@@ -32,7 +32,7 @@ const UserPage = () => {
             </Helmet>
             <Header bgStyle="border" />
             <UserContainer />
-            {Modal ? (
+            {Modal.Modal ? (
                 <Wrap>
                     <div className="bg"></div>
                     <Login />

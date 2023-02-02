@@ -212,7 +212,7 @@ const Login = () => {
     return (
         <Wrap>
             <LoginBox>
-                <Button>
+                <Button onClick={() => dispatch(modal({ Modal: false }))}>
                     <IoIosClose />
                 </Button>
                 <h1 className="logo">BeVelop</h1>

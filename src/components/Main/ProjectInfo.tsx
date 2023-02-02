@@ -100,13 +100,13 @@ const ProjectInfo = () => {
             <section>
                 <TitleWrap>
                     <Title props="HOT">
-                        <span>HOT</span>한 프로젝트
+                        <span> HOT</span>한 포스트
                     </Title>
                     <The>더보기</The>
                 </TitleWrap>
                 <HotProjectSection>
                     {Hot.map((index, i) =>
-                        index.id <= 2 ? (
+                        index.id <= 6 ? (
                             <HotProjectTemplate
                                 key={i}
                                 title={index.title}

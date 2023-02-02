@@ -18,7 +18,7 @@ const UserWrap = styled.main`
 const UserContainer = () => {
     const [fix, setFix] = useState<boolean>(false);
     const { Users } = useSelector((state: any) => ({
-        Users: state.user
+        Users: state.users
     }));
 
     return (
