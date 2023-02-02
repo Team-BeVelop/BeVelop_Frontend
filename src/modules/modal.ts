@@ -1,7 +1,8 @@
 const MODAL = "MODAL";
 
-export const modal = () => ({
-    type: MODAL
+export const modal = ({ Modal }: { Modal: boolean }) => ({
+    type: MODAL,
+    Modal: Modal
 });
 const initialState = {
     Modal: false

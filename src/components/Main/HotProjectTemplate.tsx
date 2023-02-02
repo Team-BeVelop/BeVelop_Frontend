@@ -2,12 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const HotWrap = styled.div`
-    width: 30%;
+    width: 30.76%;
     height: auto;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 6px;
+    margin-bottom: 3.4rem;
+
     & {
-        margin-right: 52px;
+        margin-right: 3.85%;
     }
-    &:last-child {
+    &:nth-child(3n) {
         margin-right: 0px;
     }
     @media screen and (max-width: 460px) {
@@ -21,20 +26,23 @@ const Tumbnail = styled.div`
     width: 100%;
     height: auto;
     margin-bottom: 20px;
+
     img {
         width: 100%;
     }
 `;
+const TitleArea = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.2rem;
+`;
 const Title = styled.div`
-    display: inline-block;
-    width: 70%;
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
     font-feature-settings: "tnum" on, "lnum" on;
-
     color: #000000;
 `;
 const Views = styled.div`
@@ -54,15 +62,19 @@ const Views = styled.div`
 `;
 const Content = styled.div`
     width: 100%;
-    margin-top: 14px;
+    height: 3.8rem;
     word-break: keep-all;
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
     font-feature-settings: "tnum" on, "lnum" on;
-
+    margin: 1.4rem 0 2.1rem 0;
+    padding: 0 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
     color: #6b7684;
     @media screen and (max-width: 460px) {
         width: 100%;
@@ -73,16 +85,15 @@ const Content = styled.div`
     }
 `;
 const Hash = styled.div`
-    margin-top: 24px;
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     /* identical to box height */
-    margin-bottom: 34px;
-    font-feature-settings: "tnum" on, "lnum" on;
 
+    font-feature-settings: "tnum" on, "lnum" on;
+    margin: 0 1.2rem 2.2rem 1.2rem;
     color: #8b95a1;
     @media screen and (max-width: 460px) {
         margin-top: 10px;
@@ -110,8 +121,10 @@ const HotProjectTemplate: React.FC<HotTemplate> = ({
                 <Tumbnail>
                     <img src={tumb} />
                 </Tumbnail>
-                <Title>{title}</Title>
-                <Views>조회수 {views}</Views>
+                <TitleArea>
+                    <Title>{title}</Title>
+                    <Views>조회수 {views}</Views>
+                </TitleArea>
                 <Content>{contents}</Content>
                 <Hash>{hash}</Hash>
             </HotWrap>

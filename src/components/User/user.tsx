@@ -221,7 +221,7 @@ const User = ({
     const [fill, setFill] = useState<boolean>(false);
 
     const { Users } = useSelector((state: any) => ({
-        Users: state.user
+        Users: state.users.data
     }));
 
     return (
@@ -268,7 +268,7 @@ const User = ({
             <Skill>
                 <p>기술스택</p>
                 <SkillBoxWrap>
-                    {Users.data.Stack.map((index: any) => (
+                    {Users.Stack.map((index: any) => (
                         <SkillBox bg={index}>
                             <p>{index}</p>
                         </SkillBox>

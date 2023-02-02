@@ -82,8 +82,13 @@ const User_first = () => {
                     </u.Filter>
                 </u.Flex> */}
                 <u.FilterArea>
-                    <SelectBox placeholder="직무" data={ENROLLMENT_SLEEPTIME} />
                     <SelectBox
+                        setState={setPosition}
+                        placeholder="직무"
+                        data={ENROLLMENT_SLEEPTIME}
+                    />
+                    <SelectBox
+                        setState={setInterest}
                         placeholder="관심분야"
                         data={ENROLLMENT_SLEEPTIME}
                     />

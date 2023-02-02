@@ -2,17 +2,18 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 const TemplateWrap = styled.div`
-    width: 30%;
-    min-width: 205px;
-    height: 205px;
+    width: 23.76%;
+
+    height: 12.2rem;
     background: #ffffff;
     border: 1px solid #eeeeee;
     border-radius: 6px;
     margin-bottom: 34px;
+    padding: 0 1.7rem;
     & {
-        margin-right: 3%;
+        margin-right: 1.65%;
     }
-    &:last-child {
+    &:nth-child(4n) {
         margin-right: 0px;
     }
     @media screen and (max-width: 420px) {
@@ -23,10 +24,8 @@ const Flex = styled.div`
     display: flex;
     justify-content: space-between;
     div.unchecked {
-        margin-top: 17px;
+        margin-top: 2.4rem;
         width: 14px;
-        margin-top: 16px;
-        margin-right: 12px;
         height: 18px;
         background-image: url("https://team-bevelop.github.io/BeVelop_Frontend/img/Vector2.png");
         background-size: cover;
@@ -35,8 +34,7 @@ const Flex = styled.div`
     div.checked {
         width: 14px;
         height: 18px;
-        margin-top: 16px;
-        margin-right: 12px;
+        margin-top: 2.4rem;
         background-image: url("https://team-bevelop.github.io/BeVelop_Frontend/img/Vector.png");
         background-size: cover;
         background-repeat: no-repeat;
@@ -47,16 +45,15 @@ const Subject = styled.div<{ subjectbg: any }>`
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 1.2rem;
+    line-height: 2rem;
     /* identical to box height */
 
     font-feature-settings: "tnum" on, "lnum" on;
-
+    height: 2rem;
     color: #ffffff;
-    padding: 3px 8px;
-    margin-left: 17px;
-    margin-top: 14px;
+    padding: 0 0.8rem;
+    margin-top: 2.4rem;
     background: ${props =>
         props.subjectbg == "스타트업" ? "#FF26A8" : "#7A5DF5"};
     border-radius: 4px;
@@ -64,19 +61,22 @@ const Subject = styled.div<{ subjectbg: any }>`
         font-size: 12px;
     }
 `;
-const Contents = styled.div`
-    height: 100px;
-`;
 const Title = styled.div`
-    margin: 17px 43px 0px 17px;
+    display: inline-block;
+    width: 100%;
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 1.6rem;
+    line-height: 2.1rem;
     font-feature-settings: "tnum" on, "lnum" on;
-    word-break: keep-all;
+
     color: #000000;
+    p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
     @media screen and (max-width: 960px) {
         font-size: 16px;
     }
@@ -85,10 +85,10 @@ const Hash = styled.div`
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
     /* identical to box height */
-    margin: 7px 0 26px 17px;
+    margin: 1.4rem 0 0.5rem 0;
     font-feature-settings: "tnum" on, "lnum" on;
 
     color: #8b95a1;
@@ -98,16 +98,6 @@ const Hash = styled.div`
     @media screen and (max-width: 960px) {
         font-size: 12px;
     }
-`;
-const Button = styled.div`
-    width: 90%;
-    height: 38px;
-    margin: 0px auto;
-
-    text-align: center;
-    line-height: 38px;
-    background: #f2f4f6;
-    border-radius: 6px;
 `;
 export type Template = {
     title: string;
@@ -133,15 +123,13 @@ const ProjectTemplate: React.FC<Template> = ({
                         className={checked ? "checked" : "unchecked"}
                     ></div>
                 </Flex>
-                <Contents>
-                    <Title>
-                        <p>{title}</p>
-                    </Title>
-                    <Hash>
-                        <span>{hashtag}</span>
-                    </Hash>
-                </Contents>
-                <Button>지금참여하기</Button>
+
+                <Hash>
+                    <span>{hashtag}</span>
+                </Hash>
+                <Title>
+                    <p>{title}</p>
+                </Title>
             </TemplateWrap>
         </>
     );

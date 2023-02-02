@@ -4,9 +4,14 @@ import * as s from "./style/SelectBoxStyle";
 type SelectBoxProps = {
     placeholder: string;
     data: string[];
+    setState: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const SelectBox: React.FC<SelectBoxProps> = ({ placeholder, data }) => {
+const SelectBox: React.FC<SelectBoxProps> = ({
+    placeholder,
+    data,
+    setState
+}) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [select, setSelect] = useState<string>("");
 
@@ -28,6 +33,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({ placeholder, data }) => {
                         <s.SelectBoxLi
                             onClick={() => {
                                 setSelect(item);
+                                setState(item);
                                 setIsOpen(!isOpen);
                             }}
                             className="Title3_500"

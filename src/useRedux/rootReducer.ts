@@ -7,11 +7,13 @@ import {
 import logger from "redux-logger";
 import { AuthSlice } from "../modules/auth";
 import { useDispatch } from "react-redux";
-import { modal } from "../modules/modal";
+import actions from "../modules/modal";
+import users from "../modules/user";
 
 const reducer = combineReducers({
     AuthSlice: AuthSlice.reducer,
-    modal: modal
+    modal: actions,
+    users: users
 });
 
 const store = configureStore({
