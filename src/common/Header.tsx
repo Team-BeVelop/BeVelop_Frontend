@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { slides } from "../Data/Slides";
 import { modal } from "../modules/modal";
 
 const HeaderWrap = styled.header`
@@ -177,7 +175,7 @@ export type bgStyle = {
 const Header: React.FC<bgStyle> = ({ bgStyle }) => {
     const dispatch = useDispatch();
     const OnclickPopUp = () => {
-        dispatch(modal());
+        dispatch(modal({ Modal: true }));
     };
 
     return (
