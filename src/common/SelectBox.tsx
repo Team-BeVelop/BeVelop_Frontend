@@ -36,7 +36,6 @@ const SelectBox: React.FC<SelectBoxProps> = ({
                                 setState(item);
                                 setIsOpen(!isOpen);
                             }}
-                            className="Title3_500"
                             key={index}
                         >
                             {item}
