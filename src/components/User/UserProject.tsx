@@ -1,5 +1,7 @@
+import HotDummy from "../../Data/HotDummy";
 import React from "react";
 import styled from "styled-components";
+import HotProjectTemplate from "../../components/Main/HotProjectTemplate";
 
 const UserProjectWrap = styled.section`
     width: 70%;
@@ -82,6 +84,9 @@ const ProjectType = styled.div`
         padding-bottom: 10px;
         border-bottom: 2px solid #000000;
     }
+    span:nth-child(1) {
+        margin-left: 0px;
+    }
     @media screen and (max-width: 480px) {
         width: 80%;
         margin: 0 auto;
@@ -89,12 +94,12 @@ const ProjectType = styled.div`
 `;
 const ProjectBox = styled.section`
     width: 100%;
-    height: 464px;
+    height: 18rem;
     background: #ffffff;
-    border: 1px solid #f2f4f6;
+    border: 1px dashed #505967;
     border-radius: 6px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 20px;
     overflow: hidden;
     flex-wrap: nowrap;
@@ -105,28 +110,33 @@ const ProjectBox = styled.section`
     }
 `;
 
-const Project = styled.div`
-    width: 30%;
-    height: 205px;
-    border: 1px dashed #505967;
-    border-radius: 6px;
-    margin-top: 20px;
-    p {
-        text-align: center;
-        line-height: 205px;
-    }
-    @media screen and (max-width: 1200px) {
-        width: 250px;
-        overflow: hidden;
-        flex-wrap: nowrap;
-        font-size: 15px;
-    }
-    @media screen and (max-width: 480px) {
-        width: 100%;
-        overflow: hidden;
-    }
-`;
+const Project = styled.div``;
 
+const PostArea = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.8rem;
+`;
+const RecruitMentArea = styled.div`
+    width: 100%;
+    height: 24rem;
+    background: #ffffff;
+    border: 1px dashed #8b95a1;
+    border-radius: 6px;
+`;
+const RecruitMentTitle = styled.p`
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    font-feature-settings: "tnum" on, "lnum" on;
+
+    color: #000000;
+    margin: 3.4rem 0 1.8rem 0;
+`;
 const UserProject = () => {
     return (
         <UserProjectWrap>
@@ -135,16 +145,33 @@ const UserProject = () => {
                 <Button>구인글 작성하기</Button>
             </Banner>
             <ProjectType>
-                <span>참여중인 프로젝트</span>
-                <span>완료된 프로젝트</span>
+                <span>찜한 팀원</span>
+                <span>찜한 팀</span>
+                <span>지원한 팀</span>
             </ProjectType>
-            <ProjectBox>
-                <Project>
-                    <p>새로운 프로젝트에 참여해보세요!</p>
-                </Project>
-                <Project></Project>
-                <Project></Project>
-            </ProjectBox>
+            <ProjectBox></ProjectBox>
+            <RecruitMentTitle>작성한 모집글</RecruitMentTitle>
+            <RecruitMentArea></RecruitMentArea>
+            <ProjectType>
+                <span>작성한 포스트</span>
+                <span>스크랩한 포스트</span>
+            </ProjectType>
+            <PostArea>
+                {HotDummy.map((index, i) =>
+                    index.id <= 4 ? (
+                        <HotProjectTemplate
+                            key={i}
+                            title={index.title}
+                            tumb={index.tumb}
+                            views={index.views}
+                            contents={index.contents}
+                            hash={index.hashtag}
+                        />
+                    ) : (
+                        ""
+                    )
+                )}
+            </PostArea>
         </UserProjectWrap>
     );
 };

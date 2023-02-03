@@ -36,7 +36,7 @@ const HotDummy = [
         views: 489
     },
     {
-        id: 4,
+        id: 5,
         title: "리듬타는 다람쥐, 타람이",
         hashtag: "#JAVA #Spring",
         contents:
@@ -45,7 +45,7 @@ const HotDummy = [
         views: 489
     },
     {
-        id: 4,
+        id: 6,
         title: "리듬타는 다람쥐, 타람이",
         hashtag: "#JAVA #Spring",
         contents:

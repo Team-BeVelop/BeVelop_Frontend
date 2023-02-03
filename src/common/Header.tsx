@@ -10,9 +10,10 @@ import { RootState, useAppDispatch } from "../useRedux/rootReducer";
 const HeaderWrap = styled.header`
     display: flex;
     width: 100%;
-    height: 6.6rem;
+    height: 7rem;
     @media screen and (max-width: 480px) {
         display: block;
+        height: 10.2rem;
     }
 `;
 const NavWrap = styled.nav`
@@ -23,6 +24,7 @@ const NavWrap = styled.nav`
     margin: 0 auto;
     @media screen and (max-width: 480px) {
         display: block;
+        height: 9rem;
     }
 `;
 const Logo = styled.h1`
@@ -35,6 +37,8 @@ const Logo = styled.h1`
     font-feature-settings: "tnum" on, "lnum" on;
     cursor: pointer;
     color: #000000;
+    @media screen and (max-width: 480px) {
+    }
 `;
 const USER = styled.div`
     position: absolute;
@@ -93,14 +97,22 @@ const Menus = styled.ul`
         }
     }
     @media screen and (max-width: 480px) {
-        justify-content: center;
+        justify-content: space-between;
+
+        line-height: 19px;
+        /* identical to box height */
+
+        text-align: center;
+        font-feature-settings: "tnum" on, "lnum" on;
+
+        color: #000000;
         li:first-child {
             margin-left: 2%;
         }
         li {
             font-family: "Pretendard";
             font-style: normal;
-            font-weight: 400;
+            font-weight: 500;
             font-size: 16px;
 
             text-align: center;
@@ -147,10 +159,11 @@ const ContentWrap = styled.div<{ bgStyle: any; bgUrl: any }>`
         }
     }
 `;
-export const TextArea = styled.div`
+export const TextArea = styled.div<{ bgStyle: any }>`
     width: 80%;
     max-width: 140rem;
     margin: 0 auto;
+    display: ${props => (props.bgStyle == "border" ? "none" : "block")};
     .title {
         margin: 0 auto;
 
@@ -248,7 +261,7 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
             </HeaderWrap>
             <SlideWrap>
                 <ContentWrap bgUrl={Slide} bgStyle={bgStyle}>
-                    <TextArea>
+                    <TextArea bgStyle={bgStyle}>
                         <h2 className="title">
                             사이드 프로젝트에서 <br />
                             하나의 수입 수단까지
