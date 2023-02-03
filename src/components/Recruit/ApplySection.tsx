@@ -1,23 +1,41 @@
 import styled from "styled-components";
 import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
-import Dummy from "../../Data/ApplyDummy";
+import { useSelector } from "react-redux";
 
-const ApplySection = () => {
-    const dummy = Dummy;
+const ApplySection = ({
+    division,
+    setDivision,
+    job,
+    setJob,
+    interest,
+    setInterest
+}: any) => {
+    const studyList = useSelector((state: any) => state.study.data);
+
     return (
         <>
-            <ApplyFilter />
+            <ApplyFilter
+                division={division}
+                setDivision={setDivision}
+                job={job}
+                setJob={setJob}
+                interest={interest}
+                setInterest={setInterest}
+            />
             <Wrap>
-                {dummy.map((item, index) => (
-                    <ApplyTemplate
-                        key={index}
-                        tag={item.tag}
-                        title={item.title}
-                        hashtag={item.hashtag}
-                        img={item.img}
-                    />
-                ))}
+                {studyList &&
+                    studyList.map((item: any, index: number) => (
+                        <ApplyTemplate
+                            key={index}
+                            id={item.id}
+                            division={item.division}
+                            field={item.relatedFields}
+                            title={item.title}
+                            hashtag={item.studyJobs}
+                            shortTitle={item.shortTitle}
+                        />
+                    ))}
             </Wrap>
         </>
     );
