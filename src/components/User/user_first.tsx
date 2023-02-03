@@ -25,6 +25,7 @@ const User_first = () => {
         kakao: "",
         email: ""
     });
+    const [userIntro, setUserIntro] = useState<string>("");
     const [checked, setChecked] = useState<boolean[]>([]);
     useMemo(() => {
         setChecked(SKILL.map(() => false));
@@ -32,7 +33,9 @@ const User_first = () => {
     const handleFormInput = (e: any) => {
         setFormInput({ ...formInput, [e.target.name]: e.target.value });
     };
-
+    const handleUserIntro = (e: any) => {
+        setUserIntro(e.target.value);
+    };
     const dispatch = useDispatch<any>();
 
     const Complete = () => {
@@ -45,7 +48,8 @@ const User_first = () => {
                 formInput.kakao,
                 Position,
                 Interest,
-                Stack
+                Stack,
+                userIntro
             )
         );
     };
@@ -66,7 +70,10 @@ const User_first = () => {
             </u.NickName>
             <u.Intro>
                 <p>한줄 소개</p>
-                <textarea></textarea>
+                <textarea
+                    onChange={handleUserIntro}
+                    value={userIntro}
+                ></textarea>
             </u.Intro>
             <u.Profile>
                 <p>프로필</p>

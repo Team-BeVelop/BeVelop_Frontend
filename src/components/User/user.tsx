@@ -102,6 +102,36 @@ const Button = styled.div`
 
     color: #404a5c;
 `;
+const UserInfo = styled.div``;
+const UserNickNameArea = styled.div`
+    display: flex;
+    justify-content: space-between;
+    p {
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 3rem;
+        /* identical to box height */
+
+        text-align: right;
+        font-feature-settings: "tnum" on, "lnum" on;
+
+        color: #8b95a1;
+    }
+`;
+const UserIntroText = styled.div`
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+    margin-top: 2.5rem;
+    padding-bottom: 4.6rem;
+    border-bottom: 1px solid #e5e8eb;
+`;
 const Profile = styled.div`
     margin: 34px 0 18px 0;
     p {
@@ -229,8 +259,13 @@ const User = ({
             <UserImg bgImg={fill ? "filed" : ""}>
                 <Plus onClick={() => setFill(true)} />
             </UserImg>
-            <NickName>{nickName}</NickName>
-            <StatusBox>
+            <UserInfo>
+                <UserNickNameArea>
+                    <NickName>{nickName}</NickName>
+                    <p>프로필 수정 {">"}</p>
+                </UserNickNameArea>
+                <UserIntroText>{Users.UserIntro}</UserIntroText>
+                {/* <StatusBox>
                 <li>
                     <p>8</p>
                     <p>찜한팀원</p>
@@ -247,8 +282,9 @@ const User = ({
                     <p>11</p>
                     <p>공모전</p>
                 </li>
-            </StatusBox>
-            <Button>프로필 수정하기</Button>
+            </StatusBox> */}
+            </UserInfo>
+
             <Profile>
                 <p>프로필</p>
                 <Flex>

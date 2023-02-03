@@ -36,13 +36,13 @@ const Dummy = [
         subject: "프로젝트"
     },
     {
-        id: 6,
+        id: 7,
         title: "사용자 개선 프로젝트 함께 하실분 찾아요!",
         hashtag: "UI디자이너 #기획자",
         subject: "프로젝트"
     },
     {
-        id: 6,
+        id: 8,
         title: "사용자 개선 프로젝트 함께 하실분 찾아요!",
         hashtag: "UI디자이너",
         subject: "프로젝트"
