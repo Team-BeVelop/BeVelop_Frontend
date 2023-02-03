@@ -116,7 +116,8 @@ const SlideWrap = styled.div`
 
 const ContentWrap = styled.div<{ bgStyle: any; bgUrl: any }>`
     width: 100%;
-    padding: 40px 0 40px 0;
+    height: 33rem;
+    padding: 8.3rem 0 40px 0;
 
     background-image: ${props =>
         props.bgStyle == "border" || props.bgUrl == 1
@@ -128,36 +129,6 @@ const ContentWrap = styled.div<{ bgStyle: any; bgUrl: any }>`
     background-repeat: no-repeat;
     border-radius: ${props => (props.bgStyle == "border" ? "0 0 150px" : "0")};
 
-    .title {
-        width: 80%;
-        max-width: 1400px;
-        margin: 0 auto;
-        display: ${props => (props.bgStyle == "border" ? "none" : "block")};
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 600;
-        font-size: 32px;
-        line-height: 38px;
-        font-feature-settings: "tnum" on, "lnum" on;
-        color: #000000;
-    }
-    p {
-        display: ${props => (props.bgStyle == "border" ? "none" : "block")};
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        /* identical to box height */
-        width: 80%;
-        max-width: 1400px;
-        margin: 0 auto;
-        font-feature-settings: "tnum" on, "lnum" on;
-
-        color: #000000;
-
-        margin-top: 18px;
-    }
     @media screen and (max-width: 480px) {
         background-image: url("https://team-bevelop.github.io/BeVelop_Frontend/img/Rectangle_724.png");
         background-size: cover;
@@ -175,6 +146,49 @@ const ContentWrap = styled.div<{ bgStyle: any; bgUrl: any }>`
             color: #000000;
         }
     }
+`;
+export const TextArea = styled.div`
+    width: 80%;
+    max-width: 140rem;
+    margin: 0 auto;
+    .title {
+        margin: 0 auto;
+
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 38px;
+        font-feature-settings: "tnum" on, "lnum" on;
+        color: #000000;
+    }
+    p {
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+        margin: 1.8rem auto 4.3rem auto;
+        font-feature-settings: "tnum" on, "lnum" on;
+
+        color: #000000;
+
+        margin-top: 18px;
+    }
+`;
+export const ProgressBar = styled.div`
+    position: relative;
+    width: 37.5rem;
+    height: 0.2rem;
+    background: rgba(0, 0, 0, 0.08);
+`;
+export const ProgressCharge = styled.div`
+    position: absolute;
+    width: 12.1rem;
+    height: 0.2rem;
+    background-color: #000;
+    top: 0;
 `;
 export type bgStyle = {
     bgStyle: any;
@@ -234,11 +248,16 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
             </HeaderWrap>
             <SlideWrap>
                 <ContentWrap bgUrl={Slide} bgStyle={bgStyle}>
-                    <h2 className="title">
-                        사이드 프로젝트에서 <br />
-                        하나의 수입 수단까지
-                    </h2>
-                    <p>스토리 자세히 보기 {">"}</p>
+                    <TextArea>
+                        <h2 className="title">
+                            사이드 프로젝트에서 <br />
+                            하나의 수입 수단까지
+                        </h2>
+                        <p>스토리 자세히 보기 {">"}</p>
+                        <ProgressBar>
+                            <ProgressCharge />
+                        </ProgressBar>
+                    </TextArea>
                 </ContentWrap>
             </SlideWrap>
         </>
