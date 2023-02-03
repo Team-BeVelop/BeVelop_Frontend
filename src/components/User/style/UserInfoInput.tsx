@@ -6,16 +6,13 @@ export const UserInfoWrap = styled.aside`
     margin: 0 auto;
     transform: translate(0px, -5rem);
 `;
-export const UserImg = styled.div<{ bgImg: any }>`
-    width: 116px;
-    height: 116px;
+export const UserImg = styled.div`
+    width: 12.2rem;
+    height: 12.2rem;
     background: #f2f4f6;
     border: 3px solid #ffffff;
     border-radius: 50%;
-    background-image: ${props =>
-        props.bgImg == "filed"
-            ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Ellipse.png')"
-            : ""};
+
     background-size: cover;
     margin-bottom: 20px;
 `;
@@ -84,11 +81,22 @@ export const NickName = styled.div`
         margin-bottom: 18px;
     }
     input {
+        padding: 0 1.8rem;
         width: 436px;
         height: 48px;
         background: #ffffff;
         border: 1px solid #dadee2;
         border-radius: 6px;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        font-feature-settings: "tnum" on, "lnum" on;
+
+        color: #404a5c;
     }
     input:focus {
         border: 1px solid #7a5df5;
@@ -255,6 +263,7 @@ export const SkillBox = styled.div`
     display: flex;
     justify-content: start;
     padding: 0.1rem;
+    overflow-y: scroll;
 `;
 
 export const SkillList = styled.div<{ bgColor: string }>`

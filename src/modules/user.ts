@@ -11,8 +11,9 @@ export const UserInfo =
         kakao: string,
         Position: string,
         Interest: string,
-        Stack: string,
-        UserIntro: string
+        Stack: [],
+        UserIntro: string,
+        Thumb: any
     ) =>
     async (dispatch: any) => {
         dispatch({ type: USER });
@@ -28,7 +29,8 @@ export const UserInfo =
                     Position: Position,
                     Interest: Interest,
                     Stack: Stack,
-                    UserIntro: UserIntro
+                    UserIntro: UserIntro,
+                    Thumb: Thumb
                 }
             });
         } catch (e) {

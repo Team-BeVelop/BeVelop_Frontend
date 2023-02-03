@@ -21,18 +21,19 @@ const UserInfoWrap = styled.aside`
         margin: 0 auto;
     }
 `;
-const UserImg = styled.div<{ bgImg: any }>`
+const UserImg = styled.div`
     width: 116px;
     height: 116px;
     background: #f2f4f6;
     border: 3px solid #ffffff;
     border-radius: 50%;
-    background-image: ${props =>
-        props.bgImg == "filed"
-            ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/Ellipse.png')"
-            : ""};
     background-size: cover;
     margin-bottom: 20px;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
 `;
 const Plus = styled(IoIosAddCircleOutline)`
     font-size: 30px;
@@ -225,13 +226,16 @@ const SkillBoxWrap = styled.div`
     margin-top: 22px;
     width: 320px;
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
+    flex-wrap: wrap;
 `;
 const SkillBox = styled.div<{ bg: string }>`
-    width: 30%;
+    width: auto;
     height: 37px;
-
-    background: #450135;
+    padding: 0 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    background: ${props => props.bg};
     border-radius: 6px;
     p {
         color: #fff;
@@ -256,8 +260,8 @@ const User = ({
 
     return (
         <UserInfoWrap>
-            <UserImg bgImg={fill ? "filed" : ""}>
-                <Plus onClick={() => setFill(true)} />
+            <UserImg>
+                <img src={Users.Thumb[0].data_url} alt="" />
             </UserImg>
             <UserInfo>
                 <UserNickNameArea>
@@ -305,8 +309,8 @@ const User = ({
                 <p>기술스택</p>
                 <SkillBoxWrap>
                     {Users.Stack.map((index: any) => (
-                        <SkillBox bg={index}>
-                            <p>{index}</p>
+                        <SkillBox bg={index.color}>
+                            <p>{index.name}</p>
                         </SkillBox>
                     ))}
                 </SkillBoxWrap>

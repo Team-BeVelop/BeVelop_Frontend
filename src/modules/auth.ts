@@ -47,25 +47,31 @@ export const AuthSlice = createSlice({
     extraReducers: {
         [Auth.pending.type]: (state, action) => {
             state.isLoading = true;
+            state.action = action.type;
         },
         [Auth.fulfilled.type]: (state, action) => {
             state.isLoading = false;
+            state.action = action.type;
             state.data = action.payload;
         },
         [Auth.rejected.type]: (state, action) => {
             state.isLoading = false;
+            state.action = action.type;
             state.error = action.payload;
         },
         [SignUp.pending.type]: (state, action) => {
             state.isLoading = true;
+            state.action = action.type;
         },
         [SignUp.fulfilled.type]: (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+            state.action = action.type;
         },
         [SignUp.rejected.type]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
+            state.action = action.type;
         }
     }
 });
