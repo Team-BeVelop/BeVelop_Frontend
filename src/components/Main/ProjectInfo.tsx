@@ -4,6 +4,8 @@ import Dummy from "../../Data/Dummy";
 import HotDummy from "../../Data/HotDummy";
 import HotProjectTemplate from "./HotProjectTemplate";
 import ProjectTemplate from "./ProjectTemplate";
+import HotIcon from "../../Resource/Images/HotIcon.svg";
+import ProjectIcon from "../../Resource/Images/ProjectIcon.svg";
 
 const TitleWrap = styled.div`
     display: flex;
@@ -26,9 +28,7 @@ const Title = styled.div<{ props: any }>`
     }
     &::before {
         content: ${props =>
-            props.props == "HOT"
-                ? "url('https://team-bevelop.github.io/BeVelop_Frontend/img/image1549.png')"
-                : "url('https://team-bevelop.github.io/BeVelop_Frontend/img/image1219.png')"};
+            props.props == "HOT" ? `url(${HotIcon})` : `url(${ProjectIcon})`};
     }
     span {
         color: #ff0000;
@@ -78,7 +78,7 @@ const ProjectInfo = () => {
         <>
             <section>
                 <TitleWrap>
-                    <Title props="Re">모집중인 프로젝트</Title>
+                    <Title props="Re"> 모집중인 프로젝트</Title>
                     <The>더보기</The>
                 </TitleWrap>
                 <RecruitSection>

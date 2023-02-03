@@ -32,14 +32,14 @@ const MainPage = () => {
                 <meta property="og:title" content="BeVelop" />
             </Helmet>
             <Header bgStyle="" />
-            {/* {Modal.Modal ? (
+            {Modal.Modal ? (
                 <Wrap>
                     <div className="bg"></div>
                     <Login />
                 </Wrap>
             ) : (
                 ""
-            )} */}
+            )}
             <MainContainer />
         </>
     );

@@ -34,6 +34,24 @@ const HotDummy = [
             "우리가 자주 듣는 노래나 작곡가가 직접 만든 곡을 다람쥐가 나무를 돌아다니며 리듬타는 모습을 볼 수 있어요!",
         tumb: "img/Rectangle 71.png",
         views: 489
+    },
+    {
+        id: 4,
+        title: "리듬타는 다람쥐, 타람이",
+        hashtag: "#JAVA #Spring",
+        contents:
+            "우리가 자주 듣는 노래나 작곡가가 직접 만든 곡을 다람쥐가 나무를 돌아다니며 리듬타는 모습을 볼 수 있어요!",
+        tumb: "img/Rectangle 71.png",
+        views: 489
+    },
+    {
+        id: 4,
+        title: "리듬타는 다람쥐, 타람이",
+        hashtag: "#JAVA #Spring",
+        contents:
+            "우리가 자주 듣는 노래나 작곡가가 직접 만든 곡을 다람쥐가 나무를 돌아다니며 리듬타는 모습을 볼 수 있어요!",
+        tumb: "img/Rectangle 71.png",
+        views: 489
     }
 ];
 

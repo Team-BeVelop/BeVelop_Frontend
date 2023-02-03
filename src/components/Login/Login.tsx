@@ -21,24 +21,27 @@ const Wrap = styled.div`
     align-items: center;
 `;
 const LoginBox = styled.div`
+    width: 36rem;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     position: fixed;
     top: 50%;
     left: 50%;
-    padding: 20px 30px;
+    padding: 2.4rem 0;
     transform: translate(-50%, -50%);
     background-color: #fff;
     border-radius: 6px;
     .logo {
         height: 25px;
-        margin-bottom: 30px;
+        margin-bottom: 5.5rem;
         font-family: "Pretendard";
         font-style: normal;
         font-weight: 500;
-        font-size: 22px;
+        font-size: 2.2rem;
+        line-height: 2.6rem;
         font-feature-settings: "tnum" on, "lnum" on;
 
         color: #000000;
@@ -46,13 +49,13 @@ const LoginBox = styled.div`
     .sentence {
         font-family: "Pretendard";
         font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
+        font-weight: 600;
+        font-size: 2.1rem;
+        line-height: 2.5rem;
         text-align: center;
         font-feature-settings: "tnum" on, "lnum" on;
 
         color: #000000;
-        margin-bottom: 1.1rem;
     }
     .subsentence {
         font-family: "Pretendard";
@@ -63,16 +66,37 @@ const LoginBox = styled.div`
         font-feature-settings: "tnum" on, "lnum" on;
 
         color: #8b95a1;
-        margin-bottom: 65px;
+        margin-bottom: 3.4rem;
+        margin-top: 1.2rem;
     }
     @media screen and (max-width: 480px) {
         transform: translate(-50%, -80%);
     }
 `;
 const LoginKind = styled.div`
+    width: 32rem;
     .or {
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        /* identical to box height */
+
         text-align: center;
-        margin: 20px;
+        font-feature-settings: "tnum" on, "lnum" on;
+
+        color: #8b95a1;
+        margin: 3.8rem 1rem 2.8rem 1rem;
+    }
+    .or::after,
+    .or::before {
+        content: "";
+        display: inline-block;
+        width: 12rem;
+        height: 0.1rem;
+        margin: 0.4rem;
+        background-color: #dadee2;
     }
     p {
         font-family: "Pretendard";
@@ -127,48 +151,44 @@ const InputBox = styled.div`
     input {
         width: 320px;
         height: 48px;
-        margin: 14px 5px 24px 0px;
-        padding: 0 20px;
+        margin: 1.4rem 0.5rem 2.4rem 0px;
+        padding: 0 2rem;
         border: 1px solid #dadee2;
         border-radius: 6px;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
     }
     p {
-        margin: 5px;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        /* identical to box height */
+
+        font-feature-settings: "tnum" on, "lnum" on;
+
+        color: #000000;
     }
     input::placeholder {
-        font-size: 12px;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #8b95a1;
     }
 `;
-const ButtonBox = styled.div`
-    .signInBtn {
-        width: 320px;
-        height: 40px;
-        margin: 40px 0 0 0;
-        border: 2px solid #000062;
-        border-radius: 20px;
-        text-align: center;
-        line-height: 40px;
-        font-weight: 700;
-        color: #000062;
-    }
-
-    .or {
-        text-align: center;
-        margin: 20px;
-    }
-
-    .signUpBtn {
-        display: table;
-        margin: 0 auto;
-        font-weight: 500;
-        color: #000062;
-    }
+const CloseBtn = styled(IoIosClose)`
+    font-size: 3rem;
 `;
 const Button = styled.div`
     position: absolute;
-    right: 26.25px;
-    top: 26px;
-    font-size: 30px;
+    right: 2rem;
+    top: 2.2rem;
     cursor: pointer;
 `;
 
@@ -213,12 +233,12 @@ const Login = () => {
         <Wrap>
             <LoginBox>
                 <Button onClick={() => dispatch(modal({ Modal: false }))}>
-                    <IoIosClose />
+                    <CloseBtn />
                 </Button>
                 <h1 className="logo">BeVelop</h1>
-                <p className="sentence">발전을 위한 프로젝트</p>
-                <p className="sentence">BeVelop</p>
-                <p className="subsentence">함께할 팀원들을 모으고 참여하세요</p>
+                <p className="sentence">프로젝트를 생성하고</p>
+                <p className="sentence">참여해보세요</p>
+                <p className="subsentence">BeVelop에서 시작해보세요</p>
                 {signUp ? (
                     <InputBox>
                         <p>이메일</p>
