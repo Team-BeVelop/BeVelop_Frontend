@@ -1,7 +1,7 @@
-import HotDummy from "Data/HotDummy";
+import HotDummy from "../../Data/HotDummy";
 import React from "react";
 import styled from "styled-components";
-import HotProjectTemplate from "components/Main/HotProjectTemplate";
+import HotProjectTemplate from "../../components/Main/HotProjectTemplate";
 
 const UserProjectWrap = styled.section`
     width: 70%;
