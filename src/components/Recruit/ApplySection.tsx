@@ -3,6 +3,17 @@ import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
 import { useSelector } from "react-redux";
 
+const Dummy = [
+    {
+        id: 1,
+        division: "사이드 프로젝트",
+        relatedFields: [{ id: 0, fieldName: "라이프스타일" }],
+        studyJobs: [{ id: 0, jobName: "금융" }],
+        title: "사용자 개선 프로젝트 함께 하실 분 찾아요",
+        shortTitle: "뽑아요"
+    }
+];
+
 const ApplySection = ({
     division,
     setDivision,
@@ -11,7 +22,7 @@ const ApplySection = ({
     interest,
     setInterest
 }: any) => {
-    const studyList = useSelector((state: any) => state.study.data);
+    //const studyList = useSelector((state: any) => state.study.data);
 
     return (
         <>
@@ -24,8 +35,8 @@ const ApplySection = ({
                 setInterest={setInterest}
             />
             <Wrap>
-                {studyList &&
-                    studyList.map((item: any, index: number) => (
+                {Dummy &&
+                    Dummy.map((item: any, index: number) => (
                         <ApplyTemplate
                             key={index}
                             id={item.id}

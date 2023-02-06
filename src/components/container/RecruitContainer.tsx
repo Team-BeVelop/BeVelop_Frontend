@@ -13,10 +13,10 @@ const RecruitContainer = () => {
     const [job, setJob] = useState("");
     const [interest, setInterest] = useState("");
 
-    const dispatch = useDispatch<any>();
-    useEffect(() => {
-        dispatch(getStudyList());
-    }, [current]);
+    // const dispatch = useDispatch<any>();
+    // useEffect(() => {
+    //     dispatch(getStudyList());
+    // }, [current]);
 
     return (
         <Container>
