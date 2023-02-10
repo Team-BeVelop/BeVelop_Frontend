@@ -87,6 +87,11 @@ const Top = styled.div`
         line-height: 19px;
         font-feature-settings: "tnum" on, "lnum" on;
         .division {
+            font-family: "Pretendard";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
             color: #ffffff;
             background: #7a5df5;
             margin-right: 10px;
@@ -98,6 +103,11 @@ const Top = styled.div`
             }
         }
         .field {
+            font-family: "Pretendard";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
             color: #ffffff;
             background-color: #000000;
             border-radius: 4px;
