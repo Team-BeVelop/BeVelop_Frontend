@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getStudyList } from "../../modules/study";
 import ApplySection from "../Recruit/ApplySection";
 import RecruitBanner from "../Recruit/RecruitBanner";
 import RecruitMenu from "../Recruit/RecruitMenu";
 import SuggestSection from "../Recruit/SuggestSection";
+import { useAppDispatch } from "../../useRedux/rootReducer";
 
 const RecruitContainer = () => {
     const [current, setCurrent] = useState(0);
@@ -13,10 +13,10 @@ const RecruitContainer = () => {
     const [job, setJob] = useState("");
     const [interest, setInterest] = useState("");
 
-    // const dispatch = useDispatch<any>();
-    // useEffect(() => {
-    //     dispatch(getStudyList());
-    // }, [current]);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getStudyList());
+    }, [current]);
 
     return (
         <Container>

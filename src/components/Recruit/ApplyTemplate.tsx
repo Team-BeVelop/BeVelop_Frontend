@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const DivistionTheme = {
+    "사이드 프로젝트": "#7A5DF5",
+    스타트업: "#FF26A8",
+    공모전: "#C00DFF"
+};
+
 const ApplyTemplate = ({
     id,
     division,

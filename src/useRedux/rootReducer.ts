@@ -9,9 +9,13 @@ import { AuthSlice } from "../modules/auth";
 import { useDispatch } from "react-redux";
 import actions from "../modules/modal";
 import users from "../modules/user";
+import { ProjectSlice } from "../modules/project";
+import { StudySlice } from "../modules/study";
 
 const reducer = combineReducers({
     AuthSlice: AuthSlice.reducer,
+    ProjectSlice: ProjectSlice.reducer,
+    StudySlice: StudySlice.reducer,
     modal: actions,
     users: users
 });

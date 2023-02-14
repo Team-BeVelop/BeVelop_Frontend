@@ -33,23 +33,22 @@ const ProjectNewContainer = () => {
         console.log(introduce);
         console.log(title);
         console.log(desc);
-
         dispatch(
-            addNewStudy(
-                token,
-                desc,
-                division.value,
-                email,
-                "2023-01-28",
-                "2022-12-30",
-                kakao,
-                10,
-                jobs,
-                fields,
-                introduce,
-                "2022-12-28",
-                title
-            )
+            addNewStudy({
+                token: token,
+                description: desc,
+                division: division.value,
+                emailUrl: email,
+                endDate: "2023-01-28",
+                enrollmentEndDate: "2022-12-30",
+                kakaoUrl: kakao,
+                maxMemberCount: 10,
+                recruitJobList: jobs,
+                relatedFieldList: fields,
+                shortTitle: introduce,
+                startDate: "2022-12-28",
+                title: title
+            })
         );
     };
 

@@ -187,8 +187,12 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
                     </Logo>
                     <Menus>
                         <li>홈</li>
-                        <li>팀원구인</li>
-                        <li>프로젝트</li>
+                        <li>
+                            <Link to="/recruit">팀원구인</Link>
+                        </li>
+                        <li>
+                            <Link to="/post">프로젝트</Link>
+                        </li>
                         <li>공모전</li>
                     </Menus>
                     <USER>
