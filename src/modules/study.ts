@@ -15,7 +15,7 @@ export const getStudyList = createAsyncThunk(
 
 export const getStudy = createAsyncThunk(
     "GET_STUDY_DETAIL",
-    async ({ token, id }: { token: string; id: string }, thunkAPI) => {
+    async ({ token, id }: { token: string | null; id: string }, thunkAPI) => {
         try {
             return (await studyAPI.getStudyDetail(token, id)).data;
         } catch (e: any) {
@@ -42,7 +42,7 @@ export const addNewStudy = createAsyncThunk(
             startDate,
             title
         }: {
-            token: string;
+            token: string | null;
             description: string;
             division: string;
             emailUrl: string;
