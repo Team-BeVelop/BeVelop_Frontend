@@ -9,7 +9,10 @@ import { useAppDispatch } from "../../useRedux/rootReducer";
 
 const RecruitContainer = () => {
     const [current, setCurrent] = useState(0);
-    const [division, setDivision] = useState("");
+    const [division, setDivision] = useState<{ value: string; name: string }>({
+        value: "value",
+        name: "inner"
+    });
     const [job, setJob] = useState("");
     const [interest, setInterest] = useState("");
 
