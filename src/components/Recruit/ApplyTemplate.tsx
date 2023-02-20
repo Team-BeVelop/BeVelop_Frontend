@@ -1,10 +1,19 @@
 import styled from "styled-components";
 
-const DivistionTheme = {
-    "사이드 프로젝트": "#7A5DF5",
-    스타트업: "#FF26A8",
-    공모전: "#C00DFF"
-};
+const DivisionTheme = [
+    {
+        name: "사이드 프로젝트",
+        color: "#7A5DF5"
+    },
+    {
+        name: "스타트업",
+        color: "#FF26A8"
+    },
+    {
+        name: "공모전",
+        color: "#C00DFF"
+    }
+];
 
 const ApplyTemplate = ({
     id,
@@ -14,13 +23,18 @@ const ApplyTemplate = ({
     hashtag,
     shortTitle
 }: any) => {
+    // '구분' 배경 지정
+    const matchColor = (v: string) =>
+        DivisionTheme.find(i => i.name === v)?.color || "#7a5df5";
+
     const goProjectDetailPage = (id: number) =>
         (window.location.href = `/project/${id}`);
+
     return (
         <>
             <Container onClick={() => goProjectDetailPage(id)}>
                 <div className="info">
-                    <Top>
+                    <Top divisionColor={matchColor(division)}>
                         <div className="left">
                             <div className="division">{division}</div>
                             {field.map((item: any, index: string) => (
@@ -80,7 +94,8 @@ const Container = styled.div`
     }
 `;
 
-const Top = styled.div`
+//7a5df5
+const Top = styled.div<{ divisionColor: string }>`
     display: flex;
     justify-content: space-between;
     .left {
@@ -99,7 +114,7 @@ const Top = styled.div`
             font-size: 14px;
             line-height: 17px;
             color: #ffffff;
-            background: #7a5df5;
+            background: ${props => props.divisionColor};
             margin-right: 10px;
             border-radius: 4px;
             padding: 3px 8px;

@@ -7,14 +7,33 @@ import RecruitMenu from "../Recruit/RecruitMenu";
 import SuggestSection from "../Recruit/SuggestSection";
 import { useAppDispatch } from "../../useRedux/rootReducer";
 
+interface FilterType {
+    value: string;
+    name: string;
+    bg: string;
+    color: string;
+}
+
 const RecruitContainer = () => {
     const [current, setCurrent] = useState(0);
-    const [division, setDivision] = useState<{ value: string; name: string }>({
-        value: "value",
-        name: "inner"
+    const [division, setDivision] = useState<FilterType>({
+        value: "구분",
+        name: "구분",
+        bg: "#F2F4F6",
+        color: "#404A5C"
     });
-    const [job, setJob] = useState("");
-    const [interest, setInterest] = useState("");
+    const [job, setJob] = useState<FilterType>({
+        value: "직무",
+        name: "직무",
+        bg: "#F2F4F6",
+        color: "#404A5C"
+    });
+    const [interest, setInterest] = useState<FilterType>({
+        value: "관심분야",
+        name: "관심분야",
+        bg: "#F2F4F6",
+        color: "#404A5C"
+    });
 
     const dispatch = useAppDispatch();
     useEffect(() => {
