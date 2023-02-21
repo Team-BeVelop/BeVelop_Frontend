@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { slides } from "../Data/Slides";
 import { modal } from "../modules/modal";
@@ -217,6 +217,7 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
     }));
 
     const dispatch = useAppDispatch();
+    const nav = useNavigate();
     const OnclickPopUp = () => {
         dispatch(modal({ Modal: true }));
     };
@@ -233,8 +234,8 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
     }, [Slide, length]);
 
     useEffect(() => {
-        if (Users.data !== null) setIsLogin(true);
-    }, []);
+        if (Users.action === "AUTH/fulfilled") setIsLogin(true);
+    }, [Users.action]);
 
     return (
         <>
@@ -250,11 +251,11 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
                     </Menus>
                     {isLogin ? (
                         <USER>
-                            <p onClick={OnclickPopUp}>로그인</p>
+                            <p onClick={() => nav("/user")}>내 정보</p>
                         </USER>
                     ) : (
                         <USER>
-                            <p onClick={OnclickPopUp}>내 정보</p>
+                            <p onClick={OnclickPopUp}>로그인</p>
                         </USER>
                     )}
                 </NavWrap>

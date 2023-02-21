@@ -10,9 +10,9 @@ type User = {
     pw: string;
 };
 type UserSignUp = {
-    id: string;
-    pw: string;
-    nickName: string;
+    id: any;
+    pw: any;
+    nickName: any;
 };
 
 const Login = () => {
@@ -46,14 +46,23 @@ const Login = () => {
         dispatch(
             SignUp({
                 email: signUpInput.id,
-                password: signUpInput.pw,
-                name: signUpInput.nickName
+                nickname: signUpInput.nickName,
+                password: signUpInput.pw
             })
         );
     };
     useMemo(() => {
         if (Users.action === "AUTH/rejected")
             alert("아이디 혹은 비밀번호를 확인해주세요");
+        if (Users.action === "SIGNUP/fulfilled") {
+            setSignUp(false);
+            setSignIn(true);
+        }
+        if (Users.action === "SIGNUP/rejected") {
+            alert("이미 가입된 정보입니다");
+        }
+        if (Users.action === "AUTH/fulfilled")
+            dispatch(modal({ Modal: false }));
     }, [Users.action]);
     return (
         <l.Wrap>
