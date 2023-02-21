@@ -2,10 +2,10 @@ import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Header from "../common/Header";
-import RecruitContainer from "../components/container/RecruitContainer";
+import PostContainer from "../components/container/PostContainer";
 import Login from "../components/Login/Login";
 
-const RecruitPage = () => {
+const PostPage = () => {
     const { Modal } = useSelector((state: any) => ({
         Modal: state.modal.Modal
     }));
@@ -13,10 +13,10 @@ const RecruitPage = () => {
     return (
         <>
             <Helmet>
-                <title>BeVelop || 팀원구인</title>
+                <title>BeVelop || 포스트</title>
                 <meta
                     property="og:url"
-                    content="https://team-bevelop.github.io/BeVelop_Frontend/recruit"
+                    content="https://team-bevelop.github.io/BeVelop_Frontend/post"
                 />
                 <meta property="og:title" content="BeVelop" />
             </Helmet>
@@ -29,13 +29,14 @@ const RecruitPage = () => {
             ) : (
                 ""
             )}
-            <RecruitContainer />
+            <PostContainer />
         </>
     );
 };
 
 const Wrap = styled.div`
     .bg {
+        z-index: 5;
         position: absolute;
         top: 0;
         width: 100%;
@@ -44,4 +45,4 @@ const Wrap = styled.div`
     }
 `;
 
-export default RecruitPage;
+export default PostPage;

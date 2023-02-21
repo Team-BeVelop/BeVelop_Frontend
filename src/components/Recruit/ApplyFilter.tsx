@@ -1,22 +1,58 @@
 import styled from "styled-components";
+import StyledDropDown from "../../common/StyledDropDown";
+import { DivisionData, JobData, FieldData } from "../../Data/FieldData";
 
-const ApplyFilter = () => {
+export type ApplyFilterType = {
+    division: any;
+    setDivision: any;
+    job: any;
+    setJob: any;
+    interest: any;
+    setInterest: any;
+};
+
+const ApplyFilter: React.FC<ApplyFilterType> = ({
+    division,
+    setDivision,
+    job,
+    setJob,
+    interest,
+    setInterest
+}) => {
     return (
         <Wrap>
             <FilterArea>
-                <Select>
-                    <option value="none">구분</option>
-                </Select>
-                <Select>
-                    <option value="none">직무</option>
-                </Select>
-                <Select>
-                    <option value="none">관심분야</option>
-                </Select>
+                <div className="item">
+                    <StyledDropDown
+                        type="mini"
+                        width={150}
+                        label="구분"
+                        data={DivisionData}
+                        current={division}
+                        setCurrent={setDivision}
+                    />
+                </div>
+                <div className="item">
+                    <StyledDropDown
+                        type="mini"
+                        width={150}
+                        label="직무"
+                        data={JobData}
+                        current={job}
+                        setCurrent={setJob}
+                    />
+                </div>
+                <div className="item">
+                    <StyledDropDown
+                        type="mini"
+                        width={150}
+                        label="관심분야"
+                        data={FieldData}
+                        current={interest}
+                        setCurrent={setInterest}
+                    />
+                </div>
             </FilterArea>
-            <SearchArea>
-                <Input placeholder="프로젝트를 검색해보세요!" />
-            </SearchArea>
         </Wrap>
     );
 };
@@ -32,58 +68,8 @@ const Wrap = styled.section`
 
 const FilterArea = styled.div`
     display: flex;
-`;
-
-const Select = styled.select`
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-
-    font-feature-settings: "tnum" on, "lnum" on;
-    margin-right: 10px;
-    padding: 10px 40px 10px 12px;
-    padding-right: 40px;
-    border: none;
-    border-radius: 6px;
-    color: #404a5c;
-    background-color: #f2f4f6;
-    background-image: url("/img/icon_selectBlack.png");
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position-x: 90%;
-    background-position-y: 50%;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-`;
-
-const SearchArea = styled.div`
-    display: flex;
-    @media screen and (max-width: 480px) {
-        display: none;
-    }
-`;
-
-const Input = styled.input`
-    width: 280px;
-    background: #f2f4f6;
-    background-image: url("/img/icon_search.png");
-    background-repeat: no-repeat;
-    background-position: 5px center;
-    background-size: 18px;
-    padding-left: 40px;
-    border: 1px solid #e5e8eb;
-    border-radius: 6px;
-    &::placeholder {
-        font-family: "Pretendard";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-        font-feature-settings: "tnum" on, "lnum" on;
-        color: #6b7684;
+    .item {
+        margin-right: 10px;
     }
 `;
 

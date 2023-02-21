@@ -1,24 +1,21 @@
 import styled from "styled-components";
 
-const Banner = () => {
+const PostBanner = () => {
+    const goPostNewPage = () => (window.location.href = "/post/new");
     return (
         <>
             <Top>
-                <Title>{"프로젝트를 진행해\n커리어를 쌓아보세요!"}</Title>
-                <Button>구인글 작성하기</Button>
+                <Title>{"내가 만든 프로젝트를\n소개해보세요!"}</Title>
+                <Button onClick={goPostNewPage}>구인글 작성하기</Button>
             </Top>
         </>
     );
 };
 
 const Top = styled.article`
-    background-image: linear-gradient(
-            110.41deg,
-            rgba(122, 93, 245, 0.8) -0.92%,
-            rgba(189, 0, 255, 0.76) 93.42%
-        ),
-        url("/img/banner_recruit.png");
-    background-position: left;
+    background-image: url("/img/banner_post.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +38,7 @@ const Title = styled.h1`
     font-size: 36px;
     line-height: 43px;
 
-    color: #fff;
+    color: #000000;
     text-align: center;
     white-space: pre-line;
     font-feature-settings: "tnum" on, "lnum" on;
@@ -87,4 +84,4 @@ const Button = styled.button`
     }
 `;
 
-export default Banner;
+export default PostBanner;
