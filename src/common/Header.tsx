@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { modal } from "../modules/modal";
+import { RootState, useAppDispatch } from "../useRedux/rootReducer";
 
 const HeaderWrap = styled.header`
     display: flex;
@@ -173,7 +175,6 @@ export type bgStyle = {
 };
 
 const Header: React.FC<bgStyle> = ({ bgStyle }) => {
-
     const [isLogin, setIsLogin] = useState<boolean>(false);
     const [Slide, setSlide] = useState<number>(0);
     const length = 3;
@@ -189,7 +190,6 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
         dispatch(modal({ Modal: true }));
     };
 
-
     useEffect(() => {
         const nextSlide = () => {
             setSlide((Slide: number) => (Slide === length - 1 ? 0 : Slide + 1));
@@ -204,7 +204,6 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
     useEffect(() => {
         if (Users.action === "AUTH/fulfilled") setIsLogin(true);
     }, [Users.action]);
-
 
     return (
         <>
@@ -229,7 +228,6 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
                             <p onClick={OnclickPopUp}>로그인</p>
                         </USER>
                     )}
-
                 </NavWrap>
             </HeaderWrap>
             <ContentWrap bgStyle={bgStyle}>
