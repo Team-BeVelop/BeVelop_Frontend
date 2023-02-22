@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import FullDropDown from "../../common/FullDropDown";
 import StyledCheckbox from "../../common/StyledCheckbox";
-import StyledDropDown from "../../common/StyledDropDown";
 import { DivisionData } from "../../Data/FieldData";
 import { FieldData, JobData } from "../../Data/FieldData";
 
@@ -26,8 +26,7 @@ const ProjectNewInfo = ({
                     <DivisionArea>
                         <Title>모집구분</Title>
                         <div className="right">
-                            <StyledDropDown
-                                type="default"
+                            <FullDropDown
                                 data={DivisionData}
                                 current={division}
                                 setCurrent={setDivision}
@@ -135,8 +134,10 @@ const DivisionArea = styled.div`
     align-items: center;
     margin-bottom: 50px;
     .right {
+        position: relative;
         margin-left: 30px;
         width: 100%;
+        z-index: 2;
         @media screen and (max-width: 480px) {
             margin-left: 0;
             margin-top: 18px;
