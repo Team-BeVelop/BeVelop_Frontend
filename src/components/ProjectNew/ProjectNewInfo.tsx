@@ -3,6 +3,7 @@ import FullDropDown from "../../common/FullDropDown";
 import StyledCheckbox from "../../common/StyledCheckbox";
 import { DivisionData } from "../../Data/FieldData";
 import { FieldData, JobData } from "../../Data/FieldData";
+import SingleCalendar from "./SingleCalendar";
 
 const ProjectNewInfo = ({
     division,
@@ -24,13 +25,18 @@ const ProjectNewInfo = ({
                 <Top>기본정보</Top>
                 <Content>
                     <DivisionArea>
-                        <Title>모집구분</Title>
-                        <div className="right">
-                            <FullDropDown
-                                data={DivisionData}
-                                current={division}
-                                setCurrent={setDivision}
-                            />
+                        <div className="division">
+                            <Title>모집구분</Title>
+                            <div className="right">
+                                <FullDropDown
+                                    data={DivisionData}
+                                    current={division}
+                                    setCurrent={setDivision}
+                                />
+                            </div>
+                        </div>
+                        <div className="num">
+                            <Title>모집인원</Title>
                         </div>
                     </DivisionArea>
                     <Field>
@@ -59,6 +65,19 @@ const ProjectNewInfo = ({
                             ))}
                         </div>
                     </Field>
+                    <CalendarArea>
+                        <div className="content">
+                            <Title>모집 마감일</Title>
+                            <div className="input">마감일을 선택해 주세요.</div>
+                            <SingleCalendar />
+                        </div>
+                        <div className="content">
+                            <Title>프로젝트 기간</Title>
+                            <div className="input">
+                                프로젝트 기간을 선택해 주세요.
+                            </div>
+                        </div>
+                    </CalendarArea>
                     <Contact>
                         <Title>
                             연락방식<span>(필수)</span>
@@ -133,6 +152,17 @@ const DivisionArea = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
+    .division {
+        display: flex;
+        align-items: center;
+        width: 45%;
+        margin-right: 5%;
+    }
+    .num {
+        display: flex;
+        align-items: center;
+        width: 50%;
+    }
     .right {
         position: relative;
         margin-left: 30px;
@@ -146,6 +176,34 @@ const DivisionArea = styled.div`
     @media screen and (max-width: 480px) {
         display: block;
         margin-bottom: 34px;
+    }
+`;
+
+const CalendarArea = styled.div`
+    display: flex;
+    margin-bottom: 50px;
+    .content {
+        width: 49%;
+        &:nth-child(2n + 1) {
+            margin-right: 2%;
+        }
+    }
+    .input {
+        display: flex;
+        margin-top: 12px;
+        height: 48px;
+        background-color: #f2f4f6;
+        border-radius: 6px;
+        align-items: center;
+        padding-left: 20px;
+        cursor: pointer;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        font-feature-settings: "tnum" on, "lnum" on;
+        color: #8b95a1;
     }
 `;
 
