@@ -6,6 +6,8 @@ import SelectBox from "../../common/SelectBox";
 import { ENROLLMENT_SLEEPTIME, SKILL } from "../../Data/Filter";
 import ImgUploader from "../../common/ImgUploader";
 import SkillSelectBox from "../../common/SelectBoxModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../useRedux/rootReducer";
 
 type User = {
     nickName: string;
@@ -18,13 +20,16 @@ interface ThumbType {
     file: File;
 }
 const User_first = () => {
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice
+    }));
     const [Position, setPosition] = useState<string>("직무");
     const [Interest, setInterest] = useState<string>("관심분야");
     const [modal, setModal] = useState<boolean>(false);
     const [Thumb, setThumb] = useState<ThumbType[]>([]);
     const [Stack, setStack] = useState<any>([]);
     const [formInput, setFormInput] = useState<User>({
-        nickName: "",
+        nickName: `${Users.user.nickname}`,
         portFolio: "",
         link: "",
         kakao: "",
@@ -86,6 +91,7 @@ const User_first = () => {
                     <input
                         type={"text"}
                         value={formInput.nickName}
+                        placeholder={Users.user.nickname}
                         onChange={handleFormInput}
                         name="nickName"
                     />

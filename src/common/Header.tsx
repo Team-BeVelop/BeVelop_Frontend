@@ -9,6 +9,7 @@ import { RootState, useAppDispatch } from "../useRedux/rootReducer";
 const HeaderWrap = styled.header`
     display: flex;
     width: 100%;
+    height: 7rem;
     @media screen and (max-width: 480px) {
         display: block;
     }
@@ -201,10 +202,6 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
         };
     }, [Slide, length]);
 
-    useEffect(() => {
-        if (Users.action === "AUTH/fulfilled") setIsLogin(true);
-    }, [Users.action]);
-
     return (
         <>
             <HeaderWrap>
@@ -219,7 +216,7 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
                         <li>공모전</li>
                     </Menus>
 
-                    {isLogin ? (
+                    {Users.user.email !== "" ? (
                         <USER>
                             <p onClick={() => nav("/user")}>내 정보</p>
                         </USER>

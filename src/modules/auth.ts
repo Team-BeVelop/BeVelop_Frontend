@@ -36,7 +36,14 @@ export const SignUp = createAsyncThunk(
 const initialState = {
     isLoading: false,
     data: null,
-    user: null,
+    user: {
+        id: 0,
+        email: "",
+        nickname: "",
+        role: "",
+        interest: null,
+        stackName: []
+    },
     token: null,
     error: null,
     action: ""
@@ -55,7 +62,7 @@ export const AuthSlice = createSlice({
             state.isLoading = false;
             state.action = action.type;
             state.user = action.payload.user;
-            state.token = action.payload.token.accessToken;
+            state.token = action.payload.token.access_token;
         },
         [Auth.rejected.type]: (state, action) => {
             state.isLoading = false;
