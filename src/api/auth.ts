@@ -8,9 +8,9 @@ export const Login = (email: string, password: string) =>
         password: password
     });
 
-export const SignUp = (email: string, password: string, name: string) =>
+export const SignUp = (email: string, nickname: string, password: string) =>
     axios.post(`${BASE_URL}/auth/signup`, {
         email: email,
-        password: password,
-        name: name
+        nickname: nickname,
+        password: password
     });

@@ -20,13 +20,13 @@ export const SignUp = createAsyncThunk(
     async (
         {
             email,
-            password,
-            name
-        }: { email: string; password: string; name: string },
+            nickname,
+            password
+        }: { email: string; nickname: string; password: string },
         thunkAPI
     ) => {
         try {
-            return (await authAPI.SignUp(email, password, name)).data;
+            return (await authAPI.SignUp(email, nickname, password)).data;
         } catch (e: any) {
             return thunkAPI.rejectWithValue(await e.response.data);
         }
@@ -39,6 +39,7 @@ const initialState = {
         token: { access_token: null, refresh_token: null },
         user: null
     },
+
     error: null,
     action: ""
 };
@@ -55,7 +56,8 @@ export const AuthSlice = createSlice({
         [Auth.fulfilled.type]: (state, action) => {
             state.isLoading = false;
             state.action = action.type;
-            state.data = action.payload;
+            state.user = action.payload.user;
+            state.token = action.payload.token.access_token;
         },
         [Auth.rejected.type]: (state, action) => {
             state.isLoading = false;
