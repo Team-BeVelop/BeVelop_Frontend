@@ -15,7 +15,7 @@ const ProjectDetailContainer = () => {
     const studyDetail = useSelector((state: any) => state.study.data);
 
     useEffect(() => {
-        dispatch(getStudy(token, id));
+        dispatch(getStudy({ token, id }));
     }, []);
     console.log(studyDetail);
     return (

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import TwoButton from "../../common/TwoButton";
 import { DivisionData } from "../../Data/FieldData";
 import { addNewStudy } from "../../modules/study";
+import { RootState } from "../../useRedux/rootReducer";
 import ProjectNewInfo from "../ProjectNew/ProjectNewInfo";
 import ProjectNewWrite from "../ProjectNew/ProjectNewWrite";
 
@@ -19,9 +20,17 @@ const ProjectNewContainer = () => {
     const [desc, setDesc] = useState(""); //설명
 
     const dispatch = useDispatch<any>();
-    const token = useSelector(
-        (state: any) => state.auth.data.token.access_token
-    );
+    // const token = useSelector(
+    //     (state: RootState) => state.auth.data.token.access_token
+    // );
+
+    // const { Users } = useSelector((state: RootState) => ({
+    //     Users: state.AuthSlice
+    // }));
+
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice.data
+    }));
 
     // 글 등록
     const onClickPostButton = () => {
@@ -33,23 +42,22 @@ const ProjectNewContainer = () => {
         console.log(introduce);
         console.log(title);
         console.log(desc);
-
         dispatch(
-            addNewStudy(
-                token,
-                desc,
-                division.value,
-                email,
-                "2023-01-28",
-                "2022-12-30",
-                kakao,
-                10,
-                jobs,
-                fields,
-                introduce,
-                "2022-12-28",
-                title
-            )
+            addNewStudy({
+                token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb…Y4MH0.7M6-O0AdspjAH-xbKljOsVhJjcFH2Yg9zIaPT2z3Jfg.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NzYzNzE5MjIsImV4cCI6MTY3NjM3MjIyMn0.NElDyvqTG3qfGGVkY_tlA1EKdjxTdLKjeKzesyBnd1Y",
+                description: desc,
+                division: "SIDE_PROJECT",
+                emailUrl: email,
+                endDate: "2023-04-28",
+                enrollmentEndDate: "2023-03-10",
+                kakaoUrl: kakao,
+                maxMemberCount: 10,
+                recruitJobList: jobs,
+                relatedFieldList: fields,
+                shortTitle: introduce,
+                startDate: "2022-03-12",
+                title: title
+            })
         );
     };
 
@@ -102,7 +110,6 @@ const Container = styled.main`
 
 const Wrap = styled.section`
     display: flex;
-    height: 635px;
     overflow: hidden;
     margin-bottom: 40px;
     @media screen and (max-width: 480px) {

@@ -4,14 +4,14 @@ const BASE_URL = "http://52.78.142.128:8080";
 // 모든 스터디
 export const getStudyList = () => axios.get(`${BASE_URL}/studies`);
 
-export const getStudyDetail = (token: string, id: string) =>
+export const getStudyDetail = (token: string | null, id: string) =>
     axios.get(`${BASE_URL}/studies/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
     });
 
 // 새로운 study 생성
 export const addNewStudy = (
-    token: string,
+    token: string | null,
     description: string,
     division: string,
     emailUrl: string,
@@ -35,8 +35,8 @@ export const addNewStudy = (
             enrollmentEndDate: enrollmentEndDate,
             kakaoUrl: kakaoUrl,
             maxMemberCount: maxMemberCount,
-            recruitJobList: "BACKEND",
-            relatedFieldList: "엔터테인먼트",
+            recruitJobList: recruitJobList,
+            relatedFieldList: relatedFieldList,
             shortTitle: shortTitle,
             startDate: startDate,
             title: title

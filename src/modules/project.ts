@@ -1,50 +1,43 @@
-import * as authAPI from "../api/project";
-const GET_PROJECT_LIST = "GET_PROJECT_LIST";
-const GET_PROJECT_LIST_SUCCESS = "GET_PROJECT_LIST_SUCCESS";
-const GET_PROJECT_LIST_ERROR = "GET_PROJECT_LIST_ERROR";
+import * as projectAPI from "../api/project";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // 모든 프로젝트
-export const getProjectList = () => async (dispatch: any) => {
-    dispatch({ type: GET_PROJECT_LIST });
-    try {
-        const getprojectlist = await authAPI.getProjectList();
-        dispatch({ type: GET_PROJECT_LIST_SUCCESS, project: getprojectlist });
-    } catch (e) {
-        dispatch({ type: GET_PROJECT_LIST_ERROR, error: e });
+export const getProjectList = createAsyncThunk(
+    "project/getProjectList",
+    async thunkAPI => {
+        try {
+            return (await projectAPI.getProjectList()).data;
+        } catch (e: any) {
+            return thunkAPI;
+        }
     }
-};
+);
 
 const initialState = {
-    isLoading: null,
+    isLoading: false,
     data: null,
-    error: null
+    error: null,
+    action: ""
 };
-export default function project(state = initialState, action: any) {
-    switch (action.type) {
-        case GET_PROJECT_LIST:
-            return {
-                ...state,
-                isLoading: true,
-                data: null,
-                error: null
-            };
-        case GET_PROJECT_LIST_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-                data: action.project.data,
-                action: action,
-                error: null
-            };
-        case GET_PROJECT_LIST_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-                data: null,
-                action: action,
-                error: action.error
-            };
-        default:
-            return state;
+
+export const ProjectSlice = createSlice({
+    name: "project",
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [getProjectList.pending.type]: (state, action) => {
+            state.isLoading = true;
+            state.action = action.type;
+        },
+        [getProjectList.fulfilled.type]: (state, action) => {
+            state.isLoading = false;
+            state.action = action.type;
+            state.data = action.payload;
+        },
+        [getProjectList.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.action = action.type;
+            state.error = action.payload;
+        }
     }
-}
+});

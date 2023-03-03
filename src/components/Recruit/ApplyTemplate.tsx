@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+const DivisionTheme = [
+    {
+        name: "사이드 프로젝트",
+        color: "#7A5DF5"
+    },
+    {
+        name: "스타트업",
+        color: "#FF26A8"
+    },
+    {
+        name: "공모전",
+        color: "#C00DFF"
+    }
+];
+
 const ApplyTemplate = ({
     id,
     division,
@@ -8,13 +23,18 @@ const ApplyTemplate = ({
     hashtag,
     shortTitle
 }: any) => {
+    // '구분' 배경 지정
+    const matchColor = (v: string) =>
+        DivisionTheme.find(i => i.name === v)?.color || "#7a5df5";
+
     const goProjectDetailPage = (id: number) =>
         (window.location.href = `/project/${id}`);
+
     return (
         <>
             <Container onClick={() => goProjectDetailPage(id)}>
                 <div className="info">
-                    <Top>
+                    <Top divisionColor={matchColor(division)}>
                         <div className="left">
                             <div className="division">{division}</div>
                             {field.map((item: any, index: string) => (
@@ -74,7 +94,8 @@ const Container = styled.div`
     }
 `;
 
-const Top = styled.div`
+//7a5df5
+const Top = styled.div<{ divisionColor: string }>`
     display: flex;
     justify-content: space-between;
     .left {
@@ -87,8 +108,13 @@ const Top = styled.div`
         line-height: 19px;
         font-feature-settings: "tnum" on, "lnum" on;
         .division {
+            font-family: "Pretendard";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
             color: #ffffff;
-            background: #7a5df5;
+            background: ${props => props.divisionColor};
             margin-right: 10px;
             border-radius: 4px;
             padding: 3px 8px;
@@ -98,6 +124,11 @@ const Top = styled.div`
             }
         }
         .field {
+            font-family: "Pretendard";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
             color: #ffffff;
             background-color: #000000;
             border-radius: 4px;

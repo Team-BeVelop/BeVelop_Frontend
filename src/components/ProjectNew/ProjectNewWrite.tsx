@@ -26,7 +26,7 @@ const Wrap = styled.section`
     width: 25%;
     border: 1px solid #e3e3e3;
     border-radius: 6px;
-    height: 100%;
+    height: 635px;
     @media screen and (max-width: 480px) {
         border: none;
         border-radius: 0;
