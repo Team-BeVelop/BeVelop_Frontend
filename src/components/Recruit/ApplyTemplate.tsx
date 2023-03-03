@@ -1,136 +1,197 @@
 import styled from "styled-components";
 
-export type Apply = {
-  tag: any;
-  title: any;
-  hashtag: any;
-  img: any;
-};
+const DivisionTheme = [
+    {
+        name: "사이드 프로젝트",
+        color: "#7A5DF5"
+    },
+    {
+        name: "스타트업",
+        color: "#FF26A8"
+    },
+    {
+        name: "공모전",
+        color: "#C00DFF"
+    }
+];
 
-const ApplyTemplate: React.FC<Apply> = ({ tag, title, hashtag, img }) => {
-  return (
-    <>
-      <Container>
-        <img src={img} alt="" />
-        <div className="info">
-          <Tags>
-            <div>사이드 프로젝트</div>
-            <div>라이프스타일</div>
-          </Tags>
-          <Title>{title}</Title>
-          <Hash>{hashtag}</Hash>
-          <Button>지금 참여하기</Button>
-        </div>
-      </Container>
-    </>
-  );
+const ApplyTemplate = ({
+    id,
+    division,
+    field,
+    title,
+    hashtag,
+    shortTitle
+}: any) => {
+    // '구분' 배경 지정
+    const matchColor = (v: string) =>
+        DivisionTheme.find(i => i.name === v)?.color || "#7a5df5";
+
+    const goProjectDetailPage = (id: number) =>
+        (window.location.href = `/project/${id}`);
+
+    return (
+        <>
+            <Container onClick={() => goProjectDetailPage(id)}>
+                <div className="info">
+                    <Top divisionColor={matchColor(division)}>
+                        <div className="left">
+                            <div className="division">{division}</div>
+                            {field.map((item: any, index: string) => (
+                                <div className="field" key={index}>
+                                    {item.fieldName}
+                                </div>
+                            ))}
+                        </div>
+                        <img
+                            className="heart"
+                            src="img/icon_heart_fill.png"
+                            alt=""
+                        />
+                    </Top>
+                    <Title>{title}</Title>
+                    <HashTags>
+                        {hashtag.map((item: any, index: string) => (
+                            <div className="item" key={index}>
+                                #{item.jobName}
+                            </div>
+                        ))}
+                    </HashTags>
+                    <Content>{shortTitle}</Content>
+                </div>
+            </Container>
+        </>
+    );
 };
 
 const Container = styled.div`
-  display: inline-block;
-  border: 1px solid #eeeeee;
-  border-radius: 6px;
-  height: 348px;
-  width: 23.5%;
-  margin-right: 2%;
-  overflow: hidden;
-  cursor: pointer;
-  margin-bottom: 45px;
-  &:nth-child(4n) {
-    margin-right: 0px;
-  }
-
-  img {
-    width: 100%;
-    height: 170px;
-    @media screen and (max-width: 480px) {
-      display: none;
+    display: inline-block;
+    border: 1px solid #eeeeee;
+    border-radius: 6px;
+    height: 180px;
+    width: 23.5%;
+    margin-right: 2%;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 20px;
+    &:nth-child(4n) {
+        margin-right: 0px;
     }
-  }
-
-  .info {
-    padding: 0 13px 13px 13px;
-    @media screen and (max-width: 480px) {
-      width: 100%;
-      padding: 17px 17px 14px 17px;
+    .info {
+        padding: 18px 13px 13px 13px;
+        @media screen and (max-width: 480px) {
+            display: flex;
+            width: 100%;
+            margin-bottom: 10px;
+            height: 170px;
+        }
     }
-  }
-
-  @media screen and (max-width: 480px) {
-    display: flex;
-    width: 100%;
-    margin-bottom: 10px;
-    height: 170px;
-  }
+    @media screen and (max-width: 480px) {
+        display: flex;
+        width: 100%;
+        margin-bottom: 14px;
+        height: 180px;
+    }
 `;
 
-const Tags = styled.div`
-  display: flex;
-  margin-top: 23px;
-  @media screen and (max-width: 480px) {
-    margin-top: 0;
-  }
-  div {
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    font-feature-settings: "tnum" on, "lnum" on;
-    color: #ffffff;
-    padding: 3px 8px;
-    background: #7a5df5;
-    border-radius: 4px;
-    margin-right: 10px;
-    @media screen and (max-width: 480px) {
-      font-size: 12px;
-      line-height: 14px;
+//7a5df5
+const Top = styled.div<{ divisionColor: string }>`
+    display: flex;
+    justify-content: space-between;
+    .left {
+        display: flex;
+        margin-top: 9px;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        font-feature-settings: "tnum" on, "lnum" on;
+        .division {
+            font-family: "Pretendard";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #ffffff;
+            background: ${props => props.divisionColor};
+            margin-right: 10px;
+            border-radius: 4px;
+            padding: 3px 8px;
+            @media screen and (max-width: 480px) {
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
+        .field {
+            font-family: "Pretendard";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #ffffff;
+            background-color: #000000;
+            border-radius: 4px;
+            padding: 3px 8px;
+            @media screen and (max-width: 480px) {
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
     }
-  }
+    img {
+        width: 18px;
+        height: 16px;
+    }
 `;
 
 const Title = styled.h1`
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #000000;
-  margin-top: 18px;
-  @media screen and (max-width: 480px) {
-    margin-top: 24px;
-  }
-`;
-
-const Hash = styled.h4`
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #8b95a1;
-  margin-top: 4px;
-`;
-
-const Button = styled.button`
-  margin-top: 22px;
-  background: #f2f4f6;
-  border-radius: 6px;
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #000000;
-  width: 100%;
-  height: 38px;
-  @media screen and (max-width: 480px) {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #000000;
     margin-top: 18px;
-  }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    height: 1.2em;
+`;
+
+const HashTags = styled.h4`
+    display: flex;
+    margin-top: 4px;
+    .item {
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        font-feature-settings: "tnum" on, "lnum" on;
+        color: #8b95a1;
+        margin-right: 6px;
+    }
+`;
+
+const Content = styled.div`
+    margin-top: 18px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    font-feature-settings: "tnum" on, "lnum" on;
+    color: #6b7684;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 2.4em;
 `;
 
 export default ApplyTemplate;

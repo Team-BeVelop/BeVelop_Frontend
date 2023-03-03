@@ -1,96 +1,82 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import * as authAPI from "../api/auth";
-const AUTH = "AUTH"; //로그인 요청
-const AUTH_SUCCESS = "AUTH_SUCCESS";
-const AUTH_ERROR = "AUTH_ERROR";
-const LOGOUT = "LOGOUT";
-const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-const LOGOUT_ERROR = "LOGOUT_ERROR";
 
-
-export const auth = (email : string,password : string) =>
-async(dispatch :any) =>{
-    dispatch({type: AUTH});
-    try {
-        const login = await authAPI.Login(email, password);
-        dispatch({type: AUTH_SUCCESS,
-        login: login,
-        });
-    }catch (e){
-        dispatch({type: AUTH_ERROR, error: e});
+export const Auth = createAsyncThunk(
+    "AUTH",
+    async (
+        { email, password }: { email: string; password: string },
+        thunkAPI
+    ) => {
+        try {
+            return (await authAPI.Login(email, password)).data;
+        } catch (e: any) {
+            return thunkAPI.rejectWithValue(await e.response.data);
+        }
     }
-}
+);
 
-export const LogOut =
-() =>
-  async (dispatch: any) => {
-    dispatch({ type: LOGOUT }); // 요청이 시작됨
-    try {
-      dispatch({
-        type: LOGOUT_SUCCESS,
-        
-      }); // 성공
-    } catch (e) {
-      dispatch({ type: LOGOUT_ERROR, error: e }); // 실패
+export const SignUp = createAsyncThunk(
+    "SIGNUP",
+    async (
+        {
+            email,
+            nickname,
+            password
+        }: { email: string; nickname: string; password: string },
+        thunkAPI
+    ) => {
+        try {
+            return (await authAPI.SignUp(email, nickname, password)).data;
+        } catch (e: any) {
+            return thunkAPI.rejectWithValue(await e.response.data);
+        }
     }
-  };
+);
 
 const initialState = {
-    isLoading: null,
-    data: null,
+    isLoading: false,
+    data: {
+        token: { access_token: null, refresh_token: null },
+        user: null
+    },
+
     error: null,
+    action: ""
 };
-export default function auths(state = initialState, action : any) {
-    switch (action.type){
-        case AUTH:
-            return {
-                ...state,
 
-                isLoading: true,
-                data: null,
-                error: null
-            };
-        case AUTH_SUCCESS:
-            return {
-                ...state,
-
-                isLoading: false,
-                data: action.login.data,
-                action : action,
-                error: null,
-            };
-        case AUTH_ERROR:
-            return{
-                ...state,
-
-            isLoading: false,
-            data: null,
-            action : action,
-            error: action.error,
-            };
-
-        case LOGOUT:
-            return{
-                ...state,
-                
-                isLoading: true,
-                data: null,
-                error: null
-            }
-            case LOGOUT_SUCCESS:
-                return {
-                    ...state,
-                    isLoading: false,
-                    data : null,
-                    error: null,
-                };
-            case LOGOUT_ERROR:
-                return{
-                    ...state,
-                isLoading: false,
-                data: null,
-                };
-            default:
-                return state;
+export const AuthSlice = createSlice({
+    name: "auth",
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [Auth.pending.type]: (state, action) => {
+            state.isLoading = true;
+            state.action = action.type;
+        },
+        [Auth.fulfilled.type]: (state, action) => {
+            state.isLoading = false;
+            state.action = action.type;
+            state.user = action.payload.user;
+            state.token = action.payload.token.access_token;
+        },
+        [Auth.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.action = action.type;
+            state.error = action.payload;
+        },
+        [SignUp.pending.type]: (state, action) => {
+            state.isLoading = true;
+            state.action = action.type;
+        },
+        [SignUp.fulfilled.type]: (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+            state.action = action.type;
+        },
+        [SignUp.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+            state.action = action.type;
+        }
     }
-}
-;
+});

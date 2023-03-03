@@ -6,16 +6,16 @@ import ProjectInfo from "../Main/ProjectInfo";
 const ContainerWrap = styled.main`
     width: 80%;
     max-width: 1400px;
+    height: 100vh;
     margin: 0 auto;
-`
+`;
 
 const MainContainer = () => {
-    return(
-        
+    return (
         <ContainerWrap>
-        <ProjectInfo/>
+            <ProjectInfo />
         </ContainerWrap>
-    )
-}
+    );
+};
 
 export default MainContainer;

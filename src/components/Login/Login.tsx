@@ -1,147 +1,172 @@
-import React, { useState} from 'react';
-import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import { auth } from '../../modules/auth';
-import { IoIosClose } from "react-icons/io";
-import { modal } from '../../modules/modal';
+import React, { useMemo, useState } from "react";
+import { Auth, SignUp } from "../../modules/auth";
+import * as l from "./style/LoginStyle";
+import { modal } from "../../modules/modal";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../../useRedux/rootReducer";
 
 type User = {
-    id : string,
-    pw : string
-}
-const Wrap = styled.div`
-    position: absolute;
-    justify-content: center;
-    align-items: center;    
-`
-const LoginBox = styled.div`
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 30px 30px;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 6px;
-    .logo{
-        height: 25px;
-        margin-bottom: 30px;
-        font-family: 'Pretendard';
-font-style: normal;
-font-weight: 500;
-font-size: 40px;
-line-height: 26px;
-font-feature-settings: 'tnum' on, 'lnum' on;
+    id: string;
+    pw: string;
+};
+type UserSignUp = {
+    id: any;
+    pw: any;
+    nickName: any;
+};
 
-color: #000000;
-    }
-    .sentence{
-        margin-bottom: 40px;
-        padding: 20px 15px;
-        border-bottom: 3px solid #000062;
-    }
-    @media screen and (max-width:480px){
-        transform: translate(-50%, -80%);
-    }
-`
-const InputBox = styled.div`
-    display: flex;
-    flex-direction:column;
-    input{
-        width: 320px;
-        height: 40px;
-        margin: 5px;
-        padding: 0 20px;
-        border: 1px solid #000062;
-        border-radius: 20px;
-    }
-    input::placeholder{
-        font-size: 12px;
-    }
-`
-const ButtonBox = styled.div`
-
-    .signInBtn{
-        width: 320px;
-        height: 40px;
-        margin: 40px 0 0 0;
-        border: 2px solid #000062;
-        border-radius: 20px;
-        text-align: center;
-        line-height: 40px;
-        font-weight: 700;
-        color: #000062;
-        }
-
-    .or{
-        text-align:center;
-        margin: 20px;
-    }
-
-.signUpBtn{
-    display:table;
-    margin:0 auto;
-    font-weight: 500;
-    color: #000062;
-}
-`
-const Button = styled.div`
-    position: absolute;
-    right: 26.25px;
-    top: 26px;
-    font-size: 30px;
-    cursor: pointer;
-`
-
-const  Login =  () => {
-    
-    const dispatch = useDispatch<any>();
+const Login = () => {
+    const dispatch = useAppDispatch();
+    const [signUp, setSignUp] = useState<any>(false);
+    const [signIn, setSignIn] = useState<any>(false);
     const [formInput, setFormInput] = useState<User>({
-        id: '',
-        pw: '',
+        id: "",
+        pw: ""
     });
-
-    const handleFormInput = (e : any) => {
+    const [signUpInput, setSignUpInput] = useState<UserSignUp>({
+        id: "",
+        pw: "",
+        nickName: ""
+    });
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice
+    }));
+    const handleFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormInput({ ...formInput, [e.target.name]: e.target.value });
     };
+    const handleSignUpInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSignUpInput({ ...signUpInput, [e.target.name]: e.target.value });
+    };
     const isActive = !(formInput.id.length > 4 && formInput.pw.length > 4);
-    const signInBtn =() =>{
-        dispatch(auth(formInput.id,formInput.pw));
+    const signInBtn = () => {
+        dispatch(Auth({ email: formInput.id, password: formInput.pw }));
     };
 
     const signUpBtn = () => {
-        alert("Sign Up!")
+        dispatch(
+            SignUp({
+                email: signUpInput.id,
+                nickname: signUpInput.nickName,
+                password: signUpInput.pw
+            })
+        );
     };
+    useMemo(() => {
+        if (Users.action === "AUTH/rejected")
+            alert("아이디 혹은 비밀번호를 확인해주세요");
+        if (Users.action === "SIGNUP/fulfilled") {
+            setSignUp(false);
+            setSignIn(true);
+        }
+        if (Users.action === "SIGNUP/rejected") {
+            alert("이미 가입된 정보입니다");
+        }
+        if (Users.action === "AUTH/fulfilled")
+            dispatch(modal({ Modal: false }));
+    }, [Users.action]);
+    return (
+        <l.Wrap>
+            <l.LoginBox>
+                <l.Button onClick={() => dispatch(modal({ Modal: false }))}>
+                    <l.CloseBtn />
+                </l.Button>
+                <h1 className="logo">BeVelop</h1>
+                <p className="sentence">프로젝트를 생성하고</p>
+                <p className="sentence">참여해보세요</p>
+                <p className="subsentence">BeVelop에서 시작해보세요</p>
+                {signUp ? (
+                    <l.InputBox>
+                        <p>이메일</p>
+                        <input
+                            onChange={handleSignUpInput}
+                            value={signUpInput.id}
+                            name="id"
+                            type="text"
+                            placeholder="이메일을 입력해주세요"
+                        ></input>
+                        <p>닉네임</p>
+                        <input
+                            onChange={handleSignUpInput}
+                            value={signUpInput.nickName}
+                            name="nickName"
+                            type="text"
+                            placeholder="닉네임을 입력해주세요"
+                        ></input>
+                        <p>비밀번호</p>
+                        <input
+                            onChange={handleSignUpInput}
+                            value={signUpInput.pw}
+                            name="pw"
+                            type="password"
+                            placeholder="비밀번호를 입력해주세요"
+                        ></input>
 
-    const OnclickPopUp = () => {
-        dispatch(modal());
-      };
+                        <l.Box
+                            color="#888A92"
+                            bgColor="#F2F4F6"
+                            onClick={signUpBtn}
+                        >
+                            회원가입
+                        </l.Box>
+                    </l.InputBox>
+                ) : signIn ? (
+                    <l.InputBox>
+                        <p>이메일</p>
+                        <input
+                            onChange={handleFormInput}
+                            value={formInput.id}
+                            name="id"
+                            type="text"
+                            placeholder="이메일을 입력해주세요"
+                        ></input>
+                        <p>비밀번호</p>
+                        <input
+                            onChange={handleFormInput}
+                            value={formInput.pw}
+                            name="pw"
+                            type="password"
+                            placeholder="비밀번호를 입력해주세요"
+                        ></input>
 
-    
-    return(
-        <Wrap>
-            
-            <LoginBox>
-            <Button onClick={OnclickPopUp}><IoIosClose/></Button>
-                <h1 className='logo'>BeVelop</h1>
-                <p className="sentence">
-                    "개발자들을 위한 공간 BeVelop"
-                </p>
-                <InputBox>
-                    <input onChange={handleFormInput} value={formInput.id} name="id" type="text" placeholder="E-Mail"></input>
-                    <input onChange={handleFormInput} value={formInput.pw} name="pw" type="password" placeholder="Password"></input>
-                </InputBox>
-                <ButtonBox>
+                        <l.Box
+                            color="#888A92"
+                            bgColor="#F2F4F6"
+                            onClick={signInBtn}
+                        >
+                            로그인
+                        </l.Box>
+                    </l.InputBox>
+                ) : (
+                    <l.LoginKind>
+                        <l.Box color="#3C1E1E" bgColor="#F7E317">
+                            카카오로 시작하기
+                        </l.Box>
+                        <l.Box color="#FFFFFF" bgColor="#24292F">
+                            Github로 시작하기
+                        </l.Box>
+                        <div className="or">또는</div>
+                        <l.Box
+                            color="#FFFFFF"
+                            bgColor="#7A5DF5"
+                            onClick={() => setSignUp(true)}
+                        >
+                            이메일로 가입하기
+                        </l.Box>
+                        <p>
+                            이미 계정이 있으신가요?
+                            <a onClick={() => setSignIn(true)}>로그인</a>
+                        </p>
+                    </l.LoginKind>
+                )}
+
+                {/* <ButtonBox>
                 <button onClick={signInBtn} className="signInBtn" disabled={isActive}>Sign In</button>
-                <div className="or" >- or -</div>
+                <div className="or" >또는</div>
                 <button onClick={signUpBtn} className="signUpBtn">Sign Up</button>
-                </ButtonBox>
-            </LoginBox>
-        </Wrap>
+                </ButtonBox> */}
+            </l.LoginBox>
+        </l.Wrap>
     );
-}
+};
 
 export default Login;

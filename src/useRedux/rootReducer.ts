@@ -1,17 +1,40 @@
-import { combineReducers } from "redux";
-import {persistReducer} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import auth from "../modules/auth";
-import modal from "../modules/modal";
-const persistConfig = {
-    key: "root",
-    storage: storage,
-    whitelist: ["auth"],
-};
+import {
+    Action,
+    combineReducers,
+    configureStore,
+    ThunkAction
+} from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import { AuthSlice } from "../modules/auth";
+import { useDispatch } from "react-redux";
+import actions from "../modules/modal";
+import users from "../modules/user";
+import { ProjectSlice } from "../modules/project";
+import { StudySlice } from "../modules/study";
 
-const rootReducer = combineReducers({
-    auth,
-    modal,
+const reducer = combineReducers({
+    AuthSlice: AuthSlice.reducer,
+    ProjectSlice: ProjectSlice.reducer,
+    StudySlice: StudySlice.reducer,
+    modal: actions,
+    users: users
 });
 
-export default persistReducer(persistConfig, rootReducer);
+const store = configureStore({
+    reducer,
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger)
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
+>;
+
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+
+export default store;

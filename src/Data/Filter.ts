@@ -1,0 +1,42 @@
+export const ENROLLMENT_SLEEPTIME = [
+    "UX 디자이너",
+    "FE 개발자",
+    "BE 개발자",
+    "DEVOPS",
+    "기획자"
+];
+
+export const SKILL = [
+    { color: "#E7CB1E", name: "Java Script" },
+    { color: "#63DBFB", name: "React" },
+    { color: "#007ACC", name: "TypeScript" },
+    { color: "#4DBA87", name: "Vue" },
+    { color: "#FF3E00", name: "Svelte" },
+    { color: " #000000", name: "Next.js" },
+    { color: "#648EAA", name: "Java" },
+    { color: "#77BC1F", name: "Spring" },
+    { color: "#5AAA44", name: "Node.js" },
+    { color: "#DF234F", name: "Nest.js" },
+    { color: "#11B3DB", name: "Go" },
+    { color: "#945DFF", name: "Kotlin" },
+    { color: "#3F3F3F", name: "Express" },
+    { color: "#00618A", name: "MySQL" },
+    { color: "#439934", name: "MongoDB" },
+    { color: "#366E9C", name: "Python" },
+    { color: " #2BA977", name: "Django" },
+    { color: "#6181B6", name: "php" },
+    { color: "#E434AA", name: "GraphQL" },
+    { color: "#F58220", name: "Firebase" },
+    { color: "#68B7F7", name: "Flutter" },
+    { color: "#F78C3D", name: "Swift" },
+    { color: "#63DBFB", name: "ReactNative" },
+    { color: "#110B09", name: "Unity" },
+    { color: "#252F3E", name: "AWS" },
+    { color: "#486BB3", name: "Kubernetes" },
+    { color: "#019BC6", name: "Docker" },
+    { color: "#F34F29", name: "Git" },
+    { color: "#1D1D1D", name: "Figma" },
+    { color: " #F69833", name: "Zeplin" },
+    { color: "#99425B", name: "Jest" },
+    { color: "#1B598D", name: "C" }
+];
