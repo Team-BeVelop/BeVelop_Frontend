@@ -18,20 +18,20 @@ const UserWrap = styled.main`
 const UserContainer = () => {
     const [fix, setFix] = useState<boolean>(false);
     const { Users } = useSelector((state: any) => ({
-        Users: state.users
+        Users: state.AuthSlice
     }));
 
     return (
         <UserWrap>
-            {Users.data && !fix ? (
+            {Users.user.stackName.length !== 0 ? (
                 <>
                     <User
-                        nickName={Users.data.nickName}
-                        link={Users.data.link}
-                        portFolio={Users.data.portFolio}
-                        Position={Users.data.Position}
-                        Interest={Users.data.Interest}
-                        index={Users.data.Stack}
+                        nickName={Users.user.nickname}
+                        link={Users.user.link}
+                        portFolio={Users.user.portFolio}
+                        Position={Users.user.job}
+                        Interest={Users.user.interests}
+                        index={Users.user.stackName}
                     />
                     <UserProject />
                 </>

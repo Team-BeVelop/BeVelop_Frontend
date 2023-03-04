@@ -1,79 +1,74 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import * as userAPI from "../api/user";
+
 const USER = "USER"; //로그인 요청
 const USER_SUCCESS = "USER_SUCCESS";
 const USER_ERROR = "USER_ERROR";
 
-export const UserInfo =
-    (
-        nickName: string,
-        portFolio: string,
-        link: string,
-        email: string,
-        kakao: string,
-        Position: string,
-        Interest: string,
-        Stack: [],
-        UserIntro: string,
-        Thumb: any
-    ) =>
-    async (dispatch: any) => {
-        dispatch({ type: USER });
+export const UserEdit = createAsyncThunk(
+    "EDIT_USER",
+    async (
+        {
+            interests,
+            introduce,
+            job,
+            nickname,
+            stackName,
+            url,
+            id,
+            accessToken
+        }: {
+            interests: string;
+            introduce: string;
+            job: string;
+            nickname: string;
+            stackName: string[];
+            url: string;
+            id: number;
+            accessToken: string;
+        },
+        thunkAPI: any
+    ) => {
         try {
-            dispatch({
-                type: USER_SUCCESS,
-                userinfo: {
-                    nickName: nickName,
-                    portFolio: portFolio,
-                    link: link,
-                    email: email,
-                    kakao: kakao,
-                    Position: Position,
-                    Interest: Interest,
-                    Stack: Stack,
-                    UserIntro: UserIntro,
-                    Thumb: Thumb
-                }
-            });
-        } catch (e) {
-            dispatch({ type: USER_ERROR, error: e });
+            return (
+                await userAPI.UserEdit(
+                    interests,
+                    introduce,
+                    job,
+                    nickname,
+                    stackName,
+                    url,
+                    id,
+                    accessToken
+                )
+            ).data;
+        } catch (error: any) {
+            return thunkAPI.rejectWithValue(error.response.data);
         }
-    };
+    }
+);
 
 const initialState = {
-    isLoading: null,
+    isLoading: false,
     data: null,
     error: null
 };
 
-export default function users(state = initialState, action: any) {
-    switch (action.type) {
-        case USER:
-            return {
-                ...state,
-
-                isLoading: true,
-                data: null,
-                error: null
-            };
-        case USER_SUCCESS:
-            return {
-                ...state,
-
-                isLoading: false,
-                data: action.userinfo,
-                action: action,
-                error: null
-            };
-        case USER_ERROR:
-            return {
-                ...state,
-
-                isLoading: false,
-                data: null,
-                action: action,
-                error: action.error
-            };
-
-        default:
-            return state;
+export const UserSlice = createSlice({
+    name: "user",
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [UserEdit.pending.type]: (state, action) => {
+            state.isLoading = true;
+        },
+        [UserEdit.fulfilled.type]: (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+        },
+        [UserEdit.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        }
     }
-}
+});
