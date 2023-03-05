@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import * as r from "./style/SkillList";
 
-const SkillLi = ({ index, click }: any) => {
-    const [isCheck, setIsCheck] = useState<boolean>(false);
+const SkillLi = ({ index, click, isCheck, setIsCheck }: any) => {
     function Click(e: any) {
         click();
-        setIsCheck(!isCheck);
+        setIsCheck(
+            isCheck.map((item: any, i: any) => (i === index ? !item : item))
+        );
     }
 
     return (
