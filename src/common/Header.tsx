@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { modal } from "../modules/modal";
+import { GetUserInfo } from "../modules/user";
 import { RootState, useAppDispatch } from "../useRedux/rootReducer";
 
 const HeaderWrap = styled.header`

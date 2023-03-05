@@ -1,28 +1,28 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import * as u from "./style/UserInfoInput";
-import { useDispatch } from "react-redux";
-
 import SelectBox from "../../common/SelectBox";
 import { ENROLLMENT_SLEEPTIME, SKILL } from "../../Data/Filter";
 import ImgUploader from "../../common/ImgUploader";
 import SkillSelectBox from "../../common/SelectBoxModal";
 import { useSelector } from "react-redux";
-import { RootState } from "../../useRedux/rootReducer";
+import { RootState, useAppDispatch } from "../../useRedux/rootReducer";
 import { UserEdit } from "../../modules/user";
+import { useNavigate } from "react-router";
 
 type User = {
     nickName: string;
     portFolio: string;
     link: string;
-    kakao: string;
-    email: string;
 };
 interface ThumbType {
     file: File;
 }
 const User_first = () => {
+    const { Auths } = useSelector((state: RootState) => ({
+        Auths: state.AuthSlice
+    }));
     const { Users } = useSelector((state: RootState) => ({
-        Users: state.AuthSlice
+        Users: state.UserSlice
     }));
     const [Position, setPosition] = useState<string>("직무");
     const [Interest, setInterest] = useState<string>("관심분야");
@@ -30,24 +30,31 @@ const User_first = () => {
     const [Thumb, setThumb] = useState<ThumbType[]>([]);
     const [Stack, setStack] = useState<any>([]);
     const [formInput, setFormInput] = useState<User>({
-        nickName: `${Users.user.nickname}`,
+        nickName: `${Users.userInfo.nickname}`,
         portFolio: "",
-        link: "",
-        kakao: "",
-        email: ""
+        link: `${Users.userInfo.url}`
     });
     const [userIntro, setUserIntro] = useState<string>("");
     useMemo(() => {
-        if (Stack.length > 0) {
-        }
-    }, [Stack]);
+        setPosition(Users.userInfo.job);
+        setInterest(Users.userInfo.interests);
+        setUserIntro(Users.userInfo.introduce);
+        // stackName의 stackId 과 SKILL 의 name 이 같은 것을 찾아서 color,name 을 넣어준다.
+        setStack(
+            Users.userInfo.stackName.map((el: any) => {
+                const stack = SKILL.find(skill => skill.name === el.stackId);
+                return stack;
+            })
+        );
+    }, []);
     const handleFormInput = (e: any) => {
         setFormInput({ ...formInput, [e.target.name]: e.target.value });
     };
     const handleUserIntro = (e: any) => {
         setUserIntro(e.target.value);
     };
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
+    const nav = useNavigate();
 
     const Complete = () => {
         dispatch(
@@ -58,10 +65,11 @@ const User_first = () => {
                 nickname: formInput.nickName,
                 stackName: Stack.map((el: any) => el.name),
                 url: formInput.link,
-                id: Users.user.id,
-                accessToken: Users.token
+                id: Users.userInfo.id,
+                accessToken: Auths.token
             })
         );
+        nav("/user");
     };
 
     return (
@@ -89,7 +97,7 @@ const User_first = () => {
                     <input
                         type={"text"}
                         value={formInput.nickName}
-                        placeholder={Users.user.nickname}
+                        placeholder={Users.userInfo.nickname}
                         onChange={handleFormInput}
                         name="nickName"
                     />
@@ -99,6 +107,7 @@ const User_first = () => {
                     <textarea
                         onChange={handleUserIntro}
                         value={userIntro}
+                        placeholder={Users.userInfo.introduce}
                     ></textarea>
                 </u.Intro>
                 <u.Profile>
@@ -117,12 +126,20 @@ const User_first = () => {
                     <u.FilterArea>
                         <SelectBox
                             setState={setPosition}
-                            placeholder="직무"
+                            placeholder={
+                                Users.userInfo.job !== ""
+                                    ? Users.userInfo.job
+                                    : "직무"
+                            }
                             data={ENROLLMENT_SLEEPTIME}
                         />
                         <SelectBox
                             setState={setInterest}
-                            placeholder="관심분야"
+                            placeholder={
+                                Users.userInfo.interests !== ""
+                                    ? Users.userInfo.interests
+                                    : "관심분야"
+                            }
                             data={ENROLLMENT_SLEEPTIME}
                         />
                     </u.FilterArea>

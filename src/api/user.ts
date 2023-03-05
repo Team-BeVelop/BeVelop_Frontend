@@ -2,19 +2,11 @@ import axios from "axios";
 
 const BASE_URL = "http://52.78.142.128:8080";
 
-export const UserInfo = (
-    nickName: string,
-    portFolio: string,
-    link: string,
-    email: string,
-    kakao: string
-) =>
-    axios.post(``, {
-        nickName: nickName,
-        portFolio: portFolio,
-        link: link,
-        email: email,
-        kakao: kakao
+export const UserInfo = (accessToken: string) =>
+    axios.get(`${BASE_URL}/user/profile`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
     });
 
 export const UserEdit = (

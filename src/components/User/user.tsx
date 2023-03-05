@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { RootState } from "../../useRedux/rootReducer";
-
+import { GetUserInfo } from "../../modules/user";
+import { RootState, useAppDispatch } from "../../useRedux/rootReducer";
+import { SKILL } from "../../Data/Filter";
+import { useNavigate } from "react-router";
 const Theme = {
     Figma: "#1D1D1D",
     피그마: "#1D1D1D",
@@ -120,6 +122,7 @@ const UserNickNameArea = styled.div`
         font-feature-settings: "tnum" on, "lnum" on;
 
         color: #8b95a1;
+        cursor: pointer;
     }
 `;
 const UserIntroText = styled.div`
@@ -251,13 +254,11 @@ const User = ({
     link,
     Position,
     Interest,
-    index
+    index,
+    introduce
 }: any) => {
-    const [fill, setFill] = useState<boolean>(false);
-
-    const { Users } = useSelector((state: RootState) => ({
-        Users: state.AuthSlice
-    }));
+    const nav = useNavigate();
+    const dispatch = useAppDispatch();
 
     return (
         <UserInfoWrap>
@@ -267,9 +268,11 @@ const User = ({
             <UserInfo>
                 <UserNickNameArea>
                     <NickName>{nickName}</NickName>
-                    <p>프로필 수정 {">"}</p>
+                    <p className="Edit" onClick={() => nav("/user/edit")}>
+                        프로필 수정 {">"}
+                    </p>
                 </UserNickNameArea>
-                <UserIntroText>{Users.user.introduce}</UserIntroText>
+                <UserIntroText>{introduce}</UserIntroText>
                 {/* <StatusBox>
                 <li>
                     <p>8</p>
@@ -310,7 +313,13 @@ const User = ({
                 <p>기술스택</p>
                 <SkillBoxWrap>
                     {index.map((index: any) => (
-                        <SkillBox bg="#000">
+                        <SkillBox
+                            bg={
+                                SKILL.filter(
+                                    (item: any) => item.name === index.stackId
+                                )[0].color
+                            }
+                        >
                             <p>{index.stackId}</p>
                         </SkillBox>
                     ))}

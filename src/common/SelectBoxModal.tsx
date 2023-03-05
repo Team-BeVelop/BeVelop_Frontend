@@ -15,9 +15,14 @@ const SkillSelectBox = ({
     function click() {
         OnClick();
     }
-    const [checked, setChecked] = useState<boolean[]>([]);
+    const [checked, setChecked] = useState<any[]>([]);
     useMemo(() => {
-        setChecked(SKILL.map(() => false));
+        setChecked(
+            SKILL.map((item, index) =>
+                skill.some((item2: any) => item2.name === item.name)
+            )
+        );
+        console.log(checked);
     }, []);
 
     useMemo(() => {
@@ -59,6 +64,8 @@ const SkillSelectBox = ({
                                         )
                                     );
                                 }}
+                                isCheck={checked[key]}
+                                setIsCheck={setChecked}
                                 index={index.name}
                             />
                         ))}
