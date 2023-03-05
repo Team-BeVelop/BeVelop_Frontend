@@ -8,7 +8,7 @@ import logger from "redux-logger";
 import { AuthSlice } from "../modules/auth";
 import { useDispatch } from "react-redux";
 import actions from "../modules/modal";
-import users from "../modules/user";
+import { UserSlice } from "../modules/user";
 import { ProjectSlice } from "../modules/project";
 import { StudySlice } from "../modules/study";
 
@@ -17,7 +17,7 @@ const reducer = combineReducers({
     ProjectSlice: ProjectSlice.reducer,
     StudySlice: StudySlice.reducer,
     modal: actions,
-    users: users
+    UserSlice: UserSlice.reducer
 });
 
 const store = configureStore({

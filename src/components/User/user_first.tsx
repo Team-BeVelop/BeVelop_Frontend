@@ -1,13 +1,14 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as u from "./style/UserInfoInput";
 import { useDispatch } from "react-redux";
-import { UserInfo } from "../../modules/user";
+
 import SelectBox from "../../common/SelectBox";
 import { ENROLLMENT_SLEEPTIME, SKILL } from "../../Data/Filter";
 import ImgUploader from "../../common/ImgUploader";
 import SkillSelectBox from "../../common/SelectBoxModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../useRedux/rootReducer";
+import { UserEdit } from "../../modules/user";
 
 type User = {
     nickName: string;
@@ -38,7 +39,6 @@ const User_first = () => {
     const [userIntro, setUserIntro] = useState<string>("");
     useMemo(() => {
         if (Stack.length > 0) {
-            console.log(Stack[0].name);
         }
     }, [Stack]);
     const handleFormInput = (e: any) => {
@@ -51,18 +51,16 @@ const User_first = () => {
 
     const Complete = () => {
         dispatch(
-            UserInfo(
-                formInput.nickName,
-                formInput.portFolio,
-                formInput.link,
-                formInput.email,
-                formInput.kakao,
-                Position,
-                Interest,
-                Stack,
-                userIntro,
-                Thumb
-            )
+            UserEdit({
+                interests: Interest,
+                introduce: userIntro,
+                job: Position,
+                nickname: formInput.nickName,
+                stackName: Stack.map((el: any) => el.name),
+                url: formInput.link,
+                id: Users.user.id,
+                accessToken: Users.token
+            })
         );
     };
 

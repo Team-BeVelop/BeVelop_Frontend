@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { RootState } from "../../useRedux/rootReducer";
 
 const Theme = {
     Figma: "#1D1D1D",
@@ -254,21 +255,21 @@ const User = ({
 }: any) => {
     const [fill, setFill] = useState<boolean>(false);
 
-    const { Users } = useSelector((state: any) => ({
-        Users: state.users.data
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice
     }));
 
     return (
         <UserInfoWrap>
             <UserImg>
-                <img src={Users.Thumb[0].data_url} alt="" />
+                <img src={""} alt="" />
             </UserImg>
             <UserInfo>
                 <UserNickNameArea>
                     <NickName>{nickName}</NickName>
                     <p>프로필 수정 {">"}</p>
                 </UserNickNameArea>
-                <UserIntroText>{Users.UserIntro}</UserIntroText>
+                <UserIntroText>{Users.user.introduce}</UserIntroText>
                 {/* <StatusBox>
                 <li>
                     <p>8</p>
@@ -308,9 +309,9 @@ const User = ({
             <Skill>
                 <p>기술스택</p>
                 <SkillBoxWrap>
-                    {Users.Stack.map((index: any) => (
-                        <SkillBox bg={index.color}>
-                            <p>{index.name}</p>
+                    {index.map((index: any) => (
+                        <SkillBox bg="#000">
+                            <p>{index.stackId}</p>
                         </SkillBox>
                     ))}
                 </SkillBoxWrap>

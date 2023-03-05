@@ -35,11 +35,18 @@ export const SignUp = createAsyncThunk(
 
 const initialState = {
     isLoading: false,
-    data: {
-        token: { access_token: null, refresh_token: null },
-        user: null
+    token: "",
+    data: null,
+    user: {
+        id: 0,
+        email: "",
+        nickname: "",
+        introduce: "",
+        job: "",
+        interests: "",
+        url: "",
+        stack: []
     },
-
     error: null,
     action: ""
 };
