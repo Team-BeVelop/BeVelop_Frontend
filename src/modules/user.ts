@@ -48,6 +48,14 @@ export const UserEdit = createAsyncThunk(
     }
 );
 
+export const UserList = createAsyncThunk("GET_USERLIST", async thunkAPI => {
+    try {
+        return (await userAPI.UserList()).data;
+    } catch (error: any) {
+        return thunkAPI;
+    }
+});
+
 const initialState = {
     isLoading: false,
     data: null,
@@ -67,6 +75,17 @@ export const UserSlice = createSlice({
             state.data = action.payload;
         },
         [UserEdit.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+        [UserList.pending.type]: (state, action) => {
+            state.isLoading = true;
+        },
+        [UserList.fulfilled.type]: (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+        },
+        [UserList.rejected.type]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
         }

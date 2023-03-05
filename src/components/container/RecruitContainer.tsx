@@ -6,6 +6,7 @@ import RecruitBanner from "../Recruit/RecruitBanner";
 import RecruitMenu from "../Recruit/RecruitMenu";
 import SuggestSection from "../Recruit/SuggestSection";
 import { useAppDispatch } from "../../useRedux/rootReducer";
+import { UserList } from "../../modules/user";
 
 interface FilterType {
     value: string;
@@ -37,6 +38,7 @@ const RecruitContainer = () => {
 
     const dispatch = useAppDispatch();
     useEffect(() => {
+        //dispatch(UserList());
         dispatch(getStudyList());
     }, [current]);
 
