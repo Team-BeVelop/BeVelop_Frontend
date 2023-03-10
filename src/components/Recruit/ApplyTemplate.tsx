@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DivisionData } from "../../Data/FieldData";
 
 const DivisionTheme = [
     {
@@ -24,8 +25,18 @@ const ApplyTemplate = ({
     shortTitle
 }: any) => {
     // '구분' 배경 지정
-    const matchColor = (v: string) =>
-        DivisionTheme.find(i => i.name === v)?.color || "#7a5df5";
+    const matchColor = (d: string) => {
+        const value = DivisionData.filter(v => v.value === d);
+        return (
+            DivisionTheme.find(i => i.name === value[0].name)?.color ||
+            "#7a5df5"
+        );
+    };
+
+    const matchKo = (d: string) => {
+        const value = DivisionData.filter(v => v.value === d);
+        return value[0].name;
+    };
 
     const goProjectDetailPage = (id: number) =>
         (window.location.href = `/project/${id}`);
@@ -36,12 +47,8 @@ const ApplyTemplate = ({
                 <div className="info">
                     <Top divisionColor={matchColor(division)}>
                         <div className="left">
-                            <div className="division">{division}</div>
-                            {field.map((item: any, index: string) => (
-                                <div className="field" key={index}>
-                                    {item.fieldName}
-                                </div>
-                            ))}
+                            <div className="division">{matchKo(division)}</div>
+                            <div className="field">{field}</div>
                         </div>
                         <img
                             className="heart"
@@ -81,6 +88,7 @@ const Container = styled.div`
         padding: 18px 13px 13px 13px;
         @media screen and (max-width: 480px) {
             display: flex;
+            flex-direction: column;
             width: 100%;
             margin-bottom: 10px;
             height: 170px;
@@ -174,6 +182,12 @@ const HashTags = styled.h4`
         font-feature-settings: "tnum" on, "lnum" on;
         color: #8b95a1;
         margin-right: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        height: 1.2em;
     }
 `;
 

@@ -13,6 +13,7 @@ export const getStudyList = createAsyncThunk(
     }
 );
 
+// 스터디 디테일
 export const getStudy = createAsyncThunk(
     "GET_STUDY_DETAIL",
     async ({ token, id }: { token: string | null; id: string }, thunkAPI) => {
@@ -20,6 +21,25 @@ export const getStudy = createAsyncThunk(
             return (await studyAPI.getStudyDetail(token, id)).data;
         } catch (e: any) {
             return thunkAPI.rejectWithValue(await e.response.data);
+        }
+    }
+);
+
+// 스터디 찾기
+export const studySearch = createAsyncThunk(
+    "STUDY_SEARCH",
+    async (
+        {
+            division,
+            field,
+            job
+        }: { division: string; field: string; job: string },
+        thunkAPI
+    ) => {
+        try {
+            return (await studyAPI.StudySearch(division, field, job)).data;
+        } catch (e: any) {
+            return thunkAPI;
         }
     }
 );
@@ -84,9 +104,10 @@ export const addNewStudy = createAsyncThunk(
 
 const initialState = {
     isLoading: false,
-    data: null,
+    data: [],
     error: null,
-    action: ""
+    action: "",
+    studies: []
 };
 
 export const StudySlice = createSlice({
@@ -101,7 +122,7 @@ export const StudySlice = createSlice({
         [getStudyList.fulfilled.type]: (state, action) => {
             state.isLoading = false;
             state.action = action.type;
-            state.data = action.payload;
+            state.studies = action.payload.studies;
         },
         [getStudyList.rejected.type]: (state, action) => {
             state.isLoading = false;
@@ -118,6 +139,20 @@ export const StudySlice = createSlice({
             state.data = action.payload;
         },
         [getStudy.rejected.type]: (state, action) => {
+            state.isLoading = false;
+            state.action = action.type;
+            state.error = action.payload;
+        },
+        [studySearch.pending.type]: (state, action) => {
+            state.isLoading = true;
+            state.action = action.type;
+        },
+        [studySearch.fulfilled.type]: (state, action) => {
+            state.isLoading = false;
+            state.action = action.type;
+            state.studies = action.payload.studies;
+        },
+        [studySearch.rejected.type]: (state, action) => {
             state.isLoading = false;
             state.action = action.type;
             state.error = action.payload;

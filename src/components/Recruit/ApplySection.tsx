@@ -2,98 +2,71 @@ import styled from "styled-components";
 import ApplyFilter from "./ApplyFilter";
 import ApplyTemplate from "./ApplyTemplate";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { RootState, useAppDispatch } from "../../useRedux/rootReducer";
+import { studySearch } from "../../modules/study";
 
-const Dummy = [
-    {
-        id: 1,
-        division: "사이드 프로젝트",
-        relatedFields: [{ id: 0, fieldName: "라이프스타일" }],
-        studyJobs: [
-            { id: 0, jobName: "기획자" },
-            { id: 1, jobName: "UI디자이너" }
-        ],
-        title: "사용자 개선 프로젝트 함께 하실 분 찾아요",
-        shortTitle:
-            "현재 사이드 프로젝트 진행중에 있으며 초기 아이디어 구상은 끝낸 상태입니다. 많이 지원해주세요!!"
-    },
-    {
-        id: 2,
-        division: "스타트업",
-        relatedFields: [{ id: 0, fieldName: "라이프스타일" }],
-        studyJobs: [
-            { id: 0, jobName: "기획자" },
-            { id: 1, jobName: "UI디자이너" }
-        ],
-        title: "사용자 개선 프로젝트 함께 하실 분 찾아요",
-        shortTitle:
-            "현재 사이드 프로젝트 진행중에 있으며 초기 아이디어 구상은 끝낸 상태입니다. 많이 지원해주세요!!"
-    },
-    {
-        id: 3,
-        division: "공모전",
-        relatedFields: [{ id: 0, fieldName: "라이프스타일" }],
-        studyJobs: [
-            { id: 0, jobName: "기획자" },
-            { id: 1, jobName: "UI디자이너" }
-        ],
-        title: "사용자 개선 프로젝트 함께 하실 분 찾아요",
-        shortTitle:
-            "현재 사이드 프로젝트 진행중에 있으며 초기 아이디어 구상은 끝낸 상태입니다. 많이 지원해주세요!!"
-    },
-    {
-        id: 4,
-        division: "사이드 프로젝트",
-        relatedFields: [{ id: 0, fieldName: "라이프스타일" }],
-        studyJobs: [
-            { id: 0, jobName: "기획자" },
-            { id: 1, jobName: "UI디자이너" }
-        ],
-        title: "사용자 개선 프로젝트 함께 하실 분 찾아요",
-        shortTitle:
-            "현재 사이드 프로젝트 진행중에 있으며 초기 아이디어 구상은 끝낸 상태입니다. 많이 지원해주세요!!"
-    },
-    {
-        id: 5,
-        division: "사이드 프로젝트",
-        relatedFields: [{ id: 0, fieldName: "라이프스타일" }],
-        studyJobs: [
-            { id: 0, jobName: "기획자" },
-            { id: 1, jobName: "UI디자이너" }
-        ],
-        title: "사용자 개선 프로젝트 함께 하실 분 찾아요",
-        shortTitle:
-            "현재 사이드 프로젝트 진행중에 있으며 초기 아이디어 구상은 끝낸 상태입니다. 많이 지원해주세요!!"
-    }
-];
+interface FilterType {
+    value: string;
+    name: string;
+    bg: string;
+    color: string;
+}
 
-const ApplySection = ({
-    division,
-    setDivision,
-    job,
-    setJob,
-    interest,
-    setInterest
-}: any) => {
-    //const studyList = useSelector((state: any) => state.study.data);
+const ApplySection = () => {
+    const [divisionFilter, setDivisionFilter] = useState<FilterType>({
+        value: "",
+        name: "구분",
+        bg: "#F2F4F6",
+        color: "#404A5C"
+    });
+    const [jobFilter, setJobFilter] = useState<FilterType>({
+        value: "",
+        name: "직무",
+        bg: "#F2F4F6",
+        color: "#404A5C"
+    });
+    const [interestFilter, setInterestFilter] = useState<FilterType>({
+        value: "",
+        name: "관심분야",
+        bg: "#F2F4F6",
+        color: "#404A5C"
+    });
+
+    const dispatch = useAppDispatch();
+
+    const { StudyList } = useSelector((state: RootState) => ({
+        StudyList: state.StudySlice.studies
+    }));
+
+    useEffect(() => {
+        dispatch(
+            studySearch({
+                division: divisionFilter.value,
+                field: interestFilter.value,
+                job: jobFilter.value
+            })
+        );
+    }, [divisionFilter, interestFilter, jobFilter]);
 
     return (
         <>
             <ApplyFilter
-                division={division}
-                setDivision={setDivision}
-                job={job}
-                setJob={setJob}
-                interest={interest}
-                setInterest={setInterest}
+                division={divisionFilter}
+                setDivision={setDivisionFilter}
+                job={jobFilter}
+                setJob={setJobFilter}
+                interest={interestFilter}
+                setInterest={setInterestFilter}
             />
             <Wrap>
-                {Dummy &&
-                    Dummy.map((item: any, index: number) => (
+                {StudyList &&
+                    StudyList.map((item: any, index: number) => (
                         <ApplyTemplate
                             key={index}
                             id={item.id}
                             division={item.division}
-                            field={item.relatedFields}
+                            field={item.relatedFields[0].fieldName}
                             title={item.title}
                             hashtag={item.studyJobs}
                             shortTitle={item.shortTitle}
