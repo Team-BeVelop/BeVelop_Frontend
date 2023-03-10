@@ -17,7 +17,9 @@ const ProjectNewInfo = ({
     kakao,
     setKakao,
     introduce,
-    setIntroduce
+    setIntroduce,
+    num,
+    setNum
 }: any) => {
     return (
         <>
@@ -37,6 +39,11 @@ const ProjectNewInfo = ({
                         </div>
                         <div className="num">
                             <Title>모집인원</Title>
+                            <input
+                                value={num}
+                                onChange={e => setNum(e.target.value)}
+                                placeholder="모집 인원을 입력해주세요."
+                            />
                         </div>
                     </DivisionArea>
                     <Field>
@@ -69,7 +76,7 @@ const ProjectNewInfo = ({
                         <div className="content">
                             <Title>모집 마감일</Title>
                             <div className="input">마감일을 선택해 주세요.</div>
-                            <SingleCalendar />
+                            {/* <SingleCalendar /> */}
                         </div>
                         <div className="content">
                             <Title>프로젝트 기간</Title>
@@ -157,17 +164,44 @@ const DivisionArea = styled.div`
         align-items: center;
         width: 45%;
         margin-right: 5%;
+        @media screen and (max-width: 480px) {
+            display: block;
+            width: 100%;
+        }
     }
     .num {
         display: flex;
         align-items: center;
         width: 50%;
+        @media screen and (max-width: 480px) {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+        }
     }
     .right {
         position: relative;
         margin-left: 30px;
         width: 100%;
         z-index: 2;
+        @media screen and (max-width: 480px) {
+            margin-left: 0;
+            margin-top: 18px;
+        }
+    }
+    input {
+        margin-left: 30px;
+        background: #ffffff;
+        border: 1px solid #dadee2;
+        border-radius: 6px;
+        width: 100%;
+        padding: 15px 20px;
+        height: 48px;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
         @media screen and (max-width: 480px) {
             margin-left: 0;
             margin-top: 18px;
@@ -182,10 +216,23 @@ const DivisionArea = styled.div`
 const CalendarArea = styled.div`
     display: flex;
     margin-bottom: 50px;
+    @media screen and (max-width: 480px) {
+        display: block;
+        width: 100%;
+        margin-top: 18px;
+    }
     .content {
         width: 49%;
         &:nth-child(2n + 1) {
             margin-right: 2%;
+        }
+        @media screen and (max-width: 480px) {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+            &:nth-child(2n + 1) {
+                margin-right: 0;
+            }
         }
     }
     .input {

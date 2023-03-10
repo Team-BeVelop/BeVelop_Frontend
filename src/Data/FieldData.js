@@ -1,30 +1,47 @@
 export const FieldData = [
     { value: "O2O", name: "O2O" },
-    { value: "shared_service", name: "공유서비스" },
-    { value: "dating_service", name: "데이팅서비스" },
-    { value: "beauty/fashion", name: "뷰티/패션" },
-    { value: "e-commerce", name: "이커머스" },
-    { value: "entertainment", name: "엔터테인먼트" },
-    { value: "news/information", name: "뉴스/정보" },
-    { value: "util", name: "유틸" },
-    { value: "finance", name: "금융" },
-    { value: "education", name: "교육" },
-    { value: "medical/hospital", name: "의료/병원" },
-    { value: "mobility", name: "모빌리티(교통)" }
+    { value: "공유서비스", name: "공유서비스" },
+    { value: "데이팅서비스", name: "데이팅서비스" },
+    { value: "뷰티/패션", name: "뷰티/패션" },
+    { value: "패션", name: "이커머스" },
+    { value: "엔터테인먼트", name: "엔터테인먼트" },
+    { value: "뉴스/정보", name: "뉴스/정보" },
+    { value: "유틸", name: "유틸" },
+    { value: "금융", name: "금융" },
+    { value: "교육", name: "교육" },
+    { value: "의료/병원", name: "의료/병원" },
+    { value: "모빌리티(교통)", name: "모빌리티(교통)" }
 ];
+// { value: "O2O", name: "O2O" },
+// { value: "shared_service", name: "공유서비스" },
+// { value: "dating_service", name: "데이팅서비스" },
+// { value: "beauty/fashion", name: "뷰티/패션" },
+// { value: "e-commerce", name: "이커머스" },
+// { value: "entertainment", name: "엔터테인먼트" },
+// { value: "news/information", name: "뉴스/정보" },
+// { value: "util", name: "유틸" },
+// { value: "finance", name: "금융" },
+// { value: "education", name: "교육" },
+// { value: "medical/hospital", name: "의료/병원" },
+// { value: "mobility", name: "모빌리티(교통)" }
 
 export const JobData = [
-    { value: "planner", name: "기획자" },
-    { value: "designer", name: "디자이너" },
-    { value: "frontend", name: "프론트엔드 개발자" },
-    { value: "backend", name: "백엔드 개발자" },
-    { value: "mobile", name: "모바일 개발자" }
+    { value: "기획자", name: "기획자" },
+    { value: "디자이너", name: "디자이너" },
+    { value: "프론트엔드 개발자", name: "프론트엔드 개발자" },
+    { value: "백엔드 개발자", name: "백엔드 개발자" },
+    { value: "모바일 개발자", name: "모바일 개발자" }
 ];
+//     { value: "planner", name: "기획자" },
+//     { value: "designer", name: "디자이너" },
+//     { value: "frontend", name: "프론트엔드 개발자" },
+//     { value: "backend", name: "백엔드 개발자" },
+//     { value: "mobile", name: "모바일 개발자" }
 
 export const DivisionData = [
-    { value: "side_project", name: "사이드프로젝트" },
-    { value: "start_up", name: "스타트업" },
-    { value: "contest", name: "공모전" }
+    { value: "SIDE_PROJECT", name: "사이드프로젝트" },
+    { value: "STARTUP", name: "스타트업" },
+    { value: "CONTEST", name: "공모전" }
 ];
 
 export const PeriodData = [

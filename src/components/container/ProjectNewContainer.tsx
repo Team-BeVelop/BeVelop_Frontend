@@ -18,44 +18,30 @@ const ProjectNewContainer = () => {
     const [introduce, setIntroduce] = useState(""); // 한줄소개
     const [title, setTitle] = useState(""); //제목
     const [desc, setDesc] = useState(""); //설명
+    const [num, setNum] = useState(0); // 모집인원
 
     const dispatch = useDispatch<any>();
-    // const token = useSelector(
-    //     (state: RootState) => state.auth.data.token.access_token
-    // );
-
-    // const { Users } = useSelector((state: RootState) => ({
-    //     Users: state.AuthSlice
-    // }));
 
     const { Users } = useSelector((state: RootState) => ({
-        Users: state.AuthSlice.data
+        Users: state.AuthSlice
     }));
 
     // 글 등록
     const onClickPostButton = () => {
-        console.log(division);
-        console.log(fields);
-        console.log(jobs);
-        console.log(email);
-        console.log(kakao);
-        console.log(introduce);
-        console.log(title);
-        console.log(desc);
         dispatch(
             addNewStudy({
-                token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb…Y4MH0.7M6-O0AdspjAH-xbKljOsVhJjcFH2Yg9zIaPT2z3Jfg.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2NzYzNzE5MjIsImV4cCI6MTY3NjM3MjIyMn0.NElDyvqTG3qfGGVkY_tlA1EKdjxTdLKjeKzesyBnd1Y",
+                token: Users.token,
                 description: desc,
-                division: "SIDE_PROJECT",
+                division: division.value,
                 emailUrl: email,
-                endDate: "2023-04-28",
+                endDate: "2023-03-10",
                 enrollmentEndDate: "2023-03-10",
                 kakaoUrl: kakao,
-                maxMemberCount: 10,
+                maxMemberCount: num,
                 recruitJobList: jobs,
                 relatedFieldList: fields,
                 shortTitle: introduce,
-                startDate: "2022-03-12",
+                startDate: "2022-03-10",
                 title: title
             })
         );
@@ -79,6 +65,8 @@ const ProjectNewContainer = () => {
                     setKakao={setKakao}
                     introduce={introduce}
                     setIntroduce={setIntroduce}
+                    num={num}
+                    setNum={setNum}
                 />
                 <ProjectNewWrite
                     title={title}

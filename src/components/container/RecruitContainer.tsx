@@ -38,7 +38,7 @@ const RecruitContainer = () => {
 
     const dispatch = useAppDispatch();
     useEffect(() => {
-        //dispatch(UserList());
+        // dispatch(UserList());
         dispatch(getStudyList());
     }, [current]);
 

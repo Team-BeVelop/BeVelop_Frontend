@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const RecruitBanner = () => {
-    const goProjectNewPage = () => (window.location.href = "/project/new");
+    const goProjectNewPage = () => window.location.replace("/project/new");
 
     return (
         <>
             <Top>
                 <Title>{"프로젝트를 진행해\n커리어를 쌓아보세요!"}</Title>
-                <Button onClick={goProjectNewPage}>구인글 작성하기</Button>
+                <Link to="/project/new">
+                    <Button>구인글 작성하기</Button>
+                </Link>
             </Top>
         </>
     );

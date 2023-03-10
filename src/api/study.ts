@@ -25,9 +25,9 @@ export const addNewStudy = (
     startDate: string,
     title: string
 ) =>
-    axios.post(`${BASE_URL}/studies`, {
-        headers: { Authorization: `Bearer ${token}` },
-        data: {
+    axios.post(
+        `${BASE_URL}/studies`,
+        {
             description: description,
             division: division,
             emailUrl: emailUrl,
@@ -40,5 +40,8 @@ export const addNewStudy = (
             shortTitle: shortTitle,
             startDate: startDate,
             title: title
+        },
+        {
+            headers: { Authorization: `Bearer ${token}` }
         }
-    });
+    );
