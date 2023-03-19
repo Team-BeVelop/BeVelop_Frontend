@@ -2,44 +2,48 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getStudy } from "../../modules/study";
+import { RootState } from "../../useRedux/rootReducer";
 import ProjectDetailBottom from "../ProjectDetail/ProjectDetailBottom";
 import ProjectDetailButton from "../ProjectDetail/ProjectDetailButton";
 import ProjectDetailTop from "../ProjectDetail/ProjectDetailTop";
 
 const ProjectDetailContainer = () => {
     const id = window.location.href.split("/")[4];
+
     const dispatch = useDispatch<any>();
-    const token = useSelector(
-        (state: any) => state.auth.data.token.access_token
-    );
-    const studyDetail = useSelector((state: any) => state.study.data);
+    const { Users } = useSelector((state: RootState) => ({
+        Users: state.AuthSlice
+    }));
+    const { Study } = useSelector((state: RootState) => ({
+        Study: state.StudySlice.study
+    }));
 
     useEffect(() => {
-        dispatch(getStudy({ token, id }));
+        dispatch(getStudy({ token: Users.token, id: id }));
     }, []);
-    console.log(studyDetail);
+
     return (
         <>
             <Container>
                 <Wrap>
                     <ProjectDetailTop
-                        division={studyDetail && studyDetail.division}
-                        owner={studyDetail && studyDetail.owner.name}
-                        title={studyDetail && studyDetail.title}
+                        division={Study.division}
+                        owner={Study.owner.name}
+                        title={Study.title}
                     />
                     <Line />
                     <ProjectDetailBottom
-                        shortTitle={studyDetail && studyDetail.shortTitle}
-                        field={
-                            studyDetail && studyDetail.fieldList[0].fieldName
-                        }
-                        startDate={studyDetail && studyDetail.startDate}
-                        endDate={studyDetail && studyDetail.endDate}
-                        jobList={studyDetail && studyDetail.jobList}
-                        emailUrl={studyDetail && studyDetail.emailUrl}
-                        kakaoUrl={studyDetail && studyDetail.kakaoUrl}
-                        desc={studyDetail && studyDetail.description}
-                        web={studyDetail && "https://m/naver.com"}
+                        shortTitle={Study.shortTitle}
+                        field={Study.fieldList[0].fieldName}
+                        startDate={Study.startDate}
+                        endDate={Study.endDate}
+                        jobList={Study.jobList}
+                        emailUrl={Study.emailUrl}
+                        kakaoUrl={Study.kakaoUrl}
+                        desc={Study.description}
+                        enrollmentEndDate={Study.enrollmentEndDate}
+                        maxMemberCount={Study.maxMemberCount}
+                        web={"https://m/naver.com"}
                     />
                 </Wrap>
                 <ProjectDetailButton />

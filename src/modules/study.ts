@@ -107,7 +107,22 @@ const initialState = {
     data: [],
     error: null,
     action: "",
-    studies: []
+    studies: [],
+    study: {
+        division: "",
+        owner: { email: "", name: "", userId: 0 },
+        title: "",
+        shortTitle: "",
+        fieldList: [{ id: 0, fieldName: "" }],
+        startDate: "",
+        endDate: "",
+        jobList: [{ id: 0, jobName: "" }],
+        emailUrl: "",
+        kakaoUrl: "",
+        description: "",
+        enrollmentEndDate: "",
+        maxMemberCount: 0
+    }
 };
 
 export const StudySlice = createSlice({
@@ -136,7 +151,7 @@ export const StudySlice = createSlice({
         [getStudy.fulfilled.type]: (state, action) => {
             state.isLoading = false;
             state.action = action.type;
-            state.data = action.payload;
+            state.study = action.payload;
         },
         [getStudy.rejected.type]: (state, action) => {
             state.isLoading = false;

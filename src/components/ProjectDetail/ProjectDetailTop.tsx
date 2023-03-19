@@ -1,16 +1,22 @@
 import styled from "styled-components";
+import { DivisionData } from "../../Data/FieldData";
 
 const ProjectDetailTop = ({ division, owner, title }: any) => {
+    const matchKo = (d: string) => {
+        const value = DivisionData.filter(v => v.value === d);
+        return value.length !== 0 ? value[0].name : "";
+    };
+
     return (
         <>
             <Wrap>
                 <TagWrap>
-                    <div className="tag">{division}</div>
+                    <div className="tag">{matchKo(division)}</div>
                 </TagWrap>
                 <Title>{title}</Title>
                 <Bottom>
                     <img src="/img/suggest1.png" alt="" />
-                    <div>{owner}</div>
+                    <div>{owner}이름</div>
                     <div className="date">마지막 접속 1시간 전</div>
                 </Bottom>
             </Wrap>

@@ -68,9 +68,11 @@ const Wrap = styled.section`
 
 const FilterArea = styled.div`
     display: flex;
+    width: 100%;
     .item {
         position: relative;
         margin-right: 10px;
+        z-index: 999;
     }
 `;
 

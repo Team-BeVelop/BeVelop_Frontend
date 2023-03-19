@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { DivisionData } from "../../Data/FieldData";
 
@@ -24,6 +25,8 @@ const ApplyTemplate = ({
     hashtag,
     shortTitle
 }: any) => {
+    const navigate = useNavigate();
+
     // '구분' 배경 지정
     const matchColor = (d: string) => {
         const value = DivisionData.filter(v => v.value === d);
@@ -38,8 +41,7 @@ const ApplyTemplate = ({
         return value[0].name;
     };
 
-    const goProjectDetailPage = (id: number) =>
-        (window.location.href = `/project/${id}`);
+    const goProjectDetailPage = (id: number) => navigate(`/project/${id}`);
 
     return (
         <>

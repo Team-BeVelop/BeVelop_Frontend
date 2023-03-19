@@ -9,7 +9,9 @@ const ProjectDetailBottom = ({
     emailUrl,
     kakaoUrl,
     desc,
-    web
+    web,
+    enrollmentEndDate,
+    maxMemberCount
 }: any) => {
     return (
         <>
@@ -21,23 +23,44 @@ const ProjectDetailBottom = ({
                 <BasicInfo>
                     <Title>기본정보</Title>
                     <Content>
-                        <div className="row">
-                            <div className="subtitle">연관분야</div>
-                            <div className="desc">{field}</div>
-                        </div>
-                        <div className="row">
-                            <div className="subtitle">진행기간</div>
-                            <div className="desc">
-                                {startDate + " ~ " + endDate}
+                        <div className="box">
+                            <div className="row">
+                                <div className="subtitle">연관분야</div>
+                                <div className="desc">{field}</div>
+                            </div>
+                            <div className="row">
+                                <div className="subtitle">모집마감</div>
+                                <div className="desc">{enrollmentEndDate}</div>
+                            </div>
+                            <div className="row">
+                                <div className="subtitle">진행기간</div>
+                                <div className="desc">
+                                    {startDate + " ~ " + endDate}
+                                </div>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="subtitle">모집직무</div>
-                            <div className="desc">기획자, UI디자이너</div>
-                        </div>
-                        <div className="row">
-                            <div className="subtitle">웹사이트</div>
-                            <div className="underline">{web}</div>
+                        <div className="box">
+                            <div className="row">
+                                <div className="subtitle">모집직무</div>
+                                <div className="desc">
+                                    {jobList.map((item: any, index: string) => (
+                                        <JobListWrap key={index}>
+                                            {Number(index) ===
+                                            jobList.length - 1
+                                                ? item.jobName + ""
+                                                : item.jobName + ","}
+                                        </JobListWrap>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="subtitle">모집인원</div>
+                                <div className="desc">{maxMemberCount}명</div>
+                            </div>
+                            <div className="row">
+                                <div className="subtitle">웹사이트</div>
+                                <div className="underline">{web}</div>
+                            </div>
                         </div>
                     </Content>
                 </BasicInfo>
@@ -45,9 +68,9 @@ const ProjectDetailBottom = ({
                     <Title>연락방식</Title>
                     <div className="right">
                         <p>이메일</p>
-                        <input className="margin" value={emailUrl} />
+                        <input className="margin" value={emailUrl} readOnly />
                         <p>오픈 카카오톡 링크</p>
-                        <input value={kakaoUrl} />
+                        <input value={kakaoUrl} readOnly />
                     </div>
                 </Contact>
                 <DetailInfo>
@@ -79,6 +102,7 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
+    display: flex;
     font-family: "Pretendard";
     font-style: normal;
     font-weight: 500;
@@ -87,8 +111,15 @@ const Content = styled.div`
     font-feature-settings: "tnum" on, "lnum" on;
     color: #6b7684;
     @media screen and (max-width: 480px) {
+        display: block;
         font-size: 14px;
         line-height: 17px;
+    }
+    .box {
+        margin-right: 50px;
+        @media screen and (max-width: 480px) {
+            margin-right: 0;
+        }
     }
 `;
 
@@ -108,7 +139,7 @@ const Introduce = styled.div`
 
 const BasicInfo = styled.div`
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     @media screen and (max-width: 480px) {
         flex-direction: column;
     }
@@ -132,9 +163,12 @@ const BasicInfo = styled.div`
         @media screen and (max-width: 480px) {
             font-size: 14px;
             line-height: 17px;
+            display: inline-block;
+            white-space: nowrap;
         }
     }
     .desc {
+        display: flex;
         font-family: "Pretendard";
         font-style: normal;
         font-weight: 400;
@@ -146,6 +180,7 @@ const BasicInfo = styled.div`
         @media screen and (max-width: 480px) {
             font-size: 14px;
             line-height: 17px;
+            display: inline-block;
         }
     }
     .underline {
@@ -207,6 +242,14 @@ const DetailInfo = styled.div`
     @media screen and (max-width: 480px) {
         flex-direction: column;
         margin-bottom: 0px;
+    }
+`;
+
+const JobListWrap = styled.div`
+    margin-right: 5px;
+    @media screen and (max-width: 480px) {
+        display: inline-block;
+        white-space: nowrap;
     }
 `;
 
