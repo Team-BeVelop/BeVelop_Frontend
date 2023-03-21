@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ProjectNewWrite = ({ title, setTitle, desc, setDesc }: any) => {
+const StudyNewWrite = ({ title, setTitle, desc, setDesc }: any) => {
     return (
         <>
             <Wrap>
@@ -105,4 +105,4 @@ const LongInput = styled.textarea`
     }
 `;
 
-export default ProjectNewWrite;
+export default StudyNewWrite;

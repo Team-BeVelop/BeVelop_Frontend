@@ -6,10 +6,10 @@ import TwoButton from "../../common/TwoButton";
 import { DivisionData } from "../../Data/FieldData";
 import { addNewStudy } from "../../modules/study";
 import { RootState } from "../../useRedux/rootReducer";
-import ProjectNewInfo from "../ProjectNew/ProjectNewInfo";
-import ProjectNewWrite from "../ProjectNew/ProjectNewWrite";
+import StudyNewInfo from "../StudyNew/StudyNewInfo";
+import StudyNewWrite from "../StudyNew/StudyNewWrite";
 
-const ProjectNewContainer = () => {
+const StudyNewContainer = () => {
     const [division, setDivision] = useState(DivisionData[0]); //모집구분
     const [fields, setFields] = useState([]); //연관분야
     const [jobs, setJobs] = useState([]); //모집직무
@@ -52,7 +52,7 @@ const ProjectNewContainer = () => {
     return (
         <Container>
             <Wrap>
-                <ProjectNewInfo
+                <StudyNewInfo
                     division={division}
                     setDivision={setDivision}
                     fields={fields}
@@ -68,7 +68,7 @@ const ProjectNewContainer = () => {
                     num={num}
                     setNum={setNum}
                 />
-                <ProjectNewWrite
+                <StudyNewWrite
                     title={title}
                     setTitle={setTitle}
                     desc={desc}
@@ -107,4 +107,4 @@ const Wrap = styled.section`
     }
 `;
 
-export default ProjectNewContainer;
+export default StudyNewContainer;

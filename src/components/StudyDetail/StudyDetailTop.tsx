@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { DivisionData } from "../../Data/FieldData";
 
-const ProjectDetailTop = ({ division, owner, title }: any) => {
+const StudyDetailTop = ({ division, owner, title }: any) => {
     const matchKo = (d: string) => {
         const value = DivisionData.filter(v => v.value === d);
         return value.length !== 0 ? value[0].name : "";
@@ -89,4 +89,4 @@ const Bottom = styled.span`
     }
 `;
 
-export default ProjectDetailTop;
+export default StudyDetailTop;

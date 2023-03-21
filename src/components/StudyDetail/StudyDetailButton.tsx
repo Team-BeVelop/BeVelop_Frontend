@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ProjectDetailButton = () => {
+const StudyDetailButton = () => {
     return (
         <Container>
             <Button>지원하기</Button>
@@ -40,4 +40,4 @@ const Button = styled.button`
     }
 `;
 
-export default ProjectDetailButton;
+export default StudyDetailButton;

@@ -3,10 +3,10 @@ import { Provider } from "react-redux";
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage";
 import RecruitPage from "./pages/RecruitPage";
-import ProjectNewPage from "./pages/ProjectNewPage";
+import StudyNewPage from "./pages/StudyNewPage";
 import PostPage from "./pages/PostPage";
 import PostNewPage from "./pages/PostNewPage";
-import ProjectDetailPage from "./pages/ProjectDetailPage";
+import StudyDetailPage from "./pages/StudyDetailPage";
 import PostDetailPage from "./pages/PostDetailPage";
 import store from "./useRedux/rootReducer";
 
@@ -18,11 +18,8 @@ function Router() {
                     <Route path="/" element={<MainPage />} />
                     <Route path="/user" element={<UserPage />} />
                     <Route path="/recruit" element={<RecruitPage />} />
-                    <Route path="/project/new" element={<ProjectNewPage />} />
-                    <Route
-                        path="/project/:id"
-                        element={<ProjectDetailPage />}
-                    />
+                    <Route path="/study/new" element={<StudyNewPage />} />
+                    <Route path="/study/:id" element={<StudyDetailPage />} />
                     <Route path="/post" element={<PostPage />} />
                     <Route path="/post/new" element={<PostNewPage />} />
                     <Route path="/post/:id" element={<PostDetailPage />} />

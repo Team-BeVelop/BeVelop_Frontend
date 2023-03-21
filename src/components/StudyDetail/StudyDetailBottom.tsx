@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ProjectDetailBottom = ({
+const StudyDetailBottom = ({
     shortTitle,
     field,
     startDate,
@@ -253,4 +253,4 @@ const JobListWrap = styled.div`
     }
 `;
 
-export default ProjectDetailBottom;
+export default StudyDetailBottom;

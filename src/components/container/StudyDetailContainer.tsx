@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getStudy } from "../../modules/study";
 import { RootState } from "../../useRedux/rootReducer";
-import ProjectDetailBottom from "../ProjectDetail/ProjectDetailBottom";
-import ProjectDetailButton from "../ProjectDetail/ProjectDetailButton";
-import ProjectDetailTop from "../ProjectDetail/ProjectDetailTop";
+import StudyDetailBottom from "../StudyDetail/StudyDetailBottom";
+import StudyDetailButton from "../StudyDetail/StudyDetailButton";
+import StudyDetailTop from "../StudyDetail/StudyDetailTop";
 
 const ProjectDetailContainer = () => {
     const id = window.location.href.split("/")[4];
@@ -26,13 +26,13 @@ const ProjectDetailContainer = () => {
         <>
             <Container>
                 <Wrap>
-                    <ProjectDetailTop
+                    <StudyDetailTop
                         division={Study.division}
                         owner={Study.owner.name}
                         title={Study.title}
                     />
                     <Line />
-                    <ProjectDetailBottom
+                    <StudyDetailBottom
                         shortTitle={Study.shortTitle}
                         field={Study.fieldList[0].fieldName}
                         startDate={Study.startDate}
@@ -46,7 +46,7 @@ const ProjectDetailContainer = () => {
                         web={"https://m/naver.com"}
                     />
                 </Wrap>
-                <ProjectDetailButton />
+                <StudyDetailButton />
             </Container>
         </>
     );

@@ -5,7 +5,7 @@ import { DivisionData } from "../../Data/FieldData";
 import { FieldData, JobData } from "../../Data/FieldData";
 import SingleCalendar from "./SingleCalendar";
 
-const ProjectNewInfo = ({
+const StudyNewInfo = ({
     division,
     setDivision,
     fields,
@@ -339,4 +339,4 @@ const LongInput = styled.input`
     height: 48px;
 `;
 
-export default ProjectNewInfo;
+export default StudyNewInfo;

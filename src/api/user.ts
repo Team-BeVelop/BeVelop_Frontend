@@ -45,4 +45,4 @@ export const UserEdit = (
     );
 
 // 모든 유저 리스트
-export const UserList = () => axios.get(`${BASE_URL}/user/userList`);
+export const UserList = () => axios.get(`${BASE_URL}/user/abc`);

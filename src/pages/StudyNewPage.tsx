@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import Header from "../common/Header";
-import ProjectNewContainer from "../components/container/ProjectNewContainer";
+import StudyNewContainer from "../components/container/StudyNewContainer";
 
 const ProjectNewPage = () => {
     return (
@@ -14,7 +14,7 @@ const ProjectNewPage = () => {
                 <meta property="og:title" content="BeVelop" />
             </Helmet>
             <Header bgStyle="none" />
-            <ProjectNewContainer />
+            <StudyNewContainer />
         </>
     );
 };

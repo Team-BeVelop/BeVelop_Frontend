@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
 import Header from "../common/Header";
-import ProjectDetailContainer from "../components/container/ProjectDetailContainer";
+import StudyDetailContainer from "../components/container/StudyDetailContainer";
 
-const ProjectDetailPage = () => {
+const StudyDetailPage = () => {
     return (
         <>
             <Helmet>
@@ -14,9 +14,9 @@ const ProjectDetailPage = () => {
                 <meta property="og:title" content="BeVelop" />
             </Helmet>
             <Header bgStyle="none" />
-            <ProjectDetailContainer />
+            <StudyDetailContainer />
         </>
     );
 };
 
-export default ProjectDetailPage;
+export default StudyDetailPage;
