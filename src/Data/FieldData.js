@@ -54,7 +54,7 @@ export const PeriodData = [
 export const designFieldData = [
     { value: "Figma", name: "Figma" },
     { value: "Adobe XD", name: "Adobe XD" },
-    { value: "Photoshop", name: "Photoshop" },
+    { value: "Zeplin", name: "Zeplin" },
     { value: "Rhino", name: "Rhino" },
     { value: "Keyshot", name: "Keyshot" }
 ];
@@ -69,10 +69,34 @@ export const frontendFieldData = [
 ];
 
 export const backendFieldData = [
-    { value: "Django", name: "Django" },
-    { value: "Nodejs", name: "Nodejs" },
+    { value: "Java", name: "Java" },
     { value: "Spring", name: "Spring" },
-    { value: "Sql", name: "Sql" },
+    { value: "Nodejs", name: "Nodejs" },
+    { value: "Nestjs", name: "Nestjs" },
+    { value: "Go", name: "Go" },
+    { value: "Express", name: "Express" },
+    { value: "MySQL", name: "MySQL" },
     { value: "MongoDB", name: "MongoDB" },
-    { value: "Nuxtjs", name: "Nuxtjs" }
+    { value: "Nuxtjs", name: "Nuxtjs" },
+    { value: "Django", name: "Django" },
+    { value: "php", name: "php" },
+    { value: "GraphQL", name: "GraphQL" },
+    { value: "Frebase", name: "Firebase" }
+];
+
+export const mobileFieldData = [
+    { value: "Flutter", name: "Flutter" },
+    { value: "Swift", name: "Swift" },
+    { value: "Kotlin", name: "Kotlin" },
+    { value: "ReactNative", name: "ReactNative" },
+    { value: "Unity", name: "Unity" }
+];
+
+export const etcFieldData = [
+    { value: "AWS", name: "AWS" },
+    { value: "Kubernetes", name: "Kubernetes" },
+    { value: "Doker", name: "Doker" },
+    { value: "Git", name: "Git" },
+    { value: "Jest", name: "Jest" },
+    { value: "C", name: "C" }
 ];

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import StyledDropDown from "../../common/StyledDropDown";
 import Dummy from "../../Data/PostDummy";
 import PostTemplate from "./PostTemplate";
-import { FieldData } from "../../Data/FieldData";
+import { DivisionData } from "../../Data/FieldData";
 
 export type PostSectionType = {
     division: any;
@@ -13,16 +13,19 @@ const PostSection: React.FC<PostSectionType> = ({ division, setDivision }) => {
     const dummy = Dummy;
     return (
         <>
-            <DropDownWrap>
-                <StyledDropDown
-                    type="mini"
-                    width={150}
-                    label="구분"
-                    data={FieldData}
-                    current={division}
-                    setCurrent={setDivision}
-                />
-            </DropDownWrap>
+            <FilterArea>
+                <div className="item">
+                    <StyledDropDown
+                        type="mini"
+                        width={150}
+                        label="구분"
+                        data={DivisionData}
+                        current={division}
+                        setCurrent={setDivision}
+                    />
+                </div>
+            </FilterArea>
+
             <Wrap>
                 {dummy.map((item, index) => (
                     <PostTemplate
@@ -47,8 +50,13 @@ const Wrap = styled.section`
     }
 `;
 
-const DropDownWrap = styled.div`
+const FilterArea = styled.div`
     margin-top: 28px;
+    display: flex;
+    width: 100%;
+    .item {
+        position: relative;
+    }
     @media screen and (max-width: 480px) {
         margin-left: 20px;
         margin-top: 18px;

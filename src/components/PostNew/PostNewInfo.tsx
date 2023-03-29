@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import FullDropDown from "../../common/FullDropDown";
 import StyledCheckbox from "../../common/StyledCheckbox";
-import StyledDropDown from "../../common/StyledDropDown";
 import { DivisionData, FieldData, PeriodData } from "../../Data/FieldData";
 import PostNewStackModal from "./PostNewStackModal";
 
@@ -37,8 +37,7 @@ const PostNewInfo = ({
                     <Box>
                         <Title>모집구분</Title>
                         <DropDownWrap>
-                            <StyledDropDown
-                                type="default"
+                            <FullDropDown
                                 data={DivisionData}
                                 current={division}
                                 setCurrent={setDivision}
@@ -82,8 +81,7 @@ const PostNewInfo = ({
                     <Box>
                         <Title>개발기간</Title>
                         <DropDownWrap>
-                            <StyledDropDown
-                                type="default"
+                            <FullDropDown
                                 data={PeriodData}
                                 current={period}
                                 setCurrent={setPeriod}
@@ -271,8 +269,9 @@ const SiteWrap = styled.div`
 `;
 
 const DropDownWrap = styled.div`
+    position: relative;
     margin-left: 30px;
-    width: 100%;
+    width: 436px;
 `;
 
 export default PostNewInfo;

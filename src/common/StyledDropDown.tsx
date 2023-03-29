@@ -129,6 +129,7 @@ const List = styled.ul<StyleType>`
     background-color: ${props => (props.type === "mini" ? "#f2f4f6" : "#fff")};
     color: ${props => (props.type === "mini" ? "#404A5C" : "#000")};
     border: ${props => (props.type === "mini" ? "none" : "1px solid #dadee2")};
+    z-index: 100;
     top: ${props => (props.type === "mini" ? "38px" : "48px")};
 `;
 

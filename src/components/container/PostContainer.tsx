@@ -7,10 +7,23 @@ import PostBanner from "../Post/PostBanner";
 import PostMenu from "../Post/PostMenu";
 import PostSection from "../Post/PostSection";
 
+interface FilterType {
+    value: string;
+    name: string;
+    bg: string;
+    color: string;
+}
+
 const PostContainer = () => {
     const [current, setCurrent] = useState(0);
-    const [division, setDivision] = useState("");
+    const [division, setDivision] = useState<FilterType>({
+        value: "",
+        name: "구분",
+        bg: "#F2F4F6",
+        color: "#404A5C"
+    });
     const dispatch = useAppDispatch();
+
     useEffect(() => {
         dispatch(getProjectList());
     }, []);

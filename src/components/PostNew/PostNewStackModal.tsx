@@ -4,7 +4,9 @@ import StyledCheckbox from "../../common/StyledCheckbox";
 import {
     backendFieldData,
     designFieldData,
-    frontendFieldData
+    etcFieldData,
+    frontendFieldData,
+    mobileFieldData
 } from "../../Data/FieldData";
 
 const PostNewStackModal = ({
@@ -53,6 +55,30 @@ const PostNewStackModal = ({
                     <div className="title">백</div>
                     <div className="checkBoxArea">
                         {backendFieldData.map(v => (
+                            <StyledCheckbox
+                                key={v.value}
+                                object={v}
+                                mobwidth={"100%"}
+                                list={stack}
+                                setList={setStack}
+                            />
+                        ))}
+                    </div>
+                    <div className="title">모바일</div>
+                    <div className="checkBoxArea">
+                        {mobileFieldData.map(v => (
+                            <StyledCheckbox
+                                key={v.value}
+                                object={v}
+                                mobwidth={"100%"}
+                                list={stack}
+                                setList={setStack}
+                            />
+                        ))}
+                    </div>
+                    <div className="title">기타</div>
+                    <div className="checkBoxArea">
+                        {etcFieldData.map(v => (
                             <StyledCheckbox
                                 key={v.value}
                                 object={v}

@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const PostBanner = () => {
-    const goPostNewPage = () => (window.location.href = "/post/new");
+    const navigate = useNavigate();
+    const goPostNewPage = () => navigate(`/post/new`);
+
     return (
         <>
             <Top>
