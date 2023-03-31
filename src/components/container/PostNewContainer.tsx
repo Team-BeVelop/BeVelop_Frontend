@@ -8,7 +8,7 @@ import PostNewWrite from "../PostNew/PostNewWrite";
 const PostNewContainer = () => {
     const [showModal, setShowModal] = useState(false);
     const [division, setDivision] = useState(DivisionData[0]); //모집구분
-    const [stack, setStack] = useState([]);
+    const [stack, setStack] = useState<string[]>([]);
     const [fields, setFields] = useState([]); // 연관분야
     const [period, setPeriod] = useState(PeriodData[0]); // 개발기간
     const [github, setGithub] = useState("");
@@ -53,6 +53,7 @@ const Container = styled.main`
     @media screen and (max-width: 480px) {
         width: 100%;
         margin: 0;
+        padding-bottom: 190px;
     }
 `;
 
@@ -64,6 +65,7 @@ const Wrap = styled.section`
     @media screen and (max-width: 480px) {
         flex-direction: column;
         margin-bottom: 34px;
+        height: auto;
     }
 `;
 

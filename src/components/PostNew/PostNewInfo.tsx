@@ -46,22 +46,30 @@ const PostNewInfo = ({
                     </Box>
                     <Box>
                         <Title>개발스택</Title>
-                        <StackWrap>
+                        <StackWrap empty={stack.length === 0}>
                             <button onClick={clickPlusButton}>
                                 <img src="/img/icon_plus.png" alt="" />
                             </button>
                             <div className="stackList">
-                                {stack.map((v: any) => (
-                                    <div className="stackItem" key={v}>
-                                        {v}
-                                        <img
-                                            src="/img/icon_close.png"
-                                            alt=""
-                                            className="closeButton"
-                                            onClick={() => clickXButton(v)}
-                                        />
-                                    </div>
-                                ))}
+                                {stack.length === 0 ? (
+                                    "개발스택을 추가해보세요"
+                                ) : (
+                                    <>
+                                        {stack.map((v: any) => (
+                                            <div className="stackItem" key={v}>
+                                                {v}
+                                                <img
+                                                    src="/img/icon_close.png"
+                                                    alt=""
+                                                    className="closeButton"
+                                                    onClick={() =>
+                                                        clickXButton(v)
+                                                    }
+                                                />
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
                             </div>
                         </StackWrap>
                     </Box>
@@ -157,15 +165,25 @@ const Box = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
+    @media screen and (max-width: 480px) {
+        display: block;
+        margin-bottom: 34px;
+    }
 `;
 
 const Field = styled.div`
     display: flex;
     margin-bottom: 22px;
+    @media screen and (max-width: 480px) {
+        display: block;
+    }
     .right {
         display: block;
         align-items: center;
         margin-left: 30px;
+        @media screen and (max-width: 480px) {
+            margin-left: 0;
+        }
     }
 `;
 
@@ -178,22 +196,32 @@ const Title = styled.div`
     font-feature-settings: "tnum" on, "lnum" on;
     color: #000000;
     white-space: nowrap;
+    @media screen and (max-width: 480px) {
+        margin-bottom: 18px;
+    }
 `;
 
-const StackWrap = styled.div`
+const StackWrap = styled.div<{ empty: boolean }>`
     display: flex;
     width: 100%;
     height: 48px;
     align-items: center;
     margin-left: 30px;
     overflow: hidden;
+    @media screen and (max-width: 480px) {
+        margin-left: 0;
+        height: 37px;
+    }
     button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #505967;
         background-color: #f2f4f6;
-        padding: 0 36px;
-        height: 100%;
         margin-right: 10px;
         border-radius: 6px;
+        width: 72px;
+        height: 100%;
     }
     img {
         width: 18px;
@@ -202,10 +230,12 @@ const StackWrap = styled.div`
     .stackList {
         display: flex;
         align-items: center;
+        justify-content: ${props => (props.empty ? "center" : "flex-start")};
         width: 100%;
         height: 100%;
-        background: #f2f4f6;
-        border: 1px solid #dadee2;
+        background: ${props => (props.empty ? "#fff" : "#f2f4f6")};
+        border: ${props =>
+            props.empty ? "2px dotted #dadee2" : "1px solid #dadee2"};
         border-radius: 6px;
         padding: 10px;
         overflow-x: scroll;
@@ -219,6 +249,13 @@ const StackWrap = styled.div`
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        font-family: "Pretendard";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        font-feature-settings: "tnum" on, "lnum" on;
+        color: #8b95a1;
     }
     .stackItem {
         display: flex;
@@ -265,6 +302,14 @@ const SiteWrap = styled.div`
             font-feature-settings: "tnum" on, "lnum" on;
             color: #6b7684;
         }
+        @media screen and (max-width: 480px) {
+            display: flex;
+            width: 100%;
+            margin-bottom: 0;
+            &:nth-child(2n) {
+                margin-bottom: 38px;
+            }
+        }
     }
 `;
 
@@ -272,6 +317,10 @@ const DropDownWrap = styled.div`
     position: relative;
     margin-left: 30px;
     width: 436px;
+    @media screen and (max-width: 480px) {
+        margin-left: 0;
+        width: 100%;
+    }
 `;
 
 export default PostNewInfo;
