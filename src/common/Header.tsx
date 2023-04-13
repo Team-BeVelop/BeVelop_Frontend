@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { modal } from "../modules/modal";
+import { GetUserInfo } from "../modules/user";
 import { RootState, useAppDispatch } from "../useRedux/rootReducer";
 
 const HeaderWrap = styled.header`
@@ -180,9 +180,12 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
     const [Slide, setSlide] = useState<number>(0);
     const length = 3;
     const timeout = useRef<any>(null);
-    const { Users } = useSelector((state: RootState) => ({
-        Users: state.AuthSlice
-    }));
+
+    const { Users } = useSelector((state: RootState) => {
+        return {
+            Users: state.AuthSlice
+        };
+    });
 
     const dispatch = useAppDispatch();
     const nav = useNavigate();
@@ -219,7 +222,7 @@ const Header: React.FC<bgStyle> = ({ bgStyle }) => {
                         </li>
                     </Menus>
 
-                    {Users.user.email !== "" ? (
+                    {Users.token !== "" ? (
                         <USER>
                             <p onClick={() => nav("/user")}>내 정보</p>
                         </USER>
