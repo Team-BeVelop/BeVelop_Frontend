@@ -13,7 +13,7 @@ export const UserEdit = (
     interests: string,
     introduce: string,
     job: string,
-    nickName: string,
+    nickname: string,
     stackName: string[],
     url: string,
     id: number,
@@ -25,7 +25,7 @@ export const UserEdit = (
             interests: interests,
             introduce: introduce,
             job: job,
-            nickName: nickName,
+            nickname: nickname,
             stackName: stackName,
             url: url
         },
