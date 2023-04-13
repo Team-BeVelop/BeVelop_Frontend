@@ -1,22 +1,11 @@
-import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { GetUserInfo } from "../../modules/user";
 import { RootState, useAppDispatch } from "../../useRedux/rootReducer";
 import { SKILL } from "../../Data/Filter";
 import { useNavigate } from "react-router";
-const Theme = {
-    Figma: "#1D1D1D",
-    피그마: "#1D1D1D",
-    AdobeXD: "#450135",
-    XD: "#450135",
-    Zeplin: "#F69833",
-    제플린: "#F69833",
-    재플린: "#F69833",
-    Photoshop: "#005294",
-    포토샵: "#005294"
-};
+import { useMemo } from "react";
+import { GetUserInfo } from "../../modules/user";
 const UserInfoWrap = styled.aside`
     transform: translate(0px, -50px);
     @media screen and (max-width: 480px) {
@@ -257,9 +246,17 @@ const User = ({
     index,
     introduce
 }: any) => {
+    const { Auth } = useSelector((state: RootState) => {
+        return {
+            Auth: state.AuthSlice
+        };
+    });
     const nav = useNavigate();
     const dispatch = useAppDispatch();
 
+    useMemo(() => {
+        dispatch(GetUserInfo(Auth.token));
+    }, []);
     return (
         <UserInfoWrap>
             <UserImg>
